@@ -1,0 +1,66 @@
+{
+  "services": {
+    "acrylic-roof-coatings": "/images/services/acrylic-roof-coatings-commercial-roofing-contractors-laredo-tx.webp",
+    "built-up-roofing": "/images/services/built-up-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "commercial-reroofing": "/images/services/commercial-reroofing-commercial-roofing-contractors-laredo-tx.webp",
+    "commercial-roof-inspection": "/images/services/commercial-roof-inspection-commercial-roofing-contractors-laredo-tx.webp",
+    "commercial-roof-leak-repair": "/images/services/commercial-roof-leak-repair-commercial-roofing-contractors-laredo-tx.webp",
+    "commercial-roof-tear-off-replacement": "/images/services/commercial-roof-tear-off-replacement-commercial-roofing-contractors-laredo-tx.webp",
+    "edge-metal-coping-gutters": "/images/services/edge-metal-coping-gutters-commercial-roofing-contractors-laredo-tx.webp",
+    "emergency-tarp-dry-in": "/images/services/emergency-tarp-dry-in-commercial-roofing-contractors-laredo-tx.webp",
+    "epdm-commercial-roofing": "/images/services/epdm-commercial-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "insurance-documentation-support": "/images/services/insurance-documentation-support-commercial-roofing-contractors-laredo-tx.webp",
+    "metal-r-panel-roofing": "/images/services/metal-r-panel-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "modified-bitumen-roofing": "/images/services/modified-bitumen-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "preventive-maintenance-programs": "/images/services/preventive-maintenance-programs-commercial-roofing-contractors-laredo-tx.webp",
+    "pvc-roofing": "/images/services/pvc-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "roof-drains-scuppers": "/images/services/roof-drains-scuppers-commercial-roofing-contractors-laredo-tx.webp",
+    "roof-recover-overlay": "/images/services/roof-recover-overlay-commercial-roofing-contractors-laredo-tx.webp",
+    "silicone-roof-coatings": "/images/services/silicone-roof-coatings-commercial-roofing-contractors-laredo-tx.webp",
+    "standing-seam-metal-roofing": "/images/services/standing-seam-metal-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "storm-damage-roof-repair": "/images/services/storm-damage-roof-repair-commercial-roofing-contractors-laredo-tx.webp",
+    "tpo-single-ply-roofing": "/images/services/tpo-single-ply-roofing-commercial-roofing-contractors-laredo-tx.webp"
+  },
+  "roof-systems": {
+    "epdm-black": "/images/roof-systems/epdm-black-commercial-roofing-contractors-laredo-tx.webp",
+    "epdm-white": "/images/roof-systems/epdm-white-commercial-roofing-contractors-laredo-tx.webp",
+    "modified-bitumen-sbs": "/images/roof-systems/modified-bitumen-sbs-commercial-roofing-contractors-laredo-tx.webp",
+    "pvc-roof-systems": "/images/roof-systems/pvc-roof-systems-commercial-roofing-contractors-laredo-tx.webp",
+    "silicone-roof-coating": "/images/roof-systems/silicone-roof-coating-commercial-roofing-contractors-laredo-tx.webp",
+    "spray-polyurethane-foam": "/images/roof-systems/spray-polyurethane-foam-commercial-roofing-contractors-laredo-tx.webp",
+    "tpo-60-mil": "/images/roof-systems/tpo-60-mil-commercial-roofing-contractors-laredo-tx.webp",
+    "tpo-80-mil": "/images/roof-systems/tpo-80-mil-commercial-roofing-contractors-laredo-tx.webp"
+  },
+  "industries": {
+    "commercial-real-estate-reits": "/images/industries/commercial-real-estate-reits-commercial-roofing-contractors-laredo-tx.webp",
+    "food-processing-cold-storage": "/images/industries/food-processing-cold-storage-commercial-roofing-contractors-laredo-tx.webp",
+    "general-contractors": "/images/industries/general-contractors-commercial-roofing-contractors-laredo-tx.webp",
+    "government-public-sector": "/images/industries/government-public-sector-commercial-roofing-contractors-laredo-tx.webp",
+    "healthcare-systems": "/images/industries/healthcare-systems-commercial-roofing-contractors-laredo-tx.webp",
+    "insurance-restoration": "/images/industries/insurance-restoration-commercial-roofing-contractors-laredo-tx.webp",
+    "logistics-3pl": "/images/industries/logistics-3pl-commercial-roofing-contractors-laredo-tx.webp",
+    "property-management-firms": "/images/industries/property-management-firms-commercial-roofing-contractors-laredo-tx.webp"
+  },
+  "project-types": {
+    "cold-storage-roofing": "/images/project-types/cold-storage-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "distribution-center-roofing": "/images/project-types/distribution-center-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "fast-food-qsr-roofing": "/images/project-types/fast-food-qsr-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "government-municipal-roofing": "/images/project-types/government-municipal-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "grocery-store-roofing": "/images/project-types/grocery-store-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "hotel-hospitality-roofing": "/images/project-types/hotel-hospitality-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "industrial-flex-space-roofing": "/images/project-types/industrial-flex-space-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "k12-school-roofing": "/images/project-types/k12-school-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "medical-office-building-roofing": "/images/project-types/medical-office-building-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "multi-tenant-retail-strip-roofing": "/images/project-types/multi-tenant-retail-strip-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "office-complex-roofing": "/images/project-types/office-complex-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "warehouse-roofing": "/images/project-types/warehouse-roofing-commercial-roofing-contractors-laredo-tx.webp"
+  },
+  "manufacturers": {
+    "carlisle-syntec": "/images/manufacturers/carlisle-syntec-commercial-roofing-contractors-laredo-tx.webp",
+    "gaf-commercial": "/images/manufacturers/gaf-commercial-commercial-roofing-contractors-laredo-tx.webp",
+    "holcim-elevate": "/images/manufacturers/holcim-elevate-commercial-roofing-contractors-laredo-tx.webp",
+    "johns-manville": "/images/manufacturers/johns-manville-commercial-roofing-contractors-laredo-tx.webp",
+    "sika-sarnafil": "/images/manufacturers/sika-sarnafil-commercial-roofing-contractors-laredo-tx.webp",
+    "versico": "/images/manufacturers/versico-commercial-roofing-contractors-laredo-tx.webp"
+  }
+}

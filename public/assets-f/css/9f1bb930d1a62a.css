@@ -1,0 +1,13 @@
+#webform-submission-contact-node-6-add-form.unloaded > div,
+#webform-submission-contact-node-6-add-form.unloaded > fieldset{
+ display: none; 
+}
+#webform-submission-contact-node-6-add-form.unloaded #edit-header {
+ display: block; 
+}
+#webform-submission-contact-node-6-add-form.unloaded #edit-reason-for-contact--wrapper{
+ display: block; 
+}
+#webform-submission-contact-node-6-add-form .stayHid{
+ display: none!important; 
+}

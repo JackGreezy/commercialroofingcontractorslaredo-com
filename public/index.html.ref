@@ -1,0 +1,2070 @@
+<!DOCTYPE html><html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#" class=" js"><head>
+      <meta charset="utf-8">
+<meta name="be:drupal" content="1.3.7">
+
+<!-- be_ixf, sdk, gho-->
+<meta name="be:sdk" content="php_sdk_1.5.15">
+<meta name="be:timer" content="43ms">
+<meta name="be:orig_url" content="https%3A%2F%2Fwww.pepperconstruction.com%2Four-portfolio">
+<meta name="be:norm_url" content="https%3A%2F%2Fwww.pepperconstruction.com%2Four-portfolio">
+<meta name="be:capsule_url" content="https%3A%2F%2Fixfd1-api.bc0a.com%2Fapi%2Fixf%2F1.0.0%2Fget_capsule%2Ff00000000321029%2F1885969540">
+<meta name="be:api_dt" content="-05:00y_2026;-05:00m_06;-05:00d_14;-05:00h_04;-05:00mh_09;p_epoch:1781428159220">
+<meta name="be:mod_dt" content="-05:00y_2026;-05:00m_06;-05:00d_14;-05:00h_04;-05:00mh_09;p_epoch:1781428159220">
+<meta name="be:diag" content="rxw+i5ecslgrW9LIBIn4mcBbSvfdky9Hcpz3Te1MAJNjxZfhJlPdjed/RhR2FMuQfq1M9kg08lNv714wRxYRGFg6eQvVJo95+cQE7Zjmqn3OA8SBrO0yUeMbskQUCYbmBwtbN5m6Zb09jF9kS2zCrt6Lva/Ucw7iWIiPvrUHr/TpSHNB9ef1YnX8D5PkpxxJKQBU5vG1EaXGyoIC5fSOYXN5Z1AFI6Vnreks41xjhPAfB7dbUr9fid2a85VFl3iolukIg6v95LhX0rP4EPO6NicdwXzsK7Aj9+c8CpN5Jm/2GXRGhtsTMPWkg4oTwvxjiH3AjtKdyn6TvxmNVgUFJFL6/mztS9qiun42TXZqbHD9UoI2+/7XYxLDeJh/Z6B6+NhBEfN5AHktCnDmml9h4ZE4u3HljPYvLwwT0bPKMBYI1OfRjU+lY8M4gJRlAQRSwnLpT+cl/FwQ77BPmkCXZmu/MUGxPOLws279jXmpSl5PAKFtJCp8vK5sHlr8qJqOGt535kn5JAHb9v+vkD7Q4GFiORBxUy4/UB3BvAa9FI7lyqAqsJJIb+vg8pW/pXRH/IaclV/uwc6O0/ibHaPtmSS50rvOYKLC2D42j8Ph1G9aTCayDdqizvNncOCAXS7cD/mtBLUIaT4kyrwHFqPuOiy5KXgouSfD+s8IxSe/gRvJjnA/kk0Y6rNhNiGEPOudkQLpRwCf3llB6ptFQGu0+6vmDrdIA21axEQzVIScRse/d7VgJZnKHudLfaYVcyl4K4OkLRFHmG+ana/1AXeyhmxwxSi8Sg3Yj3N6FzrJLn/cXff5bkwm7M3rDUFsfNpZuz267fh93M9OD/qDz1MfJ7P57a/T4SshEuoVWogbj6+r8OQGW0yIVvZRjZJvU8cAJLmYWJ6gPX9RCNzMKHiJc1UrzYigCQG7Viy7n7/9g2HUmQKgSdNSk9hX7o1TNk3rKxCH7WkVoobFlCNvrUP8DvHcBjkM9Qrvg7hZWf08hIzQVthfkUUBzGvJvmIRyreCggJ05mTxCGWbD4REJ+fzWn1eX/HXXrFyMsXPsu/dUs8ho+JkO2SAKduMSsI+n23xjSvHX8m3QnhM86SpzZgZFP0xf/RsZhAFSXl74Lg9syunofgpay1zRVCI6ueIrqlTQ+6DZaUvNI/PnQK90emzchcGb6ewdhsguaZoh+Qpy1++v0hhCjcfeUprc5QDmb0JjYpQsIjN3affHTHNcZkO9UnuOJPcMJFVJFHoWVE/Arec6ZZL9ZZUSlMPKH2lWOwglW0iFjPIl8Od5LIncIQ6Hd5qzsUnOjC0wzbOT7zySw99DowFPyGghYaNh37kjrzLUISqME/O3fn1BpIsBRhT/q6S03M267Kg7W+jjmbHYAroZ+A3NMtblmxo+lkfQGqPmm2uuNNvVR0bFXkRc7rrUkqH0Ew8f4Ifd9ZNG6I9XpZ/BqPDDJit5bQIfbzYIIiSElGHK3qV331X4Vgh83UzJpIxC8AxBWu3bEOsAhbr58SkX/BflAwSOYIpsDQtA/Z4uybc7vIUyo8Rhp4yeDTd0P5XCIYkKtjutkYxSODD/gh9cafUF49EWYTf95dzGfOQ5pbkzetzackWFXKprKdB34i+qfIpJQyFwH3jOek9Q3N6ZH8gYyIIBng9uk2FAxblGI6S4Cmlko14Kxln6WGEDsm7mGFUcVdIsSjp20xoVmcQOE4Dob3H+j2aSLk2EP7neQVYf0ioVKRJqiBc5y9iOYHNt03J82oltct52aFQ4fiBgCXeIWae8NyN0ZEsF1dMrVM+MbuCU0EzuWGFPRhgsDSnZ9NFgxBxNcWIHGAERr2qYq/7Fo+nuHrmOpLhtb/c6N2Wc4c848XSmP6Sq0+P63PSSJiChnTsjvaaLl2Khvl5echJtZHy1Q/H8TsN2k5wKqpM1hcULBWvUxNVg2xgB1DhE1d8kEN7CA68k3KmvQQstoFoh0qHO2kSbvbcYJ58H2m9aGGocFKQXZVBYM8jeMNuItIfDpjgo5OJ4EsiGC6sXsyU5LP1IxaU615I8/yi2XgPxBqbrM8C/HTZYYDzR4dn+aJ6gd0IWk6BrfdVFOhnYqcPL+Z4BhCx33Tq+N3flnzuiWvmdDf+2rwx+pAW7CKbq9KdUzGi+cdkSUup8jOEFTAwzhSbAwOXgFYO35BFJXYja2N4IBF2UivqK+CViKdknZY5UfzADKvIX4DQCpCcyhxpsaN9XDLrP1yqlB6bVJq2DLt6AomKp8OsWiNCyOSyC+Q5xJ1pfy2AYHv40YS484LyvsY61IuERWJW5v6l1p5RQFxGimx8JaP30QzSXIqL0poao+D+jM4X3N3QyrvxZF/+ykXg+xtQxVvXq9Y2B66nMv+4zNTTOditarQv9rD+MubHO/Sv8RH+gp+irKURjyNQ1/f+u+Fz/6W+LfqX31LuvOp451Nlp1HGoaYxAXP5j/4r8onmdOTx5ci6/hF2YfR/Anc5WWJ/ASgVEqm3XbhDb7mL+3tTp+Df2BciBQ==">
+<meta name="be:messages" content="false">
+<style>
+  .be-ix-link-block .be-related-link-container {
+    width: 100%;
+    text-align: left;
+  }
+  .be-ix-link-block .be-related-link-container .be-label {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  .be-ix-link-block .be-related-link-container .be-list {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .be-ix-link-block .be-related-link-container .be-list .be-list-item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .be-ix-link-block .be-related-link-container .be-list .be-list-item .be-related-link {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .be-ix-link-block .be-related-link-container .be-list .be-list-item .be-related-link:hover {
+    text-decoration: underline;
+  }
+  .be-ix-link-block .be-related-link-container .be-list .be-list-item:last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: 767px) {
+    .be-ix-link-block .be-related-link-container .be-label {
+      width: 100%;
+      text-align: left;    
+      margin-bottom: 5px;
+    }
+    .be-ix-link-block .be-related-link-container .be-list {
+      display: block;
+      width: 100%;
+    }
+    .be-ix-link-block .be-related-link-container .be-list .be-list-item {
+      padding: 0;
+      display: block;
+      margin-right: 0;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+  }
+  @media (min-width: 768px) {
+    .be-ix-link-block .be-related-link-container {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-start;
+
+    }
+    .be-ix-link-block .be-related-link-container .be-label {
+      display: inline-block;
+      margin-right: 20px;
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<script type="text/javascript" async="" src="/assets-f/js/6aabe26e97a8d3.js"></script><script type="text/javascript" src="https://secure.leadforensics.com/apollo/capture?trk_culid=01KXJ80XP7NVBVGPWTMKY9K0PA&amp;trk_user=106533&amp;trk_lfuuid=NA&amp;liuid=30-mEY7LswyAFJ1705V80ns1nyw/4biG9WD1TQbockGavKH6CGwb5+/RZfjI0rDbUz1QNOFFf4Wf3sakkkQ87uY/Hvpfi4dqw5Acds/+y/gEmBTxw=="></script><script type="text/javascript" src="https://a.usbrowserspeed.com/ncs?pid=e49f8e08bad11ec16f82889b4a190a2d0e94e51cc2c438f1d71e7714785cb3f9&amp;puid=01KXJ80XP7NVBVGPWTMKY9K0PA"></script><script type="text/javascript" src="https://secure.leadforensics.com/Track/Capture.aspx?retType=js&amp;trk_jshv=1&amp;trk_uid=&amp;trk_user=106533&amp;trk_sw=1440&amp;trk_sh=1000&amp;trk_ref=&amp;trk_tit=Pepper%3A%20Construction%20Case%20Studies%20%26%20Examples&amp;trk_loc=https%3A%2F%2Fwww.pepperconstruction.com%2Four-portfolio&amp;trk_agn=Netscape&amp;trk_agv=Mozilla%2F5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F126%20Safari%2F537.36&amp;trk_dom=www.pepperconstruction.com&amp;trk_cookie=NA&amp;trk_culid=01KXJ80XP7NVBVGPWTMKY9K0PA&amp;trk_dt=false"></script><script id="be-app-script" data-testmode="false" data-delay="0" data-customerid="f00000000321029" src="/assets-f/js/db098ce5266e8e.js"></script>
+
+
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "UA-37747480-1", {"groups":"default","anonymize_ip":true,"page_placeholder":"PLACEHOLDER_page_path","allow_ad_personalization_signals":false});gtag("config", "G-0SE66YG1MB", {"groups":"default","page_placeholder":"PLACEHOLDER_page_location","allow_ad_personalization_signals":false});</script>
+<link rel="canonical" href="#">
+<meta property="og:site_name" content="Pepper Construction">
+<meta property="og:url" content="https://www.pepperconstruction.com/our-portfolio">
+<meta property="og:title" content="Our portfolio">
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="#" type="image/vnd.microsoft.icon">
+<script src="/assets-f/js/467991675c8b41.js" defer=""></script>
+
+        <title>Pepper: Construction Case Studies &amp; Examples</title>
+    
+  <link rel="stylesheet" media="all" href="#">
+<link rel="stylesheet" media="all" href="#">
+
+  
+  <meta name="google-site-verification" content="xS5JQojt3z5JxBS4ng_oGWNIO0dlPiMEynCZIqHBvyc">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-37747480-1');
+</script>
+  <script src="/assets-f/js/db1545e3f8b4d9.js" async=""></script></head>
+  <body class="our-portfolio page-node-2 is-path-node is-page-node-type-page eu-cookie-compliance-popup-open eu-cookie-compliance-status-null" data-eu-cookie-compliance-once="true" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0"><script type="text/javascript" src="https://secure.leadforensics.com/apollo/callback/demandbase?pid=01KXJ80XP7NVBVGPWTMKY9K0PA&amp;id=eyJhY2Nlc3NfdHlwZSI6ImlkZW50aWZpZWRfbm9uX2J1c2luZXNzIiwiYXVkaWVuY2UiOiJTT0hPIiwiYXVkaWVuY2Vfc2VnbWVudCI6IiIsImNvbmZpZGVuY2VfbGV2ZWwiOjAuNywiaW5mb3JtYXRpb25fbGV2ZWwiOiJCYXNpYyIsImlzcCI6dHJ1ZSwicmVnaW9uX25hbWUiOiJDYWxpZm9ybmlhIiwicmVnaXN0cnlfYXJlYV9jb2RlIjpudWxsLCJyZWdpc3RyeV9jaXR5IjoiTmV3cG9ydCBCZWFjaCIsInJlZ2lzdHJ5X2NvbXBhbnlfbmFtZSI6IkFUJlQgQ29ycCIsInJlZ2lzdHJ5X2NvdW50cnkiOiJVbml0ZWQgU3RhdGVzIiwicmVnaXN0cnlfY291bnRyeV9jb2RlIjoiVVMiLCJyZWdpc3RyeV9jb3VudHJ5X2NvZGUzIjpudWxsLCJyZWdpc3RyeV9kbWFfY29kZSI6ODAzLCJyZWdpc3RyeV9sYXRpdHVkZSI6MzMuNiwicmVnaXN0cnlfbG9uZ2l0dWRlIjotMTE3LjksInJlZ2lzdHJ5X3N0YXRlIjoiQ0EiLCJyZWdpc3RyeV96aXBfY29kZSI6IjkyNjYxIn0"></script>
+      <!-- Lead Forensics -->
+  <script type="text/javascript" src="/assets-f/js/398f3202ca45b0.js"></script>
+  <noscript><img src="https://secure.leadforensics.com/106533.png" style="display:none;" /></noscript>
+  
+<a href="#main-content" class="skip-link visually-hidden visually-hidden--focusable">
+      Skip to main content
+  </a>
+  
+    <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+    
+
+<div class="wrap">
+      <div class="search-wrapper">
+      <button id="close-search" tabindex="0"><span aria-hidden="true" class="fal fa-times"></span><span class="sr-only">Close Search</span></button>
+      
+
+<div class="search-block-form block block-search container-inline" data-drupal-selector="search-block-form" id="block-searchform" role="search">
+  
+    
+      <form action="#" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-type-search js-form-item-keys form-item-keys form-no-label">
+      <label for="edit-keys" class="visually-hidden">Search</label>
+        <input title="Enter the terms you wish to search for." data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" class="form-search" placeholder="Search Keywords">
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search" class="button js-form-submit form-submit">
+</div>
+
+</form>
+
+  </div>
+<div id="block-crazyeggscript-all" class="block block-block-content block-block-content42b90212-6c3d-43f2-9f08-381d101f31ba">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><script type="text/javascript" src="/assets-f/js/fa1fede6e8d86e.js" async="async"></script></div>
+      
+  </div>
+
+
+    </div>
+      <div class="sticky-wrapper" style="height: 145.781px;"><header class="header stuck" role="banner">
+        <div class="top-wrapper">
+      <div class="container">
+      
+
+<nav role="navigation" aria-labelledby="block-supplementalnavigation-menu" id="block-supplementalnavigation" class="block block-menu navigation menu--supplemental-navigation">
+            
+  <h2 class="visually-hidden" id="block-supplementalnavigation-menu">Supplemental Navigation</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="#" target="_self">Prequalification</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://jobs.dayforcehcm.com/en-US/pepperconstruction/CANDIDATEPORTAL" target="_blank">Open Positions</a>
+              </li>
+                <li class="menu-item">
+        <a href="#" target="_self" class="search" data-drupal-link-system-path="search">Search</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+
+      </div>
+    </div>
+        <div class="header-wrapper">
+  		<div class="container">
+    	
+
+<div id="block-pepper-branding" class="block block-system block-system-branding-block">
+  
+    
+        <a href="#" rel="home" class="site-logo">
+      <img src="/assets-f/img/c53c19fa15d747.png" alt="Home">
+    </a>
+      </div>
+
+
+        
+
+<div id="block-mainnavigation" class="block block-superfish block-superfishmain">
+  
+    
+      
+<ul id="superfish-main" class="menu sf-menu sf-main sf-horizontal sf-style-none sf-js-enabled" role="menu" aria-label="Menu" data-once="superfish">
+  
+
+            
+  <li id="main-menu-link-contentfd4b0e5f-2859-4ffb-87a9-161e89218169" class="active-trail sf-depth-1 menuparent sf-first" role="none">
+    
+          <a href="#" target="_self" class="is-active sf-depth-1 menuparent" role="menuitem" aria-haspopup="true" aria-expanded="false">Markets</a>
+    
+    
+    
+              <ul role="menu" class="sf-hidden" style="float: none; width: 10.6em;">
+      
+      
+
+  
+  <li id="main-menu-link-content4711fe74-099a-4ec6-a4e9-cffedfedeb45" class="sf-depth-2 sf-no-children sf-first" role="none" style="">
+    
+          <a href="#" target="_self" class="is-active sf-depth-2" title="All projects" role="menuitem" style="">All Projects</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content1b46161c-7298-4fab-8342-718c2b263e80" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Civic and Cultural" class="sf-depth-2" role="menuitem" style="">Civic and Cultural</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentfff3c38f-291c-4fb4-a782-2aa4cef6375b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Commercial Interiors" class="sf-depth-2" role="menuitem" style="">Commercial Interiors</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content899f157a-90e4-4c07-85d6-ae8a73364345" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Corporate Office" class="sf-depth-2" role="menuitem" style="">Corporate Office</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contenta70343aa-bfc5-4dbe-ae2d-b4056771edac" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Entertainment" class="sf-depth-2" role="menuitem" style="">Entertainment</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contenteb4c0cd4-c2d4-49ce-bb50-83feb80f3d0b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Gaming" class="sf-depth-2" role="menuitem" style="">Gaming</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentddb78cd0-24ee-4424-8bc4-650cb06c87d9" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Healthcare" class="sf-depth-2" role="menuitem" style="">Healthcare</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentd52de212-53d3-499e-87b9-6d88c322ce1e" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Higher Education" class="sf-depth-2" role="menuitem" style="">Higher Education</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content45c728cb-72c1-4a93-973b-4df1df41122b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Hospitality" class="sf-depth-2" role="menuitem" style="">Hospitality</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentea787fee-b14a-4e68-8b47-670a58486ec6" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Industrial" class="sf-depth-2" role="menuitem" style="">Industrial</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content466d44e5-99a8-4506-b8a9-3b17a36be0e8" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="K-12" class="sf-depth-2" role="menuitem" style="">K-12</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content0cfb4860-ab4d-45e5-be71-80efbe20873b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Manufacturing" class="sf-depth-2" role="menuitem" style="">Manufacturing</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentafc2cc4f-d2b5-467b-97a9-e24e3a09756b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Mission Critical" class="sf-depth-2" role="menuitem" style="">Mission Critical</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content6f63173a-73e1-4941-bcbb-c321c6474742" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2 sf-external" title="Renewable Energy" role="menuitem" style="">Renewable Energy</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentb2c2001b-3616-4d42-a7cb-bc57996dd777" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Residential" class="sf-depth-2" role="menuitem" style="">Residential</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentf7f0850d-157f-4fec-9b38-ef73cd357b13" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Retail" class="sf-depth-2" role="menuitem" style="">Retail</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentda3616d9-47fc-4208-88d0-d9a10aeda1b5" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2 sf-external" role="menuitem" style="">Science &amp; Technology</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentaf71cc60-36f0-41f2-958b-7def07d011fe" class="sf-depth-2 sf-no-children sf-last" role="none" style="">
+    
+          <a href="#" target="_self" rel="" title="Senior Living" class="sf-depth-2" role="menuitem" style="">Senior Living</a>
+    
+    
+    
+    
+      </li>
+
+
+
+              </ul>
+      
+    
+    
+      </li>
+
+
+            
+  <li id="main-menu-link-contentf78287a6-34b4-424a-b7fa-97c6fd89e4be" class="sf-depth-1 menuparent" role="none">
+    
+          <a href="#" target="_self" class="sf-depth-1 menuparent" role="menuitem" aria-haspopup="true" aria-expanded="false">Approach</a>
+    
+    
+    
+              <ul role="menu" class="sf-hidden" style="float: none; width: 14.1em;">
+      
+      
+
+  
+  <li id="main-menu-link-content84355493-7f73-413e-83a4-bd2558effd9f" class="sf-depth-2 sf-no-children sf-first" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Overview</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentffe38068-5619-4735-bf3b-a1ef3b0993aa" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Environmental Technologies" class="sf-depth-2" role="menuitem" style="">Environmental Technologies</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentb604847c-6e09-44f6-90a8-6a92cd8557f8" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="High Performance and Sustainability" class="sf-depth-2" role="menuitem" style="">High Performance</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content65504b9c-2d3e-434e-84ca-ee381fbab53e" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Lean Construction" class="sf-depth-2" role="menuitem" style="">Lean Construction</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content42fd0b3b-7bc3-4ce3-adcd-a26bfed7bc43" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="MEP Coordination" class="sf-depth-2" role="menuitem" style="">MEP Coordination</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contente96b54f2-91bf-4ef7-94c7-9deb5b250b94" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Preconstruction" class="sf-depth-2" role="menuitem" style="">Preconstruction</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content84cb7a9d-c919-4e07-8323-feb91d1eb498" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Quality Management" class="sf-depth-2" role="menuitem" style="">Quality Management</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentbc20ad96-0d87-4e6e-a4bd-3de553e82026" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Self Perform Work" class="sf-depth-2" role="menuitem" style="">Self Perform Work</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content086f1d5d-e4d5-4225-9876-f19476d90a91" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" title="Virtual Design and Construction" class="sf-depth-2" role="menuitem" style="">Virtual Design and Construction</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content90b82768-93a3-4a2d-a4e6-da2df1357522" class="sf-depth-2 sf-no-children sf-last" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Safety Management</a>
+    
+    
+    
+    
+      </li>
+
+
+
+              </ul>
+      
+    
+    
+      </li>
+
+
+            
+  <li id="main-menu-link-content51890f27-ddbc-4f8a-8db6-d1d86434af42" class="sf-depth-1 menuparent" role="none">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-1 menuparent" role="menuitem" aria-haspopup="true" aria-expanded="false">Media Hub</a>
+    
+    
+    
+              <ul role="menu" class="sf-hidden" style="float: none; width: 9.85em;">
+      
+      
+
+  
+  <li id="main-menu-link-contentcecd7f2a-b7bf-440e-ba11-bab1a93dcabb" class="sf-depth-2 sf-no-children sf-first" role="none" style="">
+    
+          <a href="#" target="_self" class="sf-depth-2" role="menuitem" style="">Media Hub</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content039c0fd6-ff3c-4974-a1ef-5a55a234afb2" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-2" role="menuitem" style="">Blog</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentdea7e25a-e16f-4ffa-a291-6c2582404a19" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" class="sf-depth-2" role="menuitem" style="">Stories</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content48fcc00d-6b78-4e9d-9e91-b335a257361e" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-2" role="menuitem" style="">Videos</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content245df384-c90e-4e9f-b9d3-83bf5b95a840" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">In the News</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content10c3c9e3-b0a7-4bc1-ae99-43d3836214c7" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2 sf-external" role="menuitem" style="">2025 Annual Review</a>
+    
+    
+    
+    
+      </li>
+
+
+
+              </ul>
+      
+    
+    
+      </li>
+
+
+            
+  <li id="main-menu-link-content66c4281b-3375-4d10-a925-736c94f29f55" class="sf-depth-1 menuparent" role="none">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-1 menuparent" role="menuitem" aria-haspopup="true" aria-expanded="false">About</a>
+    
+    
+    
+              <ul role="menu" class="sf-hidden" style="float: none; width: 21.1em;">
+      
+      
+
+  
+  <li id="main-menu-link-content8f019410-42b4-4042-a125-6b1ed0bde426" class="sf-depth-2 sf-no-children sf-first" role="none" style="">
+    
+          <a href="#" target="_self" class="sf-depth-2" role="menuitem" style="">About Pepper</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content1fec287f-82ce-4b03-961e-bf91aa04c1ac" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" title="Our Commitment" role="menuitem" style="">Our Commitment</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentee1aa36d-4ff5-4d39-b4b0-91770154f373" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Diversity, Equity and Inclusion</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content44fa723e-19df-40d3-a5cf-3e961886c3f7" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">The Pepper Construction Scholarship and Internship</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content158b2b08-33bd-4381-8406-77d5ec4bafa2" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Environment, Social &amp; Governance (ESG)</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content1038ddfa-9d32-413e-9e19-d8f1f084894b" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Culture</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contenta4742a3c-f42a-436d-b403-653f735b2341" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">History</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentb5fc1ba0-c631-46f1-813d-bae1a4cd7bb5" class="sf-depth-2 sf-no-children" role="none" style="">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-2" title="Meet the Team at Pepper" role="menuitem" style="">Leadership</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content4e6e1ba5-b35e-420a-9d08-2bdaed163fcc" class="sf-depth-2 sf-no-children sf-last" role="none" style="">
+    
+          <a href="#" class="sf-depth-2" role="menuitem" style="">Locations</a>
+    
+    
+    
+    
+      </li>
+
+
+
+              </ul>
+      
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contente9bfd224-098a-45b5-9422-eb849b7575a2" class="sf-depth-1 sf-no-children" role="none">
+    
+          <a href="#" target="_self" rel="" class="sf-depth-1" role="menuitem">Contact</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-content0f1b9a98-4aaa-448a-90e5-db04c13f8565" class="sf-depth-1 sf-no-children" role="none">
+    
+          <a href="#" class="sf-depth-1" role="menuitem">Join our Team</a>
+    
+    
+    
+    
+      </li>
+
+
+  
+  <li id="main-menu-link-contentf48e5cc6-03aa-4356-9d62-5a4b69d5399d" class="sf-depth-1 sf-no-children" role="none">
+    
+          <a href="#" class="sf-depth-1" role="menuitem">Trade Partners</a>
+    
+    
+    
+    
+      </li>
+
+
+</ul>
+
+  </div>
+
+
+    	</div>
+    </div>
+  </header></div>
+    <div class="breadcrumb-wrapper">
+  	<div id="breadcrumb" class="container">
+      
+
+<div id="block-breadcrumbs" class="block block-system block-system-breadcrumb-block">
+  
+    
+        
+<nav class="breadcrumb " role="navigation" aria-labelledby="system-breadcrumb">
+  <h2 id="system-breadcrumb" class="visually-hidden">Breadcrumb</h2>
+  <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+                  <a href="#">Home</a>
+                          ›
+              </li>
+          <li class="breadcrumb__item">
+                  Markets
+                      </li>
+      </ol>
+</nav>
+
+  </div>
+
+
+  	</div>
+  </div>
+      	<div id="highlighted" class="wrapper">
+      
+
+<div class="views-element-container block block-views block-views-blockheader-hero" id="block-views-block-header-hero">
+  
+    
+      <div><div class="view view-header view-id-header view-count-1 view-display-id-hero js-view-dom-id-8afde64f902128ef0a21f0743176453cbb65f6edba4f8033fe9d8ade6f7c3616">
+  
+    
+      
+      <div class="view-content">
+      <div class="grouping">
+    <div class="default caption-outer id-974 rev-14267 views-row">
+    <div class="views-field views-field-field-featured-image-img featured-content"><div class="field-content">    <picture>
+                  <source srcset="/assets-f/img/5591d05818e7e3.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="1800" height="600">
+              <source srcset="/assets-f/img/67e205c4fb3c72.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="1200" height="600">
+              <source srcset="/assets-f/img/62de8c77801ec1.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="900" height="600">
+              <source srcset="/assets-f/img/af16a276b3abed.webp 1x" type="image/webp" width="600" height="600">
+              <source srcset="/assets-f/img/edd8d7a88eabba.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="1800" height="600">
+              <source srcset="/assets-f/img/d5cc86f159ed81.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="1200" height="600">
+              <source srcset="/assets-f/img/1928ec202fd072.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="900" height="600">
+              <source srcset="/assets-f/img/4cc16b3d21d4e6.jpg 1x" type="image/jpeg" width="600" height="600">
+                  <img loading="lazy" width="1200" height="600" src="/assets-f/img/d5cc86f159ed81.jpg" alt="Robey">
+
+  </picture>
+
+</div></div><div class="views-field views-field-field-overlay-title"><div class="field-content"><div class="caption-wrapper"><div class="long-caption"><div class="caption-container container"><h1 class="slide-title" data-be-app="processed">Our portfolio</h1><p>From the work we do on iconic buildings, to new construction and on-call, account-based work, we have the resources to cover a broad range of large and niche markets.&nbsp;</p></div></div></div></div></div>
+  </div>
+</div>
+
+    </div>
+  
+          </div>
+</div>
+
+  </div>
+
+
+  	</div>
+  
+  
+
+  
+
+<div data-drupal-messages-fallback="" class="hidden" style="display: none;"></div>
+
+
+
+                                <div id="main" class="wrapper ">
+    <div id="content" class="layout-3col">
+      <main class="layout-3col__full" role="main">
+        <a href="#skip-link" class="visually-hidden visually-hidden--focusable" id="main-content">Back to top</a>        
+
+  
+    
+
+  <article class="" data-history-node-id="2">
+    
+    
+
+  
+      
+      <div class="field field--name-field-paragraph field--type-entity-reference-revisions field--label-hidden field--count-1 field__items">
+              <div class="field__item">
+  <div class="full pad_both contained paragraph paragraph--type--row-basic paragraph--view-mode--default" id="section-1043">
+            
+<div class="content-wrapper">
+    
+            <div class="field field--name-field-column field--type-entity-reference-revisions field--label-hidden field--count-1 field__item">
+  <div class="paragraph paragraph--type--col-text paragraph--view-mode--default" id="section-1042">
+            
+<div class="text-wrapper">
+    
+            <div class="clearfix text-formatted field field--name-field-long-text field--type-text-long field--label-hidden field--count-1 field__item"><div class="column-left">At Pepper, we're fortunate to partner with leading organizations on projects and causes that initiate&nbsp;progress. Whether breathing new life into&nbsp;a crumbling structure, adding to the city skyline or preparing a space&nbsp;for healing, the visions&nbsp;that inspire&nbsp;the spaces we build give meaning to our work.&nbsp;</div>
+
+<div class="column-right">Our experts understand the unique considerations of your facility, and we will work with you to develop a plan that's right for you. To learn more about our expertise, search the&nbsp;projects below&nbsp;by market and&nbsp;by story. If you don't&nbsp;find what you're looking for, let us know <a href="#" title="contact us">how we can help</a>.</div>
+</div>
+      
+  </div>
+          </div>
+</div>
+      
+  </div>
+          </div>
+</div>
+          </div>
+  
+  </article>
+
+<div class="views-element-container block block-views block-views-blockprojects-main" id="block-views-block-projects-main">
+  
+    
+      <div><div class="light-view-filters infinite-scroll view view-projects view-id-projects view-count-12 view-display-id-main js-view-dom-id-47cc73b3b20bb29cfa3d92c6ac9ea3bb9dddfeb7c9f370d63d419f0802ede4f1" data-once="ajax-pager">
+  
+    
+        <div class="view-filters">
+      <form class="views-exposed-form" data-drupal-selector="views-exposed-form-projects-main" action="#" method="get" id="views-exposed-form-projects-main" accept-charset="UTF-8" data-once="exposed-form">
+  <div class="form--inline clearfix">
+  <div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-market-target-id form-item-field-market-target-id">
+      <label for="edit-field-market-target-id">Filter by Market</label>
+        <select data-drupal-selector="edit-field-market-target-id" id="edit-field-market-target-id" name="field_market_target_id" class="form-select"><option value="All" selected="selected">- Any -</option><option value="19">Commercial Interiors</option><option value="11">Corporate Office</option><option value="13">Entertainment</option><option value="156">Gaming</option><option value="14">Healthcare</option><option value="15">Higher Education</option><option value="16">Hospitality</option><option value="17">Industrial</option><option value="20">K-12</option><option value="21">Manufacturing</option><option value="22">Mission Critical</option><option value="23">Residential</option><option value="24">Retail</option><option value="18">Civic and Cultural</option><option value="219">Science + Technology</option><option value="26">Senior Living</option><option value="190">Renewable Energy</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-story-types-target-id form-item-field-story-types-target-id">
+      <label for="edit-field-story-types-target-id">Filter by Story</label>
+        <select data-drupal-selector="edit-field-story-types-target-id" id="edit-field-story-types-target-id" name="field_story_types_target_id" class="form-select"><option value="All" selected="selected">- Any -</option><option value="81">Budgeting</option><option value="82">Constructability review</option><option value="83">Environmental</option><option value="75">High performance and sustainability</option><option value="78">Historic preservation</option><option value="74">Inclusion goals</option><option value="84">Lean</option><option value="85">Logistics</option><option value="86">MEP systems</option><option value="88">Preconstruction</option><option value="87">Prefabrication</option><option value="89">Quality</option><option value="77">Safety</option><option value="91">Schedule</option><option value="92">Self perform</option><option value="93">Teamwork</option><option value="95">User engagement</option><option value="94">Virtual construction &amp; technology</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-complete-value form-item-field-complete-value">
+      <label for="edit-field-complete-value">Status</label>
+        <select data-drupal-selector="edit-field-complete-value" id="edit-field-complete-value" name="field_complete_value" class="form-select"><option value="All" selected="selected">- Any -</option><option value="1">Complete</option><option value="2">Under Construction</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-sort-by form-item-sort-by">
+      <label for="edit-sort-by">Sort by</label>
+        <select data-drupal-selector="edit-sort-by" id="edit-sort-by" name="sort_by" class="form-select"><option value="created" selected="selected">Date</option><option value="title">Project Title</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-sort-order form-item-sort-order">
+      <label for="edit-sort-order">Order</label>
+        <select data-drupal-selector="edit-sort-order" id="edit-sort-order" name="sort_order" class="form-select"><option value="ASC">Asc</option><option value="DESC" selected="selected">Desc</option></select>
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-projects" type="submit" id="edit-submit-projects" value="Apply" class="button js-form-submit form-submit">
+</div>
+
+</div>
+
+</form>
+
+    </div>
+    
+      <div class="view-content">
+      <div data-drupal-views-infinite-scroll-content-wrapper="" class="views-infinite-scroll-content-wrapper clearfix"><div class="grouping">
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1446" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/ebfa03a61e4c0c.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/ecfe4fbc6a1317.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/ecfe4fbc6a1317.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/186cad2b96f68f.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/e87f1a9d1a987f.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/65f5c94bc81b78.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/65f5c94bc81b78.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/2d8a1bd6ae9d16.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/e87f1a9d1a987f.jpg" alt="Church renovation, Church expansion project, Church construction contractor, Religious facility renovation, Worship space, Faith-based construction project, church renovation and expansion, church campus modernization, Church, Renovation, Expansion, Presbyterian Church, religious, Presbyterian, Pepper, Pepper Construction">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Zionsville Presbyterian Church Renovation and Addition</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1440" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/22e0ebcf4ead15.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/a4a61ec8c4561f.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/a4a61ec8c4561f.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/91e5bd217bffe0.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/b93437a69f5bc6.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/22a6eabf7657df.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/22a6eabf7657df.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/e7604172eba0b4.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/b93437a69f5bc6.jpg" alt="Industrial, Industrial Construction, Pepper, VanTrust, Warehouses, spec warehouse">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">VanTrust Gateway 670</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1437" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/7dc5ce37bf815a.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/56895a65c7ea04.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/56895a65c7ea04.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/6b754a57e58418.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/50d8aca1c0fe1f.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/3db111b9e74339.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/3db111b9e74339.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/611b09e739fffe.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/50d8aca1c0fe1f.jpg" alt="IU Health Arnett, Hybrid OR renovation, Cardiac rehab renovation, Healthcare renovation project, Hospital renovation Indiana, Pepper Construction healthcare projects Hybrid operating room construction, Cardiac care facility renovation, Surgical suite renovation, Advanced surgical technology facility, Cardiovascular care renovation, Hospital vertical expansion">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">IU Health Arnett OR and Central Sterile Expansion</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1417" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/279349b7009d15.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/fba52e189ae810.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/fba52e189ae810.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/954a891a1c93fb.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/13ed217e123695.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/a8912545447357.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/a8912545447357.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/a1a6c7854c87a2.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/13ed217e123695.jpg" alt="BCSC Maple Grove Elementary School">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Bartholomew Consolidated School Corporation Maple Grove Elementary School</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1408" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/378cdae9268ca4.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/75ecb0b1d35d95.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/75ecb0b1d35d95.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/2d17112e0679ec.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/55213dd5f572fe.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/5766b345d5db18.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/5766b345d5db18.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/d7a9b783db7fcc.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/55213dd5f572fe.jpg" alt="Holy Cross, Holy Cross Lutheran School, Church, school, k-12, Lutheran, religious, teachers, students">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Holy Cross Lutheran Church and School Addition and Remodel</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1407" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/1e8ba738f72929.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/b4919f76eb235f.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/b4919f76eb235f.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/09d7da95a0c1fd.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/c102e66ddf721f.png 1x" media="all and (min-width: 1441px)" type="image/png" width="960" height="600">
+              <source srcset="/assets-f/img/d7ce2256149fdb.png 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/png" width="640" height="400">
+              <source srcset="/assets-f/img/d7ce2256149fdb.png 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/png" width="640" height="400">
+              <source srcset="/assets-f/img/0648ba3aa0e070.png 1x" type="image/png" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/c102e66ddf721f.png" alt="Science Technology, Life sciences, Test Cell, Laboratory, pharmaceutical, Labs, fuel, Cummins, Test Facility, Pepper, Pepper Indiana">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Cummins Olympia 2.0 Facility Expansion</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1405" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/554dda42f82fb1.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/59b4094004a754.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/59b4094004a754.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/74897104084b43.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/89c76e0bf9f48b.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/01716e8d074624.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/01716e8d074624.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/bfbf49403c2cc4.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/89c76e0bf9f48b.jpg" alt="Science and Technology, Rolls-Royce, Rockets, military, manufacturing, Test Cell, Mach 8, Fuel, test facility, Purdue, Purdue Research Foundation, Pepper Construction, Indiana">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Rolls-Royce and Purdue Research Foundation High-Altitude Testing Facility</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1403" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/6d54197b97dab3.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/cdc49f93d78cd4.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/cdc49f93d78cd4.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/2e556ed4599b61.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/6fda42f107b9fc.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/a85da66c0a3819.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/a85da66c0a3819.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/8f76d1cee7edce.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/6fda42f107b9fc.jpg" alt="healthcare, emergency, doctors, EMS, IU Health, Indiana University Health, IU, Ambulance, Ambulance Hangers">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">IU Health Lifeline Headquarters</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1402" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/b729af3fc22828.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/508400c1f7ba68.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/508400c1f7ba68.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/abc088309317d2.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/a57c9fa25db39e.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/654a08e353ca45.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/654a08e353ca45.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/58e7704d1b834c.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/a57c9fa25db39e.jpg" alt="King-Center Exterior">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Dr. Martin Luther King Jr. Community Center &amp; Health Center</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1400" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/305d48cc708f65.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/3883d1677217a7.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/3883d1677217a7.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/cb97dc168c1eaf.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/3d996a840adb81.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/970e39987d15a2.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/970e39987d15a2.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/cfda3176051abc.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/3d996a840adb81.jpg" alt="Hotel, JW Mariott, Mariott, JW, Lobby, Lounge, Renovation, Restaurant, Interior, Dining, Bar, Construction, Hospitality, Indianapolis, Pepper Construction, Pepper, Pepper Indiana, Indiana">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">JW Marriott – Deans Restaurant, Lounge and Lobby Renovation</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1399" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/d7758fa309685c.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/05a558f1d0ca68.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/05a558f1d0ca68.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/5822f394c4d54b.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/de7280447b0e47.jpg 1x" media="all and (min-width: 1441px)" type="image/jpeg" width="960" height="600">
+              <source srcset="/assets-f/img/fffff766fd824e.jpg 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/fffff766fd824e.jpg 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/jpeg" width="640" height="400">
+              <source srcset="/assets-f/img/8fbc7b8df1f10c.jpg 1x" type="image/jpeg" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/de7280447b0e47.jpg" alt="healthcare, Hospital, Medical office buildings, emergency, doctors, Community Health Network, CHN, Community Health Westfield">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Community Health Westfield Hospital Campus</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+    <div class="three-column-row views-row">
+    <div data-history-node-id="1398" class="node node--type-project node--view-mode-teaser ds-1col clearfix">
+
+  
+
+  <div class="overlay-wrapper">
+    
+      <div class="field field--name-field-media-gallery field--type-image field--label-hidden field--count-1 field__items">
+              <div class="field__item">  <a href="#">  <picture>
+                  <source srcset="/assets-f/img/107522281b769f.webp 1x" media="all and (min-width: 1441px)" type="image/webp" width="960" height="600">
+              <source srcset="/assets-f/img/7df8be2033240a.webp 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/7df8be2033240a.webp 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/webp" width="640" height="400">
+              <source srcset="/assets-f/img/ad72c647fe8bc5.webp 1x" type="image/webp" width="480" height="300">
+              <source srcset="/assets-f/img/6e96557b9bf5f9.png 1x" media="all and (min-width: 1441px)" type="image/png" width="960" height="600">
+              <source srcset="/assets-f/img/184dcb78849ff1.png 1x" media="all and (min-width: 981px) and (max-width: 1440px)" type="image/png" width="640" height="400">
+              <source srcset="/assets-f/img/184dcb78849ff1.png 1x" media="all and (min-width: 640px) and (max-width: 980px)" type="image/png" width="640" height="400">
+              <source srcset="/assets-f/img/a57170840889ce.png 1x" type="image/png" width="480" height="300">
+                  <img loading="lazy" width="960" height="600" src="/assets-f/img/6e96557b9bf5f9.png" alt="healthcare, Hospital, Medical office buildings, emergency, doctors, IU Health, IU Health Fort Wayne, Indiana University Health, Indiana University Health Fort Wayne Hospital and Medical Office Building">
+
+  </picture>
+</a>
+</div>
+          </div>
+      
+            <h3 class="teaser-title">
+  <a href="#" hreflang="en">Indiana University Health Fort Wayne Hospital and Medical Office Building</a>
+</h3>
+
+      
+  
+
+
+  </div>
+
+</div>
+
+
+  </div>
+</div>
+</div>
+
+    </div>
+  
+      
+<ul class="js-pager__items pager" data-drupal-views-infinite-scroll-pager="">
+  <li class="pager__item">
+    <a class="button" href="#" title="Load more items" rel="next">Load More</a>
+  </li>
+</ul>
+
+          </div>
+</div>
+
+  </div>
+
+
+      </main>
+
+      
+          </div>
+  </div>
+
+    	<div id="subcontent" class="wrapper">
+      <div class="container">
+      
+
+
+
+      </div>
+  	</div>
+  
+    
+</div>
+  
+<div class="footer-wrapper">
+<footer class="footer " role="contentinfo">
+      <div id="block-footerillinois" class="block block-block-content block-block-content3901e134-dfac-46d7-9c90-185314628964">
+  
+    
+      
+            <div class="field field--name-field-location-ref field--type-entity-reference field--label-hidden field--count-1 field__item"><div data-history-node-id="28" class="node node--type-location node--view-mode-block ds-1col clearfix">
+
+  
+
+  
+            <div class="field field--name-node-title field--type-ds field--label-hidden field--count-1 field__item"><h2>
+  <a href="#" hreflang="en">Illinois</a>
+</h2>
+</div>
+      
+      <div class="field field--name-field-location-address field--type-entity-reference-revisions field--label-hidden field--count-3 field__items">
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-cc347c306378811a29d61734e945ae222b0cd1e158a75d3490f58fe3e4ed6387">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Illinois"><p><strong>Corporate Headquarters</strong><br>
+643 North Orleans Street<br>
+Chicago, IL&nbsp;60654-3608<br>
+P: 312-266-4700</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-d3a681e20116c52b81b2c8c6a3f11188fdb7df9fd42f9300ad9d53bc29412507">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Illinois"><p>411 Lake Zurich Road<br>
+Barrington, IL &nbsp;60010-3141<br>
+P: 847-381-2760</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-ab9b7f3f83f057f60d9b69e13409950316bfdf857421a245107d6aebc4487d67">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Illinois"><p>125 East Oakton Street<br>
+Des Plaines, IL &nbsp;60018<br>
+P: 847-756-2020<br>
+&nbsp;</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+          </div>
+  
+
+</div>
+          
+</div>
+      
+  </div>
+<div id="block-footerindiana" class="block block-block-content block-block-content3476bf33-8d9a-4211-a7f4-3e0b8d578e34">
+  
+    
+      
+            <div class="field field--name-field-location-ref field--type-entity-reference field--label-hidden field--count-1 field__item"><div data-history-node-id="29" class="node node--type-location node--view-mode-block ds-1col clearfix">
+
+  
+
+  
+            <div class="field field--name-node-title field--type-ds field--label-hidden field--count-1 field__item"><h2>
+  <a href="#" hreflang="en">Indiana</a>
+</h2>
+</div>
+      
+      <div class="field field--name-field-location-address field--type-entity-reference-revisions field--label-hidden field--count-1 field__items">
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-365bbd41f777b8ac992abf1d382111ebfb149525fdc21c9cde8a8ec7a0601fbb">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Indiana"><p>1850 West&nbsp;15th Street<br>
+Indianapolis, IN 46202<br>
+P: 317-681-1000</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+          </div>
+  
+
+</div>
+          
+</div>
+      
+  </div>
+<div id="block-footerohio" class="block block-block-content block-block-content9327c719-53f7-4ea6-a9b5-5aece8853587">
+  
+    
+      
+            <div class="field field--name-field-location-ref field--type-entity-reference field--label-hidden field--count-1 field__item"><div data-history-node-id="31" class="node node--type-location node--view-mode-block ds-1col clearfix">
+
+  
+
+  
+            <div class="field field--name-node-title field--type-ds field--label-hidden field--count-1 field__item"><h2>
+  <a href="#" hreflang="en">Ohio</a>
+</h2>
+</div>
+      
+      <div class="field field--name-field-location-address field--type-entity-reference-revisions field--label-hidden field--count-2 field__items">
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-5c1d63f92a27d0dc782a27642136cb092ffc06b8b8dcd0c5b91aa8b84430b310">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Ohio"><p>5185 Blazer Parkway<br>
+Suite 101<br>
+Dublin, OH&nbsp;43017<br>
+P: 614-793-4477</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-0b206bce706639ffd40056eab7b900e92c27a478ca3ae3c04dcfa425a8585ab4">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Ohio"><p>100 Williams Street<br>
+Cincinnati, OH&nbsp;45215<br>
+P: 513-563-7700</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+          </div>
+  
+
+</div>
+          
+</div>
+      
+  </div>
+<div id="block-footerwisconsin" class="block block-block-content block-block-content47b71947-11a4-4247-9b24-123b84cd6983">
+  
+    
+      
+            <div class="field field--name-field-location-ref field--type-entity-reference field--label-hidden field--count-1 field__item"><div data-history-node-id="448" class="node node--type-location node--view-mode-block ds-1col clearfix">
+
+  
+
+  
+            <div class="field field--name-node-title field--type-ds field--label-hidden field--count-1 field__item"><h2>
+  <a href="#" hreflang="en">Wisconsin</a>
+</h2>
+</div>
+      
+      <div class="field field--name-field-location-address field--type-entity-reference-revisions field--label-hidden field--count-2 field__items">
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-2cb52ceb7d40a51a503934e3477b31add653cc4237d03ad5a6d8e5272382dac6">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Wisconsin"><p>220 E. Buffalo Street<br>
+Suite 300<br>
+Milwaukee, WI 53202<br>
+P: 414-635-6450</p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+              <div class="field__item"><div class="views-element-container"><div class="view view-eva view-location-paragraph view-id-location_paragraph view-count-1 view-display-id-entity_view_1 js-view-dom-id-63e86d9c46510d1a6cfb144b2cc3f7f0d247a9f5eaf9a5f3913533dd8d8f518d">
+  
+    
+
+  
+  
+
+  <div class="grouping">
+    <div class="views-row">
+    <div class="views-field views-field-field-address"><div class="field-content"><a href="#" title="Wisconsin"><p>834 E Washington Avenue<br>
+Suite 253<br>
+Madison, WI 53703<br>
+P: <span><span><span><span>608-817-5510</span></span></span></span></p></a></div></div>
+  </div>
+</div>
+
+  
+  
+
+  
+  
+
+  
+  </div>
+</div>
+
+
+</div>
+          </div>
+  
+
+</div>
+          
+</div>
+      
+  </div>
+<div id="block-footersocial" class="block block-block-content block-block-content9191b995-17be-4fbd-8bc3-b16eee5a43b4">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><div class="footer-social-links">
+<a href="https://www.facebook.com/PepperConstruction" target="_blank" title="Like Pepper Construction on Facebook" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i><span class="sr-only">Facebook</span></a>
+<a href="http://www.linkedin.com/company/pepper-construction-company" target="_blank" title="Connect with Pepper Construction on LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a>
+<a href="https://www.instagram.com/pepperconstruction/" target="_blank" title="Follow Pepper Construction on Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a>
+<a href="https://twitter.com/PepperConstruct" target="_blank" title="Follow Pepper Construction on Twitter" rel="noopener noreferrer"><i class="fab fa-twitter"></i><span class="sr-only">Twitter</span></a>
+<a href="https://www.youtube.com/channel/UC5mL_pF-VmxAVCLc2DU0Nqw" target="_blank" title="Watch Pepper Construction on YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i><span class="sr-only">YouTube</span></a>
+</div>
+</div>
+      
+  </div>
+<div id="block-footercopyright" class="block block-block-content block-block-content5773a91b-2419-4265-95e9-62cfb5e9e890">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><p>© 2026 Pepper Construction. Tomorrow Transformed <sup>SM.&nbsp;</sup>Pepper Construction is an <a href="#" target="_blank" title="Affirmative Action/Equal Opportunity Employer">Affirmative Action/Equal Opportunity Employer</a><br>
+Web Design and Development by <a href="https://www.educowebdesign.com/">EDUCO</a></p>
+<style type="text/css">.field--name-field-cta-button a:hover {color: white !important;}
+</style>
+</div>
+      
+  </div>
+<div id="block-bookbuilderfixcss" class="block block-block-content block-block-contentbd25a576-f583-4ab5-a1ca-4717c93f947f">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><style>
+.flag[class*="flag-book-builder"] {
+display: none;
+}
+</style></div>
+      
+  </div>
+<div id="block-css" class="block block-block-content block-block-contentbadc2507-2fa3-4065-8bbf-3a10c825efe8">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><style>
+.video-embed-field-launch-modal + span {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  color: white;
+  font-size: 3rem;
+  margin: 0;
+  pointer-events: none;
+  opacity: .5;
+  transform: translate(-50%,-50%);
+  transition: all .5s;
+}
+
+.video-embed-field-launch-modal > img {
+  display: block;
+}
+
+.video-embed-field-launch-modal:hover {
+  cursor: pointer;
+}
+
+.video-embed-field-launch-modal:hover + span {
+  opacity: 1
+}
+#block-brightedgefoundationcontentblock {
+  padding: 20px 40px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+body[class*="annualreview25-"] #block-views-block-header-hero .featured-content,
+body[class*="annualreview25-"] #block-views-block-header-hero-cine .featured-content,
+body[class*="ar2025-"] #block-views-block-header-hero .featured-content,
+body[class*="ar2025-"] #block-views-block-header-hero-cine .featured-content {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+body[class*="annualreview25-"] #block-views-block-header-hero .featured-content img,
+body[class*="annualreview25-"] #block-views-block-header-hero-cine .featured-content img,
+body[class*="ar2025-"] #block-views-block-header-hero .featured-content img,
+body[class*="ar2025-"] #block-views-block-header-hero-cine .featured-content img {
+  min-width: 600px;
+}
+
+body[class*="annualreview25-"] .caption-outer,
+body[class*="ar2025-"] .caption-outer {
+  max-height: calc(100vh - 60px) !important;
+}
+
+body[class*="annualreview25-"] .caption-container,
+body[class*="ar2025-"] .caption-container {
+  top: 50%;
+  bottom: auto;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  font-family: "Karbon", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
+
+body[class*="annualreview25-"] .caption-container h1,
+body[class*="ar2025-"] .caption-container h1 {
+  font-size: 48px;
+  font-size: 2.4rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  body[class*="annualreview25-"] .caption-container h1,
+  body[class*="ar2025-"] .caption-container h1 {
+    font-size: 64px;
+    font-size: 3.2rem;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 1400px) {
+  body[class*="annualreview25-"] .caption-container h1,
+  body[class*="ar2025-"] .caption-container h1 {
+    margin-left: -80px;
+  }
+}
+
+body[class*="annualreview25-"] .caption-container p,
+body[class*="ar2025-"] .caption-container p {
+  font-size: 36px;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  font-family: "Karbon", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-weight: normal;
+}
+
+@media (max-width: 767px) {
+  body[class*="annualreview25-"] .caption-container p,
+  body[class*="ar2025-"] .caption-container p {
+    font-size: 28px;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 640px) {
+  body[class*="annualreview25-"] .caption-container p,
+  body[class*="ar2025-"] .caption-container p {
+    font-size: 24px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  body[class*="annualreview25-"] .caption-container p,
+  body[class*="ar2025-"] .caption-container p {
+    font-size: 20px;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+body[class*="annualreview25-"] .caption-container p:last-child,
+body[class*="ar2025-"] .caption-container p:last-child {
+  margin-bottom: 0;
+}
+
+body[class*="annualreview25-"] .view-id-gallery.view-display-id-entity_view_1 .views-field-field-image-gallery img,
+body[class*="annualreview25-"] .paragraph--type--col-image img,
+body[class*="annualreview25-"] .paragraph--type--col-image-colorbox img,
+body[class*="annualreview25-"] .field--name-field-long-text > iframe,
+body[class*="annualreview25-"] .video-embed-field-responsive-video > iframe,
+body[class*="annualreview25-"] .tooltip-wrapper img,
+body[class*="annualreview25-"] #block-annual-next-2021 .view-display-id-next_ar_2021 .ar-chapter--inner .image-link,
+body[class*="annualreview25-"] .twentytwenty-container,
+body[class*="ar2025-"] .view-id-gallery.view-display-id-entity_view_1 .views-field-field-image-gallery img,
+body[class*="ar2025-"] .paragraph--type--col-image img,
+body[class*="ar2025-"] .paragraph--type--col-image-colorbox img,
+body[class*="ar2025-"] .field--name-field-long-text > iframe,
+body[class*="ar2025-"] .video-embed-field-responsive-video > iframe,
+body[class*="ar2025-"] .tooltip-wrapper img,
+body[class*="ar2025-"] #block-annual-next-2021 .view-display-id-next_ar_2021 .ar-chapter--inner .image-link,
+body[class*="ar2025-"] .twentytwenty-container {
+  border-radius: .75em;
+}
+
+body[class*="annualreview25-"] #block-annual-next-2021 .view-display-id-next_ar_2021 .ar-chapter--inner .image-link,
+body[class*="ar2025-"] #block-annual-next-2021 .view-display-id-next_ar_2021 .ar-chapter--inner .image-link {
+  overflow: hidden;
+}
+
+body[class*="annualreview25-"] .ar-chapter--inner .image-link img,
+body[class*="ar2025-"] .ar-chapter--inner .image-link img {
+  display: block;
+}
+
+body[class*="annualreview25-"] .caption-container,
+body[class*="ar2025-"] .caption-container {
+  text-shadow: 1px 1px 5px rgba(20, 20, 20, 0.25);
+}
+
+body[class*="annualreview25-"] .caption-container .large-sans,
+body[class*="ar2025-"] .caption-container .large-sans {
+  font-weight: bold;
+  font-family: "campton", "Campton Extra Bold", "Campton", "Karbon Medium", "Karbon", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+}
+
+body[class*="annualreview25-"] .caption-subtitle,
+body[class*="annualreview25-"] .caption-container > p,
+body[class*="ar2025-"] .caption-subtitle,
+body[class*="ar2025-"] .caption-container > p {
+  max-width: 800px;
+}
+
+.long-caption .caption-container h1.chunky-title,
+h1.chunky-title {
+  letter-spacing: .02em;
+  font-size: 60px;
+  font-size: 3rem;
+  line-height: 1.3;
+  font-family: "campton","Campton Extra Bold","Campton","Karbon Medium","Karbon",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+  font-weight: bold;
+}
+
+/* Milestone Fix */
+#block-views-block-milestones-block-1 {
+  max-width: 100%;
+}
+
+.view-id-milestones > .attachment {
+    background: #EEE;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.view-id-milestones > .attachment .slick-current .field-content {
+  font-weight: 900;
+  color: #024638;
+  transition: all .3s;
+}
+
+.view-id-milestones > .attachment .slick-current .field-content:hover {
+color: #00954c;
+}
+
+.view-id-milestones .slick-slider {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.view-id-milestones > .attachment .view-content,
+.view-id-milestones > .view-content {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+</style></div>
+      
+  </div>
+<div id="block-userlogindescription" class="block block-block-content block-block-content6c1d66c1-c98c-402a-8151-f3438b050ac1">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field--count-1 field__item"><style>
+form#user-login-form::after {
+    content: "This is the CMS for pepperconstruction.com";
+    display: block;
+    font-style: italic;
+}
+</style></div>
+      
+  </div>
+
+  </footer>
+</div>
+
+
+
+
+<div id="block-brightedgefoundationcontentblock" class="block block-be-ixf-drupal block-ixf-content-block">
+  
+    
+      <div class="link-block-main-container">
+  <div class="be-ix-link-block">
+        <div class="be-ix-link-block"><div class="be-related-link-container"><div class="be-label">Also of Interest</div><ul class="be-list"><li class="be-list-item"><a class="be-related-link" href="#">Healthcare and Hospital Construction Case Studies</a></li><li class="be-list-item"><a class="be-related-link" href="#">Pepper Tech: Transforming Higher Education Spaces</a></li><li class="be-list-item"><a class="be-related-link" href="#">Civic and Cultural Venue Construction Expertise</a></li></ul> </div></div>
+</div>
+</div>
+
+  </div>
+
+
+
+  </div>
+
+  
+  
+<script src="/assets-f/js/504e92583c02e7.js"></script>
+
+  
+
+<div id="drupal-live-announce" class="visually-hidden" aria-live="polite" aria-busy="false"></div><div id="sliding-popup" role="alertdialog" aria-describedby="popup-text" aria-label="Cookie compliance banner" class="sliding-popup-bottom" style="bottom: 0px;"><div aria-labelledby="popup-text" class="eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--opt-in" aria-hidden="false">
+  <div class="popup-content info eu-cookie-compliance-content">
+        <div id="popup-text" class="eu-cookie-compliance-message" role="document">
+      <h2>We use cookies on this site to enhance your user experience</h2>
+<p>By clicking any link on this page you are giving your consent for us to set cookies.</p>
+
+              <button type="button" class="find-more-button eu-cookie-compliance-more-button find-more-button-processed" tabindex="0">Give me more info</button>
+          </div>
+
+    
+    <div id="popup-buttons" class="eu-cookie-compliance-buttons">
+            <button type="button" class="agree-button eu-cookie-compliance-secondary-button" tabindex="0">OK, I agree</button>
+              <button type="button" class="decline-button eu-cookie-compliance-default-button" tabindex="0">No, thanks</button>
+          </div>
+  </div>
+</div></div><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button type="button" id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div></body><iframe id="ce_proto_iframe" title="CrazyEgg Tracking iframe" aria-hidden="true" style="display: none;"></iframe></html>

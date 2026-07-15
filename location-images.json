@@ -1,0 +1,47 @@
+{
+  "domain": "commercialroofingcontractorslaredo.com",
+  "mainLocation": {
+    "city": "Laredo",
+    "state": "TX",
+    "images": [
+      "/images/locations/commercial-roofing-contractors-laredo-tx-01.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-02.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-03.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-04.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-05.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-06.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-07.webp",
+      "/images/locations/commercial-roofing-contractors-laredo-tx-08.webp"
+    ]
+  },
+  "locations": {
+    "killam-industrial-park": "/images/locations/commercial-roofing-contractors-killam-industrial-park-tx.webp",
+    "world-trade-bridge-area": "/images/locations/commercial-roofing-contractors-world-trade-bridge-area-tx.webp",
+    "downtown-laredo": "/images/locations/commercial-roofing-contractors-downtown-laredo-tx.webp",
+    "rio-bravo": "/images/locations/commercial-roofing-contractors-rio-bravo-tx.webp",
+    "el-cenizo": "/images/locations/commercial-roofing-contractors-el-cenizo-tx.webp",
+    "zapata": "/images/locations/commercial-roofing-contractors-zapata-tx.webp",
+    "cotulla": "/images/locations/commercial-roofing-contractors-cotulla-tx.webp",
+    "encinal": "/images/locations/commercial-roofing-contractors-encinal-tx.webp",
+    "hebbronville": "/images/locations/commercial-roofing-contractors-hebbronville-tx.webp",
+    "freer": "/images/locations/commercial-roofing-contractors-freer-tx.webp",
+    "dilley": "/images/locations/commercial-roofing-contractors-dilley-tx.webp",
+    "san-diego": "/images/locations/commercial-roofing-contractors-san-diego-tx.webp",
+    "oilton": "/images/locations/commercial-roofing-contractors-oilton-tx.webp",
+    "mirando-city": "/images/locations/commercial-roofing-contractors-mirando-city-tx.webp",
+    "bruni": "/images/locations/commercial-roofing-contractors-bruni-tx.webp",
+    "san-ygnacio": "/images/locations/commercial-roofing-contractors-san-ygnacio-tx.webp",
+    "catarina": "/images/locations/commercial-roofing-contractors-catarina-tx.webp",
+    "artesia-wells": "/images/locations/commercial-roofing-contractors-artesia-wells-tx.webp",
+    "aguilares": "/images/locations/commercial-roofing-contractors-aguilares-tx.webp",
+    "botines": "/images/locations/commercial-roofing-contractors-botines-tx.webp",
+    "falcon": "/images/locations/commercial-roofing-contractors-falcon-tx.webp",
+    "lopeno": "/images/locations/commercial-roofing-contractors-lopeno-tx.webp",
+    "larga-vista": "/images/locations/commercial-roofing-contractors-larga-vista-tx.webp",
+    "pueblo-nuevo": "/images/locations/commercial-roofing-contractors-pueblo-nuevo-tx.webp",
+    "la-presa": "/images/locations/commercial-roofing-contractors-la-presa-tx.webp",
+    "four-points": "/images/locations/commercial-roofing-contractors-four-points-tx.webp",
+    "ranchos-penitas-west": "/images/locations/commercial-roofing-contractors-ranchos-penitas-west-tx.webp",
+    "laredo-ranchettes": "/images/locations/commercial-roofing-contractors-laredo-ranchettes-tx.webp"
+  }
+}
