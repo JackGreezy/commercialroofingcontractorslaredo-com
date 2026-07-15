@@ -5,7 +5,6 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const publicDir = path.join(process.cwd(), "public");
-const analytics = '<script defer src="/_vercel/insights/script.js"></script>';
 
 function cleanParts(params = {}) {
   const parts = Array.isArray(params.path) ? params.path : [];
@@ -34,9 +33,10 @@ async function readFirst(files) {
 
 function decorate(html, request) {
   if (!html) return html;
-  let output = html.includes("/_vercel/insights/script.js")
-    ? html
-    : html.replace(/<\/head>/i, `${analytics}\n</head>`);
+  let output = html.replace(
+    /<link rel="icon" href="#" type="image\/vnd\.microsoft\.icon">/i,
+    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">'
+  );
   const url = new URL(request.url);
   if (url.searchParams.get("submitted") === "1" && /<\/form>/i.test(output)) {
     const notice = '<p role="status" style="margin-top:20px;font-weight:700">Thank you. Your commercial roofing request has been received.</p>';
@@ -63,4 +63,3 @@ export async function GET(request, context) {
   if (page) return page;
   return (await htmlResponse(["404"], request, 404)) || new Response("Not found", { status: 404 });
 }
-

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Commercial Roofing Contractors of Laredo">
+  <rect width="64" height="64" rx="10" fill="#024638"/>
+  <path d="M10 35 32 16l22 19v14H40V36H24v13H10Z" fill="#fff"/>
+  <path d="m11 35 21-19 21 19" fill="none" stroke="#f05a28" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/>
+</svg>
