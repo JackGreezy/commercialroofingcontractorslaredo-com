@@ -1,3 +1,4 @@
+# Local build and deployment state
 .next/
 node_modules/
 .vercel/
@@ -8,4 +9,3 @@ node_modules/
 npm-debug.log*
 qa-out/
 public/qa-out/
-
