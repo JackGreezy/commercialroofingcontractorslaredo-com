@@ -43,6 +43,53 @@ VOICE_REPLACEMENTS = [
     (re.compile(r"\bwhat the roof is doing\b", re.I), ["the roof condition", "the roof issue", "what changed on the roof", "the roof concern", "the roof status"]),
 ]
 
+PALETTES = {
+    "harbor_steel": {"name": "Harbor Steel", "primary": "#12324a", "secondary": "#1f5b73", "accent": "#d08a2e", "accent2": "#7ea7b8", "surface": "#eef4f6", "ink": "#142331", "button": "#ffffff"},
+    "copper_slate": {"name": "Copper Slate", "primary": "#1d2d35", "secondary": "#35515b", "accent": "#c46f34", "accent2": "#9db0a5", "surface": "#f3f0eb", "ink": "#1b2428", "button": "#ffffff"},
+    "evergreen_gold": {"name": "Evergreen Gold", "primary": "#12392f", "secondary": "#286353", "accent": "#d6a13a", "accent2": "#a9c1a6", "surface": "#eff5ef", "ink": "#142821", "button": "#101820"},
+    "blue_collar_navy": {"name": "Blue Collar Navy", "primary": "#0f2b46", "secondary": "#1e4b6d", "accent": "#e06024", "accent2": "#86a9bd", "surface": "#eef3f7", "ink": "#102132", "button": "#ffffff"},
+    "desert_copper": {"name": "Desert Copper", "primary": "#3a2b25", "secondary": "#7b4a2d", "accent": "#d9923b", "accent2": "#c8b294", "surface": "#f5efe6", "ink": "#241d1a", "button": "#ffffff"},
+    "mesa_teal": {"name": "Mesa Teal", "primary": "#173f43", "secondary": "#236b6f", "accent": "#d9853b", "accent2": "#95c5bd", "surface": "#edf6f4", "ink": "#14292b", "button": "#ffffff"},
+    "gulf_blue": {"name": "Gulf Blue", "primary": "#123650", "secondary": "#1c6a7d", "accent": "#e0a33a", "accent2": "#98d1d1", "surface": "#eef7f7", "ink": "#10242e", "button": "#101820"},
+    "lowcountry_olive": {"name": "Lowcountry Olive", "primary": "#263b2f", "secondary": "#526b45", "accent": "#c6843a", "accent2": "#b8c3a4", "surface": "#f0f4ec", "ink": "#1f281f", "button": "#ffffff"},
+    "brick_black": {"name": "Brick and Black", "primary": "#171f25", "secondary": "#39424a", "accent": "#b94b32", "accent2": "#a5adb2", "surface": "#f2f2ef", "ink": "#171b1f", "button": "#ffffff"},
+    "granite_blue": {"name": "Granite Blue", "primary": "#1b3443", "secondary": "#4f6f7f", "accent": "#c7a34f", "accent2": "#b7c3c8", "surface": "#f1f4f5", "ink": "#17242c", "button": "#101820"},
+    "prairie_green": {"name": "Prairie Green", "primary": "#213b32", "secondary": "#59705a", "accent": "#d09a3c", "accent2": "#c3cab2", "surface": "#f3f5ee", "ink": "#1c241e", "button": "#101820"},
+    "industrial_maroon": {"name": "Industrial Maroon", "primary": "#331f29", "secondary": "#653642", "accent": "#d48a3a", "accent2": "#b79a9d", "surface": "#f5eeee", "ink": "#261b20", "button": "#ffffff"},
+    "lake_iron": {"name": "Lake Iron", "primary": "#172f3a", "secondary": "#496873", "accent": "#c56f3d", "accent2": "#9fb6bd", "surface": "#edf3f5", "ink": "#14242a", "button": "#ffffff"},
+    "ridge_blue": {"name": "Ridge Blue", "primary": "#18324f", "secondary": "#3f5f7f", "accent": "#ca8d37", "accent2": "#aab7c6", "surface": "#f0f3f8", "ink": "#142238", "button": "#ffffff"},
+    "coal_gold": {"name": "Coal Gold", "primary": "#20262a", "secondary": "#4b545a", "accent": "#d6a23d", "accent2": "#bfc3b0", "surface": "#f3f2ea", "ink": "#191d20", "button": "#101820"},
+    "sage_copper": {"name": "Sage Copper", "primary": "#263c36", "secondary": "#607168", "accent": "#bd6d3c", "accent2": "#b7c5ba", "surface": "#f1f5f1", "ink": "#1c2824", "button": "#ffffff"},
+    "steel_red": {"name": "Steel Red", "primary": "#1c3038", "secondary": "#53656b", "accent": "#be3f32", "accent2": "#b7c4c6", "surface": "#eef3f4", "ink": "#182328", "button": "#ffffff"},
+    "atlantic_green": {"name": "Atlantic Green", "primary": "#173a3a", "secondary": "#2e6d68", "accent": "#c79235", "accent2": "#9fc7bd", "surface": "#edf6f3", "ink": "#132727", "button": "#101820"},
+}
+
+REGIONAL_PALETTE_KEYS = {
+    "TX": ["desert_copper", "mesa_teal", "blue_collar_navy", "brick_black", "coal_gold"],
+    "NM": ["mesa_teal", "desert_copper", "sage_copper", "ridge_blue"],
+    "AZ": ["desert_copper", "mesa_teal", "coal_gold"],
+    "UT": ["ridge_blue", "desert_copper", "sage_copper"],
+    "CO": ["ridge_blue", "granite_blue", "evergreen_gold", "copper_slate"],
+    "CA": ["harbor_steel", "mesa_teal", "granite_blue", "steel_red"],
+    "OR": ["evergreen_gold", "harbor_steel", "sage_copper", "lake_iron"],
+    "WA": ["harbor_steel", "evergreen_gold", "lake_iron"],
+    "WI": ["lake_iron", "evergreen_gold", "granite_blue"],
+    "MI": ["lake_iron", "blue_collar_navy", "steel_red"],
+    "NY": ["granite_blue", "blue_collar_navy", "brick_black", "atlantic_green"],
+    "PA": ["brick_black", "coal_gold", "granite_blue", "industrial_maroon"],
+    "OH": ["steel_red", "coal_gold", "brick_black", "lake_iron"],
+    "IN": ["prairie_green", "steel_red", "coal_gold"],
+    "NE": ["prairie_green", "coal_gold", "ridge_blue"],
+    "AR": ["lowcountry_olive", "brick_black", "copper_slate"],
+    "LA": ["gulf_blue", "lowcountry_olive", "industrial_maroon"],
+    "MS": ["gulf_blue", "lowcountry_olive", "coal_gold"],
+    "GA": ["lowcountry_olive", "brick_black", "atlantic_green"],
+    "SC": ["lowcountry_olive", "gulf_blue", "atlantic_green"],
+    "NC": ["atlantic_green", "ridge_blue", "lowcountry_olive"],
+    "VA": ["ridge_blue", "brick_black", "atlantic_green"],
+    "MA": ["harbor_steel", "granite_blue", "brick_black"],
+}
+
 
 def clean(value: object) -> str:
     return str(value or "").strip()
@@ -321,6 +368,49 @@ def ensure_footer_links(soup: BeautifulSoup):
     a.string = "Sitemap"
     nav.append(a)
 
+def selected_palette() -> dict:
+    state = clean(BIZ.get("state")).upper()
+    pool = REGIONAL_PALETTE_KEYS.get(state) or list(PALETTES.keys())
+    digest = int(hashlib.sha1(BIZ["domain"].encode()).hexdigest(), 16)
+    return PALETTES[pool[digest % len(pool)]]
+
+def ensure_color_scheme_assets(soup: BeautifulSoup):
+    soup = ensure_head(soup)
+    palette = selected_palette()
+    for tag in list(soup.head.find_all("meta", attrs={"name": "theme-color"})):
+        tag.decompose()
+    theme = soup.new_tag("meta")
+    theme["name"] = "theme-color"
+    theme["content"] = palette["primary"]
+    soup.head.append(theme)
+    for old in list(soup.head.find_all("style", id="rh-color-scheme-css")):
+        old.decompose()
+    style = soup.new_tag("style", id="rh-color-scheme-css")
+    style["data-rh-scheme"] = palette["name"]
+    style.string = f"""
+/* RankHound color scheme: {palette['name']} */
+:root{{--rh-primary:{palette['primary']};--rh-secondary:{palette['secondary']};--rh-accent:{palette['accent']};--rh-accent-2:{palette['accent2']};--rh-surface:{palette['surface']};--rh-ink:{palette['ink']};--rh-button-text:{palette['button']};--darkBlue:var(--rh-primary)!important;--colorBlue:var(--rh-secondary)!important;--colorGreen:var(--rh-accent-2)!important;--orange:var(--rh-accent)!important;--W-Resolute-Blue:var(--rh-primary)!important;--colorText:var(--rh-ink)!important;--wp--preset--color--vivid-cyan-blue:var(--rh-secondary)!important;--wp--preset--color--luminous-vivid-amber:var(--rh-accent)!important;}}
+html body{{accent-color:var(--rh-accent);color:var(--rh-ink);}}
+html body a:not(.rr-wordmark):not([href^="tel:"]):not([href^="mailto:"]){{color:var(--rh-secondary);}}
+html body header,html body #header,html body [id="header"],html body .site-header,html body .main-header,html body .elementor-location-header,html body [class*="Header_header"],html body [class*="site-header"]{{background:linear-gradient(135deg,var(--rh-primary),var(--rh-secondary))!important;color:#fff!important;}}
+html body header a,html body #header a,html body .site-header a,html body .main-header a,html body .elementor-location-header a,html body [class*="Header_header"] a{{color:#fff!important;}}
+html body footer,html body #footer,html body .site-footer,html body .elementor-location-footer,html body [class*="Footer"],html body [class*="footer"]{{background:linear-gradient(135deg,var(--rh-primary),#101820)!important;color:#fff!important;}}
+html body footer a,html body #footer a,html body .site-footer a,html body .elementor-location-footer a,html body [class*="Footer"] a,html body [class*="footer"] a{{color:#fff!important;}}
+html body .rr-wordmark .rr-wm-1,html body .rr-wordmark .rr-wm-2{{color:inherit!important;}}
+html body a[class*="btn"],html body a[class*="button"],html body button:not(.slick-arrow):not([aria-label*="Close"]),html body input[type="submit"],html body .btn,html body .button,html body .wp-block-button__link,html body .elementor-button,html body [class*="Button"],html body [class*="button"]{{background:var(--rh-accent)!important;border-color:var(--rh-accent)!important;color:var(--rh-button-text)!important;box-shadow:none;}}
+html body a[href="/contact"],html body a[href*="/contact"],html body a[href="#contact"]{{border-color:var(--rh-accent)!important;}}
+html body h1,html body h2,html body h3{{text-decoration-color:var(--rh-accent)!important;}}
+html body [class*="cta"],html body [class*="CTA"],html body [class*="callout"],html body [class*="Callout"],html body .featured-proj-heading,html body .featured-proj-content{{background-color:var(--rh-primary)!important;color:#fff!important;}}
+html body [class*="cta"] a,html body [class*="CTA"] a,html body [class*="callout"] a,html body [class*="Callout"] a{{color:#fff!important;}}
+html body .card,html body [class*="Card"],html body [class*="card"],html body article{{border-color:rgba(0,0,0,.12);}}
+html body .card:hover,html body [class*="Card"]:hover,html body [class*="card"]:hover{{border-color:var(--rh-accent)!important;}}
+html body ::selection{{background:var(--rh-accent);color:var(--rh-button-text);}}
+html body .rh-seo-dropdown-menu{{border-top:4px solid var(--rh-accent)!important;}}
+html body .rh-seo-dropdown-menu a:hover,html body .rh-seo-dropdown-menu a:focus{{background:var(--rh-surface)!important;color:var(--rh-primary)!important;}}
+@media(max-width:900px){{html body header,html body #header,html body .site-header{{background:var(--rh-primary)!important;}}}}
+"""
+    soup.head.append(style)
+
 def ensure_mobile_dropdown_assets(soup: BeautifulSoup):
     soup = ensure_head(soup)
     if soup.head.find("style", id="rh-seo-finalizer-css"):
@@ -420,6 +510,7 @@ def legal_page(kind: str, date: str) -> str:
     replace_banned_phrases(soup, int(hashlib.md5((BIZ["domain"] + kind).encode()).hexdigest(), 16))
     ensure_footer_links(soup)
     ensure_mobile_dropdown_assets(soup)
+    ensure_color_scheme_assets(soup)
     return str(soup)
 
 def write_legal_pages():
@@ -495,6 +586,7 @@ def patch_all_html():
         replace_banned_phrases(soup, salt)
         ensure_footer_links(soup)
         ensure_mobile_dropdown_assets(soup)
+        ensure_color_scheme_assets(soup)
         # Descriptive alt text for informative images without stuffing.
         for img in soup.find_all("img"):
             alt = clean(img.get("alt"))
