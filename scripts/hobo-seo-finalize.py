@@ -475,18 +475,170 @@ def html_paths() -> list[Path]:
             paths.append(p)
     return paths
 
+def legal_variant(kind: str) -> int:
+    return int(hashlib.sha1((BIZ["domain"] + ":" + kind).encode()).hexdigest(), 16) % 8
+
+def legal_section(kind: str, date: str) -> str:
+    title = "Privacy Policy" if kind == "privacy" else "Terms of Use"
+    name = BIZ["name"]
+    city = BIZ["city"]
+    region = BIZ["region"] or city
+    email = BIZ["email"] or "the site team"
+    phone = BIZ["phone"]
+    domain = BIZ["domain"]
+    v = legal_variant(kind)
+    if kind == "privacy":
+        openers = [
+            f"This policy explains how {name} handles inquiry details submitted through {domain}. The site is for commercial roofing conversations in {region}, and the information collected here is used to respond to those requests.",
+            f"{name} uses {domain} to collect and route roofing questions from building owners, managers, and project teams in {region}. This page describes the limited information the site receives and how it is used.",
+            f"This privacy notice applies to contact and estimate requests sent through {domain}. {name} keeps the process simple: collect enough detail to understand the roof issue, then respond through the contact information provided.",
+            f"Visitors use {domain} to ask {name} about commercial roof repair, replacement, maintenance, inspections, coatings, and related planning in {region}. This policy covers how those website inquiries are handled.",
+            f"{name} receives website inquiries from people evaluating commercial roofing needs in {city} and nearby markets. This page summarizes what information may be submitted and how it supports a practical response.",
+            f"This page explains the basic privacy practices for {domain}. The website helps {name} receive roofing questions, review request details, and follow up with the person or company that asked for help.",
+            f"When someone contacts {name} through {domain}, the site may collect a small amount of business contact information and project context. This notice explains how that information is handled.",
+            f"{domain} is used to receive commercial roofing inquiries for {name}. The privacy practices below are intentionally straightforward and focused on request handling, communication, and site operation.",
+        ]
+        use_heads = ["What may be collected", "How the information is used", "When information is shared", "Your choices", "Site safeguards"]
+        collect = [
+            "Forms may ask for a name, company, phone number, email address, service interest, property or roof context, timeline, and message details. The site may also receive basic technical records such as the page submitted, time of submission, browser data, and spam-screening signals.",
+            "Information may include contact details, company or facility context, selected service needs, the message entered in a form, and standard technical data used to keep the form working properly.",
+            "The site may collect the details a visitor chooses to provide in a form, plus routine request data used for delivery, security, and troubleshooting.",
+            "A submission can include business contact information, roof concern notes, scheduling context, and technical request information needed to operate the website safely.",
+            "Contact forms may collect identifying details, preferred reply information, property notes, roofing-service interests, and basic website security data.",
+            "The site may receive contact information, project notes, roof condition descriptions, service selections, and ordinary server or form-protection data.",
+            "Submitted information can include a name, organization, phone, email, location context, message text, and technical details connected to the request.",
+            "The website collects only the information provided in forms and the routine technical data needed to deliver, secure, and review those submissions.",
+        ][v]
+        use = [
+            f"{name} uses inquiry details to reply, understand the requested roofing service, prepare for a roof assessment conversation, route the message, reduce duplicate follow-up, and maintain ordinary business records.",
+            f"The information is used to answer the request, coordinate a roofing conversation, identify the relevant service category, and keep a record of website communication with {name}.",
+            f"{name} uses submitted details to contact the requester, evaluate the general nature of the roofing need, schedule or discuss next steps, and improve the reliability of the website forms.",
+            f"Inquiry details help {name} respond to the right person, understand whether the request concerns repair, replacement, maintenance, coatings, or planning, and keep communication organized.",
+            f"The information supports follow-up, routing, project intake, spam prevention, and ordinary administration for {name}.",
+            f"{name} uses the information to respond to roofing questions, confirm contact details, understand the property context, and maintain a practical record of the request.",
+            f"Submitted information is used for reply, request review, communication tracking, form security, and service coordination by {name}.",
+            f"The details are used to answer the inquiry, connect it with the right roofing topic, support scheduling or estimating conversations, and operate {domain} reliably.",
+        ][v]
+        share = [
+            "Information may be shared with service providers that support website hosting, form delivery, email, analytics, security, spam prevention, or customer follow-up. Those providers are used to operate the site and process requests.",
+            "Limited information may pass through hosting, email, security, analytics, or form-processing providers that help the website function. These services are used for practical operation and response handling.",
+            "Website and form vendors may process information as needed to host pages, deliver messages, protect forms, measure site performance, or support follow-up.",
+            "The site may rely on third-party tools for hosting, email delivery, maps, analytics, security, or spam screening. Those tools receive only what is needed for those functions.",
+            "Information may be handled by technical providers that keep the website available, deliver form messages, screen spam, or support communication.",
+            "Service providers may process inquiry data for hosting, message delivery, site security, analytics, and related website operations.",
+            "The site may use technical vendors to receive, secure, and deliver contact requests. Information is not sold as a roofing lead list by this website.",
+            "Operational providers may help process forms, host the site, protect against abuse, and deliver messages to the team responsible for follow-up.",
+        ][v]
+        choices = [
+            f"To update a request or ask that contact information be removed from active follow-up, contact {email} or call {phone}.",
+            f"A requester can ask about a submitted form, correct contact details, or request no further follow-up by contacting {email} or calling {phone}.",
+            f"Questions about submitted information can be sent to {email}. If phone follow-up is preferred, call {phone}.",
+            f"To change or remove information connected with an inquiry, contact {email} or call {phone}.",
+            f"For privacy questions about a website inquiry, contact {email} or call {phone}.",
+            f"Requests to review, correct, or stop active follow-up can be directed to {email} or {phone}.",
+            f"Contact {email} or {phone} with questions about information submitted through the website.",
+            f"For changes to a submitted inquiry or communication preference, use {email} or {phone}.",
+        ][v]
+        security = [
+            "No website transmission can be guaranteed perfectly secure, but the site is maintained with reasonable safeguards, form validation, HTTPS hosting, and abuse-prevention measures.",
+            "The site uses practical safeguards such as HTTPS, form validation, spam controls, and routine technical maintenance.",
+            "Reasonable technical safeguards are used to protect form handling and reduce unauthorized or abusive submissions.",
+            "Security measures include HTTPS delivery, form checks, spam controls, and ordinary hosting protections.",
+            "The website is maintained with basic technical safeguards designed for secure form submission and reliable communication.",
+            "Reasonable website controls are used to support secure submission, message delivery, and spam prevention.",
+            "The site uses ordinary commercial safeguards for hosting, form delivery, and request screening.",
+            "Form security, encrypted page delivery, and abuse prevention are used to support safe operation of the website.",
+        ][v]
+        return f"""<main><section><h1>{title}</h1><p><strong>Effective date:</strong> {date}</p><p>{openers[v]}</p><h2>{use_heads[0]}</h2><p>{collect}</p><h2>{use_heads[1]}</h2><p>{use}</p><h2>{use_heads[2]}</h2><p>{share}</p><h2>{use_heads[3]}</h2><p>{choices}</p><h2>{use_heads[4]}</h2><p>{security}</p></section></main>"""
+    openers = [
+        f"These terms apply to use of {domain}. The website is provided so visitors can review commercial roofing information and contact {name} about possible service needs in {region}.",
+        f"By using {domain}, you agree to use the website for ordinary commercial roofing research and inquiry purposes. The site is operated for {name} and its local roofing intake process.",
+        f"This page sets out basic terms for visiting {domain} and submitting roofing inquiries to {name}.",
+        f"{domain} is intended to help building owners, managers, contractors, and facility teams contact {name} and review general commercial roofing information.",
+        f"These terms govern general use of {domain}, including reading website information and sending contact requests to {name}.",
+        f"Use of {domain} should be limited to lawful website browsing and legitimate commercial roofing inquiries for {name}.",
+        f"The website for {name} is provided as a practical communication and information resource for commercial roofing topics in {region}.",
+        f"These terms describe basic expectations for using {domain} and contacting {name} through the website.",
+    ]
+    info = [
+        "Website information is general. A real roof scope, budget, schedule, product recommendation, or warranty position requires review of the property, roof condition, access, weather exposure, owner requirements, and project documents.",
+        "Information on the site is not a final roof assessment, bid, schedule commitment, or warranty determination. Those items require direct review of the building and project conditions.",
+        "The site provides general roofing information. Decisions about repairs, replacement, maintenance, coatings, or roof systems should be based on a project-specific review.",
+        "Nothing on the website creates a final quote, inspection result, warranty decision, or construction schedule without direct confirmation from the roofing team.",
+        "The website may describe services and roof systems in general terms, but every building needs its own review before a scope or price is reliable.",
+        "Roofing recommendations, budgets, and schedules depend on actual site conditions and are not established by website text alone.",
+        "The site is a starting point for information and contact. It is not a substitute for a roof walk, moisture review, access review, or written project scope.",
+        "Any service description on the website should be treated as general information until the building and roof conditions are reviewed directly.",
+    ][v]
+    use = [
+        "Do not submit false information, interfere with site operation, attempt to bypass form protections, or use the website in a way that disrupts service for other visitors.",
+        "Visitors should not misuse forms, send misleading requests, attempt unauthorized access, or disrupt normal website operation.",
+        "Use the site responsibly. Do not attack, overload, misrepresent, or interfere with the website or its contact forms.",
+        "Do not use the website for spam, false submissions, security testing without permission, or activity that interferes with normal operation.",
+        "Website forms should be used for genuine inquiries only. Automated abuse, misleading submissions, and attempts to disrupt the site are not allowed.",
+        "Visitors may browse the site and submit legitimate inquiries. Misuse, interference, and false submissions are prohibited.",
+        "Do not use the site to send spam, impersonate another person, disrupt the forms, or interfere with hosting and security controls.",
+        "Responsible use means accurate inquiry details, ordinary browsing, and no attempts to damage, overload, or bypass the site.",
+    ][v]
+    response = [
+        f"Submitting a form does not guarantee that {name} will accept a project, meet a requested timeline, provide a specific price, or recommend a particular roof system.",
+        f"A website inquiry starts a conversation. It does not create a service agreement, pricing commitment, or obligation for {name} to perform work.",
+        f"Contacting {name} through the site does not by itself create a contractor relationship or confirmed scope of work.",
+        f"Any project terms, pricing, schedule, and responsibilities must be confirmed separately in writing before work begins.",
+        f"A submitted request helps {name} understand the inquiry, but it is not a contract, estimate approval, or scheduling commitment.",
+        f"Website communication is preliminary unless and until project terms are separately reviewed and accepted.",
+        f"A form submission is a request for follow-up, not a completed agreement for roofing services.",
+        f"Project commitments require separate confirmation; the website alone does not finalize scope, cost, timing, or service acceptance.",
+    ][v]
+    third = [
+        "The site may rely on outside providers for hosting, maps, analytics, email delivery, security, and spam prevention. Those services may operate under their own terms.",
+        "Hosting, map, analytics, email, security, and form tools may support the website. Those services are separate from these website terms.",
+        "Technical providers may help operate the site, deliver messages, show maps, measure performance, or screen abusive activity.",
+        "Third-party tools may be used for ordinary website functions such as hosting, contact delivery, analytics, security, and maps.",
+        "The website may include technical services operated by outside providers for delivery, security, measurement, and communication.",
+        "Outside technology providers may support the website and have their own service rules.",
+        "The site may connect with operational providers for hosting, forms, security, email, analytics, and maps.",
+        "Some website functions may be handled by third-party technical services used for operation and communication.",
+    ][v]
+    contact = [
+        f"Questions about these terms can be sent to {email} or handled by phone at {phone}.",
+        f"For questions about website use, contact {email} or call {phone}.",
+        f"Use {email} or {phone} for questions about these terms or a submitted inquiry.",
+        f"Questions about the website terms may be directed to {email} or {phone}.",
+        f"For term-related questions, contact {email} or call {phone}.",
+        f"Questions can be sent to {email}; phone inquiries can be made at {phone}.",
+        f"Contact {email} or {phone} with questions about website use.",
+        f"To ask about these terms, use {email} or {phone}.",
+    ][v]
+    return f"""<main><section><h1>{title}</h1><p><strong>Effective date:</strong> {date}</p><p>{openers[v]}</p><h2>General website information</h2><p>{info}</p><h2>Responsible use</h2><p>{use}</p><h2>Inquiries and project discussions</h2><p>{response}</p><h2>Technical services</h2><p>{third}</p><h2>Contact</h2><p>{contact}</p></section></main>"""
+
+def remove_legacy_legal_content(soup: BeautifulSoup, kind: str):
+    main = soup.find("main")
+    protected_names = {"html", "head", "body", "header", "footer", "nav", "main", "script", "style", "meta", "link", "title", "noscript", "svg", "symbol", "path"}
+    stale = re.compile(
+        r"privacy policy|terms of use|terms of service|respects your privacy|information submitted through this site|we do not sell your information|by using this website|website content is informational|no project guarantee|legitimate commercial roofing research|responsible use",
+        re.I,
+    )
+    for tag in list(reversed(soup.find_all(True))):
+        if tag.name in protected_names:
+            continue
+        if main and (tag is main or tag in main.parents or main in list(tag.parents)):
+            continue
+        if tag.find(["main", "header", "footer"]):
+            continue
+        if tag.find_parent(["header", "footer", "nav"]):
+            continue
+        text = clean(tag.get_text(" ", strip=True))
+        if len(text) < 70:
+            continue
+        if stale.search(text):
+            tag.decompose()
+
 def legal_page(kind: str, date: str) -> str:
     title = "Privacy Policy" if kind == "privacy" else "Terms of Use"
     route = f"/{kind}"
     page_title, desc = meta_for(route)
-    if kind == "privacy":
-        body = f"""
-<main><section><h1>{title}</h1><p><strong>Effective date:</strong> {date}</p><p>{BIZ['name']} uses this website to receive commercial roofing inquiries from property owners, managers, facility teams, and contractors in {BIZ['region'] or BIZ['city']}. Information submitted through the site is used to respond to the request, coordinate a roof assessment, and maintain business records related to that inquiry.</p><h2>Information we collect</h2><p>Contact forms may collect a name, company or property context, phone number, email address, timeline, roof concern, service interest, referring page, and technical request data used for spam prevention and site security.</p><h2>How information is used</h2><p>We use inquiry details to contact the requester, understand the commercial roof issue, route the request to the appropriate roofing contact, improve website performance, and protect the site from abuse. We do not sell roofing inquiry information.</p><h2>Sharing</h2><p>Information may be shared with service providers that support email delivery, website hosting, analytics, spam prevention, or customer follow-up. Those providers are used only to operate the site and respond to submitted requests.</p><h2>Choices</h2><p>To update or remove inquiry information, contact {BIZ['email'] or 'the site team'} or call {BIZ['phone']}. We may retain limited records when needed for security, compliance, dispute resolution, or ordinary business administration.</p><h2>Security</h2><p>No website transmission is guaranteed to be perfect, but this site is maintained with reasonable safeguards, HTTPS hosting, form validation, and spam controls.</p></section></main>
-"""
-    else:
-        body = f"""
-<main><section><h1>{title}</h1><p><strong>Effective date:</strong> {date}</p><p>By using this website, you agree to use it for legitimate commercial roofing research and inquiry purposes. The site provides general information about roof assessments, repair, replacement, maintenance, coatings, roof systems, and service areas for {BIZ['name']}.</p><h2>No project guarantee</h2><p>Website content is informational. A roof scope, price, schedule, warranty position, or repair recommendation requires direct review of the property, existing roof conditions, access, weather, documentation, and applicable owner requirements.</p><h2>Responsible use</h2><p>Do not submit false information, interfere with the site, scrape it aggressively, attempt to bypass form protections, or use the content in a way that misrepresents {BIZ['name']}.</p><h2>Third-party services</h2><p>The site may use hosting, maps, analytics, email, and security providers. Those services operate under their own technical and privacy terms.</p><h2>Content and links</h2><p>Internal links are provided to help users navigate roofing services, systems, locations, industries, manufacturers, project types, contact options, and legal pages. External links, if present, are provided for convenience and do not create control over third-party sites.</p><h2>Contact</h2><p>For questions about these terms, contact {BIZ['email'] or 'the site team'} or call {BIZ['phone']}.</p></section></main>
-"""
+    body = legal_section(kind, date)
     existing = PUBLIC / f"{kind}.html"
     if existing.exists():
         soup = BeautifulSoup(existing.read_text(errors="ignore"), "html.parser")
@@ -506,6 +658,7 @@ def legal_page(kind: str, date: str) -> str:
             soup = BeautifulSoup(f"<!doctype html><html lang='en-US'><head><title>{html.escape(page_title)}</title><meta name='description' content='{html.escape(desc)}'></head><body>{body}<footer><nav><a href='/privacy'>Privacy Policy</a> <a href='/terms'>Terms</a> <a href='/sitemap.xml'>Sitemap</a></nav></footer></body></html>", "html.parser")
     else:
         soup = BeautifulSoup(f"<!doctype html><html lang='en-US'><head><title>{html.escape(page_title)}</title><meta name='description' content='{html.escape(desc)}'></head><body>{body}<footer><nav><a href='/privacy'>Privacy Policy</a> <a href='/terms'>Terms</a> <a href='/sitemap.xml'>Sitemap</a></nav></footer></body></html>", "html.parser")
+    remove_legacy_legal_content(soup, kind)
     set_metadata(soup, route)
     replace_banned_phrases(soup, int(hashlib.md5((BIZ["domain"] + kind).encode()).hexdigest(), 16))
     ensure_footer_links(soup)
@@ -515,8 +668,8 @@ def legal_page(kind: str, date: str) -> str:
 
 def write_legal_pages():
     idx = int(hashlib.sha1(BIZ["domain"].encode()).hexdigest(), 16) % len(DATE_POOL)
-    privacy_date = DATE_POOL[idx]
-    terms_date = DATE_POOL[(idx + 5) % len(DATE_POOL)]
+    privacy_date = clean(cfg.get("privacyEffectiveDate") or DATE_POOL[idx])
+    terms_date = clean(cfg.get("termsEffectiveDate") or DATE_POOL[(idx + 5) % len(DATE_POOL)])
     (PUBLIC / "privacy.html").write_text(legal_page("privacy", privacy_date))
     (PUBLIC / "terms.html").write_text(legal_page("terms", terms_date))
 

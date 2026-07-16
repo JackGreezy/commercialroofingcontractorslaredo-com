@@ -15,14 +15,37 @@
   "wordmark_l1": "Commercial Roofing Contractors",
   "wordmark_l2": "of Laredo",
   "nav": [
-    ["Services", "/services"],
-    ["Roof Systems", "/roof-systems"],
-    ["Industries", "/industries"],
-    ["Project Types", "/project-types"],
-    ["Service Areas", "/locations"],
-    ["Contact", "/contact"]
+    [
+      "Services",
+      "/services"
+    ],
+    [
+      "Roof Systems",
+      "/roof-systems"
+    ],
+    [
+      "Industries",
+      "/industries"
+    ],
+    [
+      "Project Types",
+      "/project-types"
+    ],
+    [
+      "Service Areas",
+      "/locations"
+    ],
+    [
+      "Contact",
+      "/contact"
+    ]
   ],
-  "cta": ["Request a Roof Assessment", "/contact"],
+  "cta": [
+    "Request a Roof Assessment",
+    "/contact"
+  ],
   "ref_host": "pepperconstruction-com",
-  "voice": "/Users/jackgreenberg/Desktop/rank-and-rent/David/clones/scripts/voice/commercial-roofing.json"
+  "voice": "/Users/jackgreenberg/Desktop/rank-and-rent/David/clones/scripts/voice/commercial-roofing.json",
+  "privacyEffectiveDate": "March 9, 2026",
+  "termsEffectiveDate": "June 15, 2026"
 }
