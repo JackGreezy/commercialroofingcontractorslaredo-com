@@ -3,9 +3,34 @@ import { sendLeadEmails } from "../../../lib/email/sendgrid.js";
 export const runtime = "nodejs";
 
 const buckets = new Map();
-const LIMIT = 5;
-const WINDOW_MS = 60 * 1000;
+const identityBuckets = new Map();
+const LIMIT = 3;
+const WINDOW_MS = 10 * 60 * 1000;
+const IDENTITY_LIMIT = 2;
+const MAX_BODY_BYTES = 32 * 1024;
 const REQUIRED_FIELDS = ["name", "phone", "email", "timeline", "message"];
+const MARKETING_PATTERNS = [
+  /\bseo\b/i,
+  /\bindex(?:ing|ed|ation)?\b/i,
+  /\bsearch engine optimization\b/i,
+  /\b(?:google|search engine|website|site)\s+rank(?:ing|ings)?\b/i,
+  /\b(?:first|1st)\s+page\s+(?:of\s+)?google\b/i,
+  /\bbacklinks?\b/i,
+  /\blink[\s-]?building\b/i,
+  /\bdomain authority\b/i,
+  /\borganic (?:traffic|visibility|growth)\b/i,
+  /\bwebsite traffic\b/i,
+  /\b(?:digital|online|internet|content|affiliate|email|social media|performance)\s+marketing\b/i,
+  /\bmarketing (?:agency|services?|strategy|campaign|partner|proposal)\b/i,
+  /\b(?:ppc|pay[\s-]?per[\s-]?click|google ads?|facebook ads?|meta ads?)\b/i,
+  /\bweb(?:site)? (?:design|development|redesign|audit)\b/i,
+  /\bguest posts?\b/i,
+  /\bsponsored (?:posts?|content|links?)\b/i,
+  /\blead generation\b/i,
+  /\b(?:get|generate|bring|deliver)\s+(?:you\s+)?more leads?\b/i,
+  /\breputation management\b/i,
+  /\bcold outreach\b/i
+];
 
 function json(body, status = 200, headers = {}) {
   return Response.json(body, { status, headers });
@@ -22,21 +47,24 @@ function clientIp(request) {
     "unknown";
 }
 
-function rateLimit(request) {
-  const key = clientIp(request);
+function consumeBucket(store, key, limit) {
   const now = Date.now();
-  const current = buckets.get(key) || { count: 0, reset: now + WINDOW_MS };
+  const current = store.get(key) || { count: 0, reset: now + WINDOW_MS };
   if (current.reset <= now) {
     current.count = 0;
     current.reset = now + WINDOW_MS;
   }
   current.count += 1;
-  buckets.set(key, current);
+  store.set(key, current);
   return {
-    allowed: current.count <= LIMIT,
-    remaining: Math.max(0, LIMIT - current.count),
+    allowed: current.count <= limit,
+    remaining: Math.max(0, limit - current.count),
     reset: current.reset
   };
+}
+
+function rateLimit(request) {
+  return consumeBucket(buckets, clientIp(request), LIMIT);
 }
 
 async function readPayload(request) {
@@ -97,7 +125,24 @@ function validateLead(lead) {
   return "";
 }
 
+function isMarketingSpam(lead) {
+  const content = [
+    lead.name,
+    lead.email,
+    lead.serviceType,
+    lead.message
+  ].join("\n");
+  if (MARKETING_PATTERNS.some((pattern) => pattern.test(content))) return true;
+  const urls = content.match(/(?:https?:\/\/|www\.)\S+/gi) || [];
+  return urls.length > 2;
+}
+
 export async function POST(request) {
+  const contentLength = Number(request.headers.get("content-length") || 0);
+  if (contentLength > MAX_BODY_BYTES) {
+    return json({ ok: false, success: false, error: "Request payload is too large." }, 413);
+  }
+
   const rate = rateLimit(request);
   const headers = {
     "X-RateLimit-Limit": String(LIMIT),
@@ -119,9 +164,23 @@ export async function POST(request) {
   if (clean(body._company) || clean(body.website)) return json({ ok: true, success: true }, 200, headers);
 
   const lead = normalizeLead(body, request);
+  if (isMarketingSpam(lead)) {
+    return json({ ok: true, success: true, message: "Your request has been received." }, 200, headers);
+  }
+
   const validationError = validateLead(lead);
   if (validationError) {
     return json({ ok: false, success: false, message: validationError, error: validationError }, 400, headers);
+  }
+
+  const identityKey = `${lead.email.toLowerCase()}|${lead.phone.replace(/\D/g, "")}`;
+  const identityRate = consumeBucket(identityBuckets, identityKey, IDENTITY_LIMIT);
+  if (!identityRate.allowed) {
+    const retryAfter = Math.ceil((identityRate.reset - Date.now()) / 1000);
+    return json({ ok: false, success: false, error: "Rate limit exceeded. Please try again later.", retryAfter }, 429, {
+      ...headers,
+      "Retry-After": String(retryAfter)
+    });
   }
 
   try {
