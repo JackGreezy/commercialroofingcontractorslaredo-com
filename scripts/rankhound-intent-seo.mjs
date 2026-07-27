@@ -8,6 +8,7 @@ const APPLY = process.argv.includes("--apply") ||
 const rootArg = process.argv.find((arg) => arg.startsWith("--root="));
 const ROOT = path.resolve(rootArg ? rootArg.slice("--root=".length) : process.cwd());
 const MARKER = "rankhound-intent-seo-v1";
+const VARIANT_MARKER = "rankhound-market-variants-v2";
 const TAXONOMIES = new Set([
   "pages",
   "services",
@@ -295,9 +296,100 @@ function intentForRoute(route, pillars) {
   return Object.entries(pillars).find(([, value]) => value === route)?.[0] || null;
 }
 
-function titleFor(route, intent, market) {
+function isLocationRoute(route) {
+  return /^\/(?:locations|service-areas)\//i.test(route);
+}
+
+const STATE_NAMES = {
+  alabama: "AL", alaska: "AK", arizona: "AZ", arkansas: "AR", california: "CA",
+  colorado: "CO", connecticut: "CT", delaware: "DE", florida: "FL", georgia: "GA",
+  hawaii: "HI", idaho: "ID", illinois: "IL", indiana: "IN", iowa: "IA",
+  kansas: "KS", kentucky: "KY", louisiana: "LA", maine: "ME", maryland: "MD",
+  massachusetts: "MA", michigan: "MI", minnesota: "MN", mississippi: "MS",
+  missouri: "MO", montana: "MT", nebraska: "NE", nevada: "NV",
+  "new hampshire": "NH", "new jersey": "NJ", "new mexico": "NM", "new york": "NY",
+  "north carolina": "NC", "north dakota": "ND", ohio: "OH", oklahoma: "OK",
+  oregon: "OR", pennsylvania: "PA", "rhode island": "RI", "south carolina": "SC",
+  "south dakota": "SD", tennessee: "TN", texas: "TX", utah: "UT", vermont: "VT",
+  virginia: "VA", washington: "WA", "west virginia": "WV", wisconsin: "WI",
+  wyoming: "WY",
+};
+const STATE_CODES = new Set(Object.values(STATE_NAMES));
+
+function cleanLocationName(value, market) {
+  let name = stripTags(value)
+    .replace(/\s+\|\s+.*$/i, "")
+    .replace(/\s+(?:Commercial Roofing Service Area|Commercial Roofing Contractors?|Commercial Roofers?)$/i, "")
+    .replace(/^(?:Commercial Roofing(?: Contractors?)?|Commercial Roofers?)\s+(?:in\s+)?/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!name) return market;
+  if (/^(?:Tucson|Your Area)$/i.test(name) && market) return market;
+  return name;
+}
+
+function stateFromSource(source, slug) {
+  const html = typeof source === "string" ? source : String(source?.html || "");
+  const title = typeof source === "object" ? String(source?.title || "") : "";
+  const raw = `${title} ${html.slice(0, 12000)}`;
+  const haystack = `${title} ${stripTags(html.slice(0, 12000))}`;
+  const code = haystack.match(/,\s*([A-Z]{2})\b/)?.[1] ||
+    raw.match(/\\"?addressRegion\\"?\s*:\s*\\"([A-Z]{2})\\"/i)?.[1]?.toUpperCase();
+  if (code && STATE_CODES.has(code)) return code;
+  const lower = haystack.toLowerCase();
+  for (const [name, abbreviation] of Object.entries(STATE_NAMES)) {
+    if (new RegExp(`\\b${name.replace(/ /g, "\\s+")}\\b`, "i").test(lower)) return abbreviation;
+  }
+  const slugCode = slug.match(/-([a-z]{2})$/i)?.[1]?.toUpperCase();
+  return slugCode && STATE_CODES.has(slugCode) ? slugCode : null;
+}
+
+function locationFor(route, source, market) {
+  if (!isLocationRoute(route)) return null;
+  const html = typeof source === "string" ? source : String(source?.html || "");
+  const title = typeof source === "object" ? String(source?.title || "") : "";
+  const h1 = stripTags(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
+  const candidates = [
+    h1.match(/^(?:Commercial Roofing(?: Contractors?)?|Commercial Roofers?)\s+(?:in\s+)?(.+)$/i)?.[1],
+    title.match(/^(.+?)\s+Commercial Roofing Service Area(?:\s*\||$)/i)?.[1],
+    title.match(/^(?:Commercial Roofing(?: Contractors?)?|Commercial Roofers?)\s+(?:in\s+)?(.+?)(?:\s*\||$)/i)?.[1],
+  ].filter(Boolean);
+  const slug = route.split("/").filter(Boolean).at(-1) || "";
+  const state = stateFromSource(source, slug);
+  const slugWithoutState = state && slug.toLowerCase().endsWith(`-${state.toLowerCase()}`)
+    ? slug.slice(0, -3)
+    : slug;
+  const slugName = titleCase(
+    slugWithoutState
+      .replace(/-(?:commercial-)?roofing-corridor$/i, "")
+      .replace(/[-_]+/g, " "),
+  );
+  let name = candidates.length ? cleanLocationName(candidates[0], market) : "";
+  const core = name.replace(/,\s*(?:[A-Z]{2}|[A-Za-z ]+)$/i, "").trim();
+  if (
+    !name ||
+    core.length > 46 ||
+    /commercial roofing|commercial roofers?|local roofers?/i.test(name)
+  ) {
+    name = slugName;
+  }
+  if (slugName.replace(/[^a-z0-9]/gi, "").toLowerCase() === market.replace(/[^a-z0-9]/gi, "").toLowerCase()) {
+    name = market;
+  }
+  name = cleanLocationName(name, market).replace(/,\s*(?:[A-Z]{2}|[A-Za-z ]+)$/i, "").trim();
+  return state ? `${name}, ${state}` : name;
+}
+
+function titleFor(route, intent, market, location = null) {
   if (route === "/" && market === "Nationwide") return "Commercial Roofing Consultants | Repair, Replacement & Coatings";
-  if (route === "/") return `Commercial Roofing ${market} | Repair, Replacement & Coatings`;
+  if (route === "/") return `Commercial Roofing Contractors ${market} | Local Roofers`;
+  if (location) {
+    const exact = `Commercial Roofing Contractors ${location} | Local Roofers`;
+    if (exact.length <= 78) return exact;
+    const shorter = `Commercial Roofing ${location} | Local Roofers`;
+    if (shorter.length <= 78) return shorter;
+    return `Commercial Roofers ${location}`;
+  }
   if (intent === "repair") return `Commercial Roof Repair in ${market} | Planned & Emergency`;
   if (intent === "replacement") return `Commercial Roof Replacement in ${market}`;
   if (intent === "coatings") return `Commercial Roof Coatings in ${market} | Restoration`;
@@ -307,12 +399,15 @@ function titleFor(route, intent, market) {
   return null;
 }
 
-function descriptionFor(route, intent, market) {
+function descriptionFor(route, intent, market, location = null) {
   if (route === "/" && market === "Nationwide") {
     return "Commercial roofing consultants for owners and asset managers: assessments, repair and replacement scopes, coatings, maintenance programs, and portfolio reports.";
   }
   if (route === "/") {
-    return `Commercial roofing in ${market} for repair, replacement, roof coatings, maintenance programs, inspections, and documented condition reports.`;
+    return `Commercial roofing in ${market} from local commercial roofing contractors and roofers for repair, replacement, coatings, maintenance, inspections, and roof reports.`;
+  }
+  if (location) {
+    return `Commercial roofing contractors serving ${location} with commercial roof repair, replacement, coatings, maintenance programs, inspections, and documented roof reports.`;
   }
   const descriptions = {
     repair: `Commercial roof repair in ${market} with leak investigation, documented repair boundaries, emergency stabilization, and planned corrective work.`,
@@ -341,6 +436,16 @@ function supportSentence(route, intent, market) {
     reports: `The condition report organizes roof areas, observed defects, photographs, repair priorities, replacement triggers, and budget context for facilities and capital planning.`,
   };
   return copy[intent] || "";
+}
+
+function variantSentence(route, market, location = null) {
+  if (route === "/" && market !== "Nationwide") {
+    return `Local commercial roofers and commercial roofing contractors serve ${market} businesses with repair, replacement, coatings, maintenance, inspections, and roof reports.`;
+  }
+  if (location) {
+    return `Commercial roofing contractors and local commercial roofers serve businesses in ${location} with repair, replacement, coatings, maintenance, inspections, and roof reports.`;
+  }
+  return "";
 }
 
 function escapeHtml(value) {
@@ -385,16 +490,31 @@ function updateSocialTags(html, title, description) {
   return next;
 }
 
-function updatePlainH1(html, market) {
+function updatePlainH1(html, market, location = null) {
   const pattern = /<h1\b([^>]*)>([^<]{1,180})<\/h1>/i;
   const match = html.match(pattern);
   if (!match) return html;
   const current = stripTags(match[2]);
   const replacement = market === "Nationwide"
     ? "Commercial Roofing Consultants Nationwide"
-    : `Commercial Roofing in ${escapeHtml(market)}`;
+    : `Commercial Roofers in ${escapeHtml(location || market)}`;
   if (current === stripTags(replacement)) return html;
   return html.replace(pattern, `<h1${match[1]}>${replacement}</h1>`);
+}
+
+function addVariantSentence(html, sentence) {
+  if (!sentence || html.includes(VARIANT_MARKER)) return html;
+  const h1End = html.search(/<\/h1>/i);
+  if (h1End < 0) return html;
+  const head = html.slice(0, h1End + 5);
+  const tail = html.slice(h1End + 5);
+  const pattern = /<p\b([^>]*)>([\s\S]*?)<\/p>/i;
+  const match = tail.match(pattern);
+  if (!match || (match.index ?? Infinity) > 3000 || /<(?:p|h[1-6]|section|div)\b/i.test(match[2])) {
+    return html;
+  }
+  const replacement = `<p${match[1]}>${match[2].trim()} <span data-rankhound-seo="${VARIANT_MARKER}">${escapeHtml(sentence)}</span></p>`;
+  return head + tail.replace(pattern, replacement);
 }
 
 function addSupportToFirstPlainParagraph(html, sentence) {
@@ -434,11 +554,13 @@ function addLinksToExistingSection(html, pillars) {
 
 function transformHtml(html, route, intent, market, pillars) {
   let next = String(html || "");
-  const title = titleFor(route, intent, market);
-  const description = descriptionFor(route, intent, market);
+  const location = locationFor(route, next, market);
+  const title = titleFor(route, intent, market, location);
+  const description = descriptionFor(route, intent, market, location);
   next = updateSocialTags(updateDescriptionTag(updateTitleTag(next, title), description), title, description);
-  if (route === "/") next = updatePlainH1(next, market);
+  if (route === "/" || location) next = updatePlainH1(next, market, location);
   if (route === "/" || intent) next = addSupportToFirstPlainParagraph(next, supportSentence(route, intent, market));
+  if (route === "/" || location) next = addVariantSentence(next, variantSentence(route, market, location));
   next = addLinksToExistingSection(next, pillars);
   return next;
 }
@@ -467,9 +589,10 @@ function linkRecords(pillars) {
 function transformRecord(record, route, market, pillars) {
   if (!record || typeof record !== "object" || !route) return false;
   const intent = intentForRoute(route, pillars);
+  const location = locationFor(route, record, market);
   let changed = false;
-  const title = titleFor(route, intent, market);
-  const description = descriptionFor(route, intent, market);
+  const title = titleFor(route, intent, market, location);
+  const description = descriptionFor(route, intent, market, location);
   if (title && record.title !== title) {
     record.title = title;
     changed = true;
@@ -567,6 +690,7 @@ function routeFromHtmlFile(file, manifestMap) {
   const fromManifest = manifestMap.get(path.resolve(file));
   if (fromManifest) return fromManifest;
   const rel = path.relative(ROOT, file).replace(/\\/g, "/");
+  if (/^public\/(?:home|index|root)\.html$/i.test(rel)) return "/";
   if (
     /^(?:public\/(?:__static-pages|rendered|rendered-pages|site-pages)\/|data\/rendered-pages\/|rendered\/(?:pages\/)?|\.site\/pages\/)(?:home|index|root)(?:\/index)?\.html$/i.test(
       rel,
@@ -647,7 +771,7 @@ for (const file of jsonFiles()) {
 const manifestMap = htmlManifestMap();
 for (const file of htmlFiles()) {
   const route = routeFromHtmlFile(file, manifestMap);
-  if (!route || !routes.includes(route)) continue;
+  if (!route || (!routes.includes(route) && !isLocationRoute(route))) continue;
   const intent = intentForRoute(route, pillars);
   const previous = read(file);
   const next = transformHtml(previous, route, intent, market, pillars);
