@@ -291,6 +291,334 @@
   padding-top: 48px;
 }
 
+/* Slug pages read as a full article, followed by full-width related + CTA bands. */
+:where(
+  .e-con-inner,
+  .project-wrap,
+  .project-body,
+  .entry-content,
+  main
+):has(> [data-rr-prose="detail"] + [data-rr-prose="detail"]) {
+  align-items: stretch !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+[data-rr-prose="detail"] {
+  box-sizing: border-box !important;
+  flex: none !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+@media (min-width: 901px) {
+  [data-rr-prose="detail"]:not(:has(.rr-related-grid)):not(:has(.rr-related-card)):not(:has(.jet-button__instance)) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 960px !important;
+    padding: 72px 40px 48px !important;
+  }
+
+  [data-rr-prose="detail"]:has(.rr-related-grid),
+  [data-rr-prose="detail"]:has(.rr-related-card) {
+    background: var(--rr-taste-paper) !important;
+    margin: 56px auto 0 !important;
+    max-width: 1280px !important;
+    padding: 60px 48px 64px !important;
+  }
+
+  [data-rr-prose="detail"]:has(.jet-button__instance) {
+    align-items: center !important;
+    background: var(--rr-taste-ink) !important;
+    display: grid !important;
+    gap: 28px 48px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    margin: 0 auto !important;
+    max-width: 1280px !important;
+    padding: 52px 48px !important;
+  }
+}
+
+[data-rr-prose="detail"]:has(.rr-related-grid) h2,
+[data-rr-prose="detail"]:has(.rr-related-card) h2 {
+  color: var(--rr-taste-ink) !important;
+  font-size: clamp(2rem, 4vw, 3.25rem) !important;
+  line-height: 1.05 !important;
+  margin: 0 0 30px !important;
+}
+
+.rr-related-grid {
+  display: grid !important;
+  gap: 16px !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.rr-related-grid > .rr-related-card {
+  background: #fff !important;
+  border: 1px solid var(--rr-taste-line) !important;
+  color: var(--rr-taste-ink) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem) !important;
+  gap: 24px !important;
+  justify-content: space-between !important;
+  line-height: 1.35 !important;
+  min-height: 190px !important;
+  overflow-wrap: anywhere !important;
+  padding: 28px !important;
+  position: relative !important;
+  text-decoration: none !important;
+}
+
+.rr-related-grid > .rr-related-card:hover,
+.rr-related-grid > .rr-related-card:focus-visible {
+  background: var(--rr-taste-ink) !important;
+  color: #fff !important;
+}
+
+.rr-related-grid > .rr-related-card small {
+  color: var(--rr-taste-blue) !important;
+  display: block !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  line-height: 1.2 !important;
+  margin-top: auto !important;
+  opacity: 1 !important;
+  position: static !important;
+  text-transform: uppercase !important;
+}
+
+.rr-related-grid > .rr-related-card:hover small,
+.rr-related-grid > .rr-related-card:focus-visible small {
+  color: var(--rr-taste-accent) !important;
+}
+
+[data-rr-prose="detail"]:has(.jet-button__instance) h2 {
+  color: #fff !important;
+  font-size: clamp(2rem, 4vw, 3.5rem) !important;
+  line-height: 1.05 !important;
+  margin: 0 !important;
+  max-width: 760px !important;
+}
+
+[data-rr-prose="detail"]:has(.jet-button__instance) .jet-button__instance {
+  align-items: center !important;
+  background: var(--rr-taste-accent) !important;
+  color: var(--rr-taste-ink) !important;
+  display: inline-flex !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  justify-content: center !important;
+  letter-spacing: 0.08em !important;
+  min-height: 54px !important;
+  padding: 16px 24px !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
+[data-rr-prose="detail"]:has(.jet-button__instance) .jet-button__instance:hover,
+[data-rr-prose="detail"]:has(.jet-button__instance) .jet-button__instance:focus-visible {
+  background: #fff !important;
+  color: var(--rr-taste-ink) !important;
+}
+
+/* Legacy related sliders become a stable card band instead of stacked absolute slides. */
+.rr-related-static {
+  background: var(--rr-taste-ink) !important;
+  box-sizing: border-box !important;
+  color: #fff !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding: clamp(56px, 7vw, 96px) max(24px, calc((100vw - 1280px) / 2)) !important;
+  position: relative !important;
+}
+
+.rr-related-static :where(
+  [data-testid="responsive-container-content"],
+  [data-testid="responsive-container-overflow"],
+  [data-testid="slideshow"],
+  [role="group"],
+  [role="list"]
+) {
+  box-sizing: border-box !important;
+  height: auto !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+.rr-related-static-heading {
+  box-sizing: border-box !important;
+  margin: 0 auto 34px !important;
+  max-width: 1280px !important;
+  position: relative !important;
+  width: 100% !important;
+  z-index: 2 !important;
+}
+
+.rr-related-static-heading p {
+  color: var(--rr-taste-accent) !important;
+  font-size: 0.76rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  margin: 0 0 12px !important;
+  text-transform: uppercase !important;
+}
+
+.rr-related-static-heading h2 {
+  color: #fff !important;
+  font-size: clamp(2rem, 4vw, 3.6rem) !important;
+  line-height: 1.05 !important;
+  margin: 0 !important;
+}
+
+.rr-related-static .rr-related-static-grid {
+  align-items: stretch !important;
+  display: grid !important;
+  gap: 18px !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  height: auto !important;
+  max-width: 1280px !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  position: static !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+.rr-related-static .rr-related-static-card {
+  align-items: stretch !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-sizing: border-box !important;
+  color: #fff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  grid-area: auto !important;
+  height: auto !important;
+  justify-content: space-between !important;
+  left: auto !important;
+  min-height: 210px !important;
+  min-width: 0 !important;
+  opacity: 1 !important;
+  overflow: hidden !important;
+  padding: 28px !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  right: auto !important;
+  text-decoration: none !important;
+  top: auto !important;
+  transform: none !important;
+  visibility: visible !important;
+  width: auto !important;
+  z-index: 1 !important;
+}
+
+.rr-related-static .rr-related-static-card:hover,
+.rr-related-static .rr-related-static-card:focus-visible {
+  background: var(--rr-taste-accent) !important;
+  border-color: var(--rr-taste-accent) !important;
+  color: var(--rr-taste-ink) !important;
+}
+
+.rr-related-static .rr-related-static-card :where(
+  .wixui-repeater__item,
+  .wixui-box,
+  .wixui-rich-text
+) {
+  background: transparent !important;
+  box-sizing: border-box !important;
+  color: inherit !important;
+  display: block !important;
+  height: auto !important;
+  inset: auto !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  position: static !important;
+  transform: none !important;
+  visibility: visible !important;
+  width: auto !important;
+}
+
+.rr-related-static .rr-related-static-card .wixui-vector-image,
+.rr-related-static .rr-related-static-card .inner-box,
+.rr-related-static .rr-related-static-prompt,
+.rr-related-static .rr-related-static-control {
+  display: none !important;
+}
+
+.rr-related-static .rr-related-static-card p {
+  color: inherit !important;
+  display: block !important;
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem) !important;
+  font-weight: 750 !important;
+  line-height: 1.3 !important;
+  margin: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  position: static !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+}
+
+.rr-related-static-cta {
+  align-items: center !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  gap: 28px !important;
+  justify-content: space-between !important;
+  margin: 42px auto 0 !important;
+  max-width: 1280px !important;
+  padding: 34px 0 0 !important;
+  position: relative !important;
+  width: 100% !important;
+  z-index: 2 !important;
+}
+
+.rr-related-static-cta p {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  margin: 0 0 6px !important;
+  text-transform: uppercase !important;
+}
+
+.rr-related-static-cta h2 {
+  color: #fff !important;
+  font-size: clamp(1.7rem, 3vw, 2.65rem) !important;
+  line-height: 1.08 !important;
+  margin: 0 !important;
+}
+
+.rr-related-static-cta a {
+  align-items: center !important;
+  background: var(--rr-taste-accent) !important;
+  color: var(--rr-taste-ink) !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  font-size: 0.78rem !important;
+  font-weight: 850 !important;
+  justify-content: center !important;
+  letter-spacing: 0.1em !important;
+  min-height: 54px !important;
+  padding: 16px 24px !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+}
+
 .rr-faq-list {
   display: grid;
   gap: 12px;
@@ -717,6 +1045,33 @@ body :where(
 }
 
 @media (max-width: 900px) {
+  [data-rr-prose="detail"] {
+    margin: 0 auto !important;
+    max-width: none !important;
+    padding: 42px 22px !important;
+  }
+
+  [data-rr-prose="detail"]:has(.rr-related-grid),
+  [data-rr-prose="detail"]:has(.rr-related-card) {
+    background: var(--rr-taste-paper) !important;
+  }
+
+  .rr-related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .rr-related-static .rr-related-static-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  [data-rr-prose="detail"]:has(.jet-button__instance) {
+    background: var(--rr-taste-ink) !important;
+    color: #fff !important;
+    display: grid !important;
+    gap: 24px !important;
+    margin-bottom: 0 !important;
+  }
+
   #galslicecont {
     box-sizing: border-box !important;
     display: flex !important;
@@ -799,6 +1154,31 @@ body :where(
 }
 
 @media (max-width: 620px) {
+  .rr-related-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rr-related-static {
+    padding: 48px 20px !important;
+  }
+
+  .rr-related-static .rr-related-static-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rr-related-static-cta {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  .rr-related-static-cta a {
+    width: 100% !important;
+  }
+
+  .rr-related-grid > .rr-related-card {
+    min-height: 150px !important;
+  }
+
   .integration-wrap .rr-taste-carousel > .slide,
   .core-values-wrap .rr-taste-carousel > .slide,
   .block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel > .slide {

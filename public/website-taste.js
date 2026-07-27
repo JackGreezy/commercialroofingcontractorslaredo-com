@@ -172,6 +172,49 @@
   };
 
   const carouselSelector = "[data-rr-carousel],.slick-slider,.swiper,.owl-carousel,.splide";
+  for (const root of document.querySelectorAll('[data-rr-carousel="agency"]')) {
+    if (!root.textContent.includes("Explore this commercial roofing scope")) continue;
+    const track = querySafe(root, root.dataset.rrTrack) ||
+      root.querySelector(".wixui-repeater,.agy-caro-in,.swiper-wrapper,.splide__list");
+    const slides = track
+      ? [...track.querySelectorAll(root.dataset.rrSlides || "a")]
+      : [];
+    if (!track || slides.length < 2) continue;
+
+    root.classList.add("rr-related-static");
+    const cardGrid = slides.every((slide) => slide.parentElement === slides[0].parentElement)
+      ? slides[0].parentElement
+      : track;
+    cardGrid.classList.add("rr-related-static-grid");
+    const heading = document.createElement("div");
+    heading.className = "rr-related-static-heading";
+    heading.innerHTML = "<p>Related commercial roofing</p><h2>Explore More Roofing Solutions</h2>";
+    root.prepend(heading);
+    slides.forEach((slide) => {
+      slide.classList.add("rr-related-static-card");
+      for (const prompt of slide.querySelectorAll("p")) {
+        if (prompt.textContent.trim() === "Explore this commercial roofing scope") {
+          prompt.closest(".wixui-rich-text")?.classList.add("rr-related-static-prompt");
+          prompt.classList.add("rr-related-static-prompt");
+        }
+      }
+    });
+    for (const control of root.querySelectorAll(
+      "[aria-label*='left arrow' i],[aria-label*='right arrow' i],[aria-label*='previous' i],[aria-label*='next' i]"
+    )) {
+      (control.closest(".SlideshowButton2197735472__root") || control).classList.add(
+        "rr-related-static-control"
+      );
+    }
+    root.dataset.rrTasteStaticRelated = "true";
+    root.removeAttribute("data-rr-carousel");
+
+    const callout = document.createElement("div");
+    callout.className = "rr-related-static-cta";
+    callout.innerHTML = '<div><p>Planning a commercial roofing project?</p><h2>Get a Clear Roof Assessment</h2></div><a href="/contact">Request a Roof Assessment</a>';
+    root.append(callout);
+  }
+
   for (const root of document.querySelectorAll(carouselSelector)) {
     const owningCarousel = root.parentElement?.closest(carouselSelector);
     if (owningCarousel && sliderSlides(owningCarousel).length > 1) continue;
