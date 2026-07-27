@@ -1,0 +1,832 @@
+:root {
+  --rr-taste-ink: #53565a;
+  --rr-taste-blue: #00263e;
+  --rr-taste-sky: #ffaa4d;
+  --rr-taste-accent: #ffaa4d;
+  --rr-taste-paper: #f4f6f7;
+  --rr-taste-line: rgba(0, 38, 62, 0.18);
+}
+
+/* Equal, content-safe cards within this site's existing grid system. */
+.ftb-items-project,
+.ftb-items,
+.related-projects-wrap,
+.featured-project-small,
+.rr-related-grid,
+.alm-listing.alm-ajax {
+  align-items: stretch !important;
+}
+
+.rr-related-grid {
+  grid-auto-rows: 1fr !important;
+}
+
+.rr-related-grid > .rr-related-card {
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  height: 100% !important;
+  min-height: 144px !important;
+}
+
+.rr-related-grid > li {
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+.rr-related-grid > li > .rr-related-card {
+  box-sizing: border-box !important;
+  height: 100% !important;
+  min-height: 144px !important;
+}
+
+.alm-listing.alm-ajax {
+  grid-auto-rows: 1fr !important;
+}
+
+.alm-listing.alm-ajax > .single_project_tile {
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+.alm-listing.alm-ajax > .single_project_tile > .content_wrap,
+.alm-listing.alm-ajax .single_project_tile .content_tags,
+.alm-listing.alm-ajax .single_project_tile .content.project_page {
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+
+.alm-listing.alm-ajax .single_project_tile .content.project_page > a:first-child {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+
+.alm-listing.alm-ajax .single_project_tile .sitewide_button {
+  margin-top: auto !important;
+}
+
+.alm-listing.alm-ajax .single_project_tile :where(h2, h3, h4, p, span) {
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  -webkit-line-clamp: unset !important;
+}
+
+:where(
+  .wp-block-post-template,
+  .projects-grid,
+  .project-grid,
+  .services-grid,
+  .service-grid,
+  .locations-grid,
+  .location-grid,
+  .industries-grid,
+  .industry-grid,
+  .card-grid,
+  .cards-grid,
+  .listing-grid,
+  .related-grid,
+  [data-rr-static-grid]
+) {
+  align-items: stretch !important;
+  grid-auto-rows: 1fr !important;
+}
+
+:where(
+  .wp-block-post-template,
+  .projects-grid,
+  .project-grid,
+  .services-grid,
+  .service-grid,
+  .locations-grid,
+  .location-grid,
+  .industries-grid,
+  .industry-grid,
+  .card-grid,
+  .cards-grid,
+  .listing-grid,
+  .related-grid,
+  [data-rr-static-grid]
+) > :where(article, li, a, div) {
+  align-self: stretch !important;
+  box-sizing: border-box !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+:where(
+  .wp-block-post-template,
+  .projects-grid,
+  .project-grid,
+  .services-grid,
+  .service-grid,
+  .locations-grid,
+  .location-grid,
+  .industries-grid,
+  .industry-grid,
+  .card-grid,
+  .cards-grid,
+  .listing-grid,
+  .related-grid,
+  [data-rr-static-grid]
+) > :where(article, li, div) > a {
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+:where(
+  .wp-block-post-template,
+  .projects-grid,
+  .project-grid,
+  .services-grid,
+  .service-grid,
+  .locations-grid,
+  .location-grid,
+  .industries-grid,
+  .industry-grid,
+  .card-grid,
+  .cards-grid,
+  .listing-grid,
+  .related-grid,
+  [data-rr-static-grid]
+) :where(h2, h3, h4, p, span) {
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  -webkit-line-clamp: unset !important;
+}
+
+.ftb-items-project > .prj-teaser,
+.ftb-items > .ftb-teaser,
+.related-projects-wrap > article,
+.featured-project-small > article,
+.rr-related-grid > * {
+  align-self: stretch !important;
+  height: auto !important;
+  min-width: 0 !important;
+}
+
+.ftb-items-project > .prj-teaser > a,
+.ftb-items > .ftb-teaser > a,
+.related-projects-wrap > article > a,
+.featured-project-small > article > a,
+.rr-related-grid > * > a {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-width: 0 !important;
+}
+
+.ftb-items-project .prj-teaser-thumb,
+.ftb-items .ftb-teaser-thumb,
+.related-projects-wrap .prj-teaser-thumb,
+.featured-project-small .prj-teaser-thumb {
+  aspect-ratio: 4 / 3 !important;
+  display: block !important;
+  flex: 0 0 auto !important;
+  height: auto !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.ftb-items-project .prj-teaser-thumb img,
+.ftb-items .ftb-teaser-thumb img,
+.related-projects-wrap .prj-teaser-thumb img,
+.featured-project-small .prj-teaser-thumb img {
+  display: block !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  width: 100% !important;
+}
+
+.ftb-items-project .prj-teaser-body,
+.ftb-items .ftb-teaser-body,
+.related-projects-wrap .prj-teaser-body,
+.featured-project-small .prj-teaser-body {
+  align-items: flex-start !important;
+  display: flex !important;
+  flex: 1 1 auto !important;
+  min-height: 86px !important;
+  padding: 18px 16px !important;
+}
+
+.ftb-items-project .prj-teaser-title,
+.ftb-items .ftb-teaser-title,
+.related-projects-wrap .prj-teaser-title,
+.featured-project-small .prj-teaser-title {
+  display: block !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+  -webkit-line-clamp: unset !important;
+}
+
+/* Full-width, readable detail pages instead of a long article trapped in one half. */
+@media (min-width: 901px) {
+  .project-content .project-wrap {
+    display: block !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-wrap-left {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-left {
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    max-width: 960px !important;
+    padding: 84px 40px 72px !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-right {
+    background: #fff !important;
+    box-sizing: border-box !important;
+    position: static !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-right .mfp-gallery {
+    display: grid !important;
+    gap: 20px !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    margin: 0 auto !important;
+    max-width: 1240px !important;
+    padding: 34px 32px 72px !important;
+  }
+
+  .project-content .project-right .gallery-item {
+    aspect-ratio: 4 / 3 !important;
+    display: block !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+}
+
+.project-body h2:has(+ h3) {
+  border-top: 1px solid var(--rr-taste-line);
+  margin-top: 64px !important;
+  padding-top: 48px;
+}
+
+.rr-faq-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 36px;
+}
+
+.rr-faq-item {
+  background: #fff;
+  border: 1px solid var(--rr-taste-line);
+  border-radius: 2px;
+  box-shadow: 0 10px 28px rgba(0, 38, 62, 0.06);
+}
+
+.rr-faq-item summary {
+  align-items: center;
+  color: var(--rr-taste-ink);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-secondary, "Oswald", sans-serif);
+  font-size: 20px;
+  font-weight: 650;
+  justify-content: space-between;
+  line-height: 1.35;
+  list-style: none;
+  padding: 20px 56px 20px 22px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.rr-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.rr-faq-item summary::before,
+.rr-faq-item summary::after {
+  background: var(--rr-taste-accent);
+  content: "";
+  height: 2px;
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 16px;
+}
+
+.rr-faq-item summary::after {
+  transform: rotate(90deg);
+  transition: transform 180ms ease;
+}
+
+.rr-faq-item[open] summary::after {
+  transform: rotate(0deg);
+}
+
+.rr-faq-answer {
+  color: var(--rr-taste-ink);
+  font-size: 17px;
+  line-height: 1.65;
+  padding: 0 22px 22px;
+}
+
+/* Functional, directional carousel controls. */
+.rr-carousel-viewport {
+  box-sizing: border-box !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  max-width: none !important;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+body .block-core-values .core-values-wrap > .rr-carousel-viewport,
+body .block-integration .integration-wrap > .rr-carousel-viewport {
+  display: block !important;
+  grid-template-columns: none !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.integration-wrap .rr-taste-carousel,
+.core-values-wrap .rr-taste-carousel {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  max-width: none !important;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  width: 100% !important;
+  will-change: transform;
+}
+
+.integration-wrap .rr-taste-carousel > .slide,
+.core-values-wrap .rr-taste-carousel > .slide {
+  box-sizing: border-box !important;
+  display: block !important;
+  flex: 0 0 calc((100% - 32px) / 3) !important;
+  min-width: 0 !important;
+  position: relative !important;
+  transform: none !important;
+  width: auto !important;
+}
+
+.block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel {
+  display: flex !important;
+  grid-template-columns: none !important;
+}
+
+.block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel > .slide {
+  flex: 0 0 calc((100% - 32px) / 3) !important;
+  height: 420px !important;
+  width: auto !important;
+}
+
+.block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel .one-letter {
+  align-items: flex-start !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 420px !important;
+  justify-content: flex-end !important;
+  min-height: 420px !important;
+  overflow: hidden !important;
+  padding: 38px !important;
+  position: relative !important;
+}
+
+.block-core-values .stacked-slick.rr-taste-carousel .one-theletter {
+  display: block !important;
+  position: static !important;
+}
+
+.block-core-values .stacked-slick.rr-taste-carousel .one-just-letter {
+  bottom: -54px !important;
+  color: #fff !important;
+  font-size: 250px !important;
+  line-height: 1 !important;
+  opacity: 0.14 !important;
+  position: absolute !important;
+  right: 10px !important;
+}
+
+.block-core-values .stacked-slick.rr-taste-carousel .one-heading {
+  color: #fff !important;
+  display: block !important;
+  font-size: 38px !important;
+  height: auto !important;
+  line-height: 1.05 !important;
+  opacity: 1 !important;
+  position: relative !important;
+  text-transform: uppercase !important;
+  width: auto !important;
+  z-index: 1 !important;
+}
+
+.block-core-values .stacked-slick.rr-taste-carousel .one-abstract {
+  color: #fff !important;
+  display: block !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+  margin-top: 20px !important;
+  opacity: 1 !important;
+  position: relative !important;
+  width: auto !important;
+  z-index: 1 !important;
+}
+
+.stacked-controls:has(.rr-carousel-control) {
+  align-items: center;
+  display: flex !important;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+  min-height: 52px;
+}
+
+.rr-fallback-carousel-controls {
+  align-items: center;
+  display: flex !important;
+  gap: 12px;
+  justify-content: flex-end;
+  margin: 18px 0 0;
+  min-height: 52px;
+  position: relative;
+  z-index: 6;
+}
+
+:where(
+  .owl-nav,
+  .button-container,
+  .swiper-navigation,
+  .slick-arrows,
+  .carousel-controls,
+  .slider-controls
+):has(.rr-carousel-control) {
+  align-items: center !important;
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: flex-end !important;
+  min-height: 52px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  visibility: visible !important;
+}
+
+.rr-carousel-control {
+  align-items: center;
+  appearance: none;
+  background: var(--rr-taste-ink);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 38, 62, 0.2);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex !important;
+  height: 48px;
+  justify-content: center;
+  opacity: 1 !important;
+  padding: 0;
+  transition: background-color 160ms ease, transform 160ms ease;
+  visibility: visible !important;
+  width: 48px;
+  min-height: 48px !important;
+  min-width: 48px !important;
+  max-height: 48px !important;
+  max-width: 48px !important;
+}
+
+body :where(
+  [data-rr-carousel],
+  .slick-slider,
+  .swiper,
+  .owl-carousel,
+  .splide,
+  .integration-wrap,
+  .core-values-wrap
+) .rr-carousel-control {
+  align-items: center !important;
+  display: inline-flex !important;
+  float: none !important;
+  font-size: 0 !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+  position: relative;
+  text-indent: 0 !important;
+  visibility: visible !important;
+}
+
+.rr-carousel-control:hover,
+.rr-carousel-control:focus-visible {
+  background: var(--rr-taste-accent);
+  transform: translateY(-2px);
+}
+
+.rr-carousel-control:focus-visible {
+  outline: 3px solid rgba(237, 75, 0, 0.3);
+  outline-offset: 3px;
+}
+
+.rr-carousel-control svg {
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+
+/* El Paso field contract, expressed in the Erie visual system. */
+#gform_wrapper_2 {
+  background: #cfdae1 !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 64px 28px 72px !important;
+  width: 100% !important;
+}
+
+#gform_wrapper_2 .gform_heading {
+  margin: 0 auto 28px !important;
+  max-width: 1180px !important;
+  text-align: center !important;
+}
+
+#gform_wrapper_2 .gform_title {
+  color: var(--rr-taste-ink) !important;
+  font-size: clamp(34px, 4vw, 56px) !important;
+  line-height: 1.02 !important;
+  margin: 0 !important;
+  text-transform: uppercase !important;
+}
+
+.rr-contact-form {
+  display: grid !important;
+  gap: 22px !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  margin: 0 auto !important;
+  max-width: 1180px !important;
+}
+
+.rr-contact-field {
+  color: var(--rr-taste-ink);
+  display: grid;
+  font-size: 16px;
+  font-weight: 700;
+  gap: 9px;
+  min-width: 0;
+}
+
+.rr-contact-field--full,
+.rr-contact-form .rr-contact-submit,
+.rr-contact-form .form-status {
+  grid-column: 1 / -1;
+}
+
+.rr-contact-form input,
+.rr-contact-form select,
+.rr-contact-form textarea {
+  appearance: none;
+  background: #fff;
+  border: 1px solid rgba(0, 38, 62, 0.24);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--rr-taste-ink);
+  font: inherit;
+  min-height: 58px;
+  padding: 13px 15px;
+  width: 100%;
+}
+
+.rr-contact-form select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--rr-taste-ink) 50%),
+    linear-gradient(135deg, var(--rr-taste-ink) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 50%, calc(100% - 13px) 50%;
+  background-repeat: no-repeat;
+  background-size: 6px 6px, 6px 6px;
+  padding-right: 42px;
+}
+
+.rr-contact-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.rr-contact-form input:focus,
+.rr-contact-form select:focus,
+.rr-contact-form textarea:focus {
+  border-color: var(--rr-taste-accent);
+  box-shadow: 0 0 0 3px rgba(237, 75, 0, 0.16);
+  outline: none;
+}
+
+.rr-contact-submit {
+  align-items: center;
+  background: var(--rr-taste-accent);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-secondary, "Oswald", sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: center;
+  justify-self: center;
+  min-height: 54px;
+  min-width: 300px;
+  padding: 14px 24px;
+  text-transform: uppercase;
+}
+
+.rr-contact-submit:hover,
+.rr-contact-submit:focus-visible {
+  background: var(--rr-taste-ink);
+}
+
+.rr-contact-form .form-status {
+  color: var(--rr-taste-ink);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  min-height: 24px;
+  text-align: center;
+}
+
+.rr-contact-form .hp-field {
+  height: 1px !important;
+  left: -10000px !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: auto !important;
+  width: 1px !important;
+}
+
+/* Prevent the unstyled 300x150 map/iframe "mini picture" regression. */
+[data-rh-map="true"] {
+  background: #dde6eb url("/ours/locations/commercial-roofing-contractors-laredo-tx-01.webp") center / cover no-repeat;
+  min-height: 360px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+[data-rh-map="true"]::before {
+  background: var(--rr-taste-ink);
+  color: #fff;
+  content: "Commercial Roofing Service Area";
+  font-family: var(--font-secondary, "Oswald", sans-serif);
+  font-size: 17px;
+  font-weight: 700;
+  left: 24px;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 24px;
+  z-index: 2;
+}
+
+[data-rh-map="true"] iframe {
+  background: transparent !important;
+  border: 0 !important;
+  display: block !important;
+  height: 360px !important;
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+  width: 100% !important;
+}
+
+@media (max-width: 900px) {
+  #galslicecont {
+    box-sizing: border-box !important;
+    display: flex !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  #galslicecont > .galslice {
+    box-sizing: border-box !important;
+    flex: 0 0 76px !important;
+    max-width: 76px !important;
+    min-width: 76px !important;
+    width: 76px !important;
+  }
+
+  #galimgscont {
+    box-sizing: border-box !important;
+    display: flex !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    white-space: normal !important;
+    width: 100% !important;
+  }
+
+  #galimgscont > img {
+    box-sizing: border-box !important;
+    flex: 0 0 76px !important;
+    height: 76px !important;
+    max-width: 76px !important;
+    min-width: 76px !important;
+    object-fit: cover !important;
+    width: 76px !important;
+  }
+
+  .galcont > .rr-carousel-control {
+    bottom: auto !important;
+    float: none !important;
+    left: auto !important;
+    margin: 12px 6px !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+  }
+
+  .integration-wrap .rr-taste-carousel > .slide,
+  .core-values-wrap .rr-taste-carousel > .slide,
+  .block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel > .slide {
+    flex-basis: calc((100% - 16px) / 2) !important;
+  }
+
+  .project-content .project-left {
+    box-sizing: border-box !important;
+    max-width: none !important;
+    padding: 48px 24px !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-right {
+    box-sizing: border-box !important;
+    position: static !important;
+    width: 100% !important;
+  }
+
+  .project-content .project-right .mfp-gallery {
+    display: grid !important;
+    gap: 12px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    margin: 0 auto !important;
+    max-width: 680px !important;
+    padding: 20px 20px 48px !important;
+  }
+
+  [data-rh-map="true"],
+  [data-rh-map="true"] iframe {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .integration-wrap .rr-taste-carousel > .slide,
+  .core-values-wrap .rr-taste-carousel > .slide,
+  .block-core-values .core-values-wrap .stacked-slick.rr-taste-carousel > .slide {
+    flex-basis: 100% !important;
+  }
+
+  .rr-contact-form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .rr-contact-field,
+  .rr-contact-field--full,
+  .rr-contact-form .rr-contact-submit,
+  .rr-contact-form .form-status {
+    grid-column: 1 !important;
+  }
+
+  .rr-contact-submit {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .related-projects {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .related-projects-wrap > article {
+    max-width: none !important;
+  }
+}
