@@ -9,6 +9,7 @@ const rootArg = process.argv.find((arg) => arg.startsWith("--root="));
 const ROOT = path.resolve(rootArg ? rootArg.slice("--root=".length) : process.cwd());
 const MARKER = "rankhound-intent-seo-v1";
 const VARIANT_MARKER = "rankhound-market-variants-v2";
+const ANSWER_MARKER = "rankhound-answer-first-v3";
 const TAXONOMIES = new Set([
   "pages",
   "services",
@@ -443,7 +444,15 @@ function variantSentence(route, market, location = null) {
     return `Local commercial roofers and commercial roofing contractors serve ${market} businesses with repair, replacement, coatings, maintenance, inspections, and roof reports.`;
   }
   if (location) {
-    return `Commercial roofing contractors and local commercial roofers serve businesses in ${location} with repair, replacement, coatings, maintenance, inspections, and roof reports.`;
+    const variants = [
+      `Commercial roofing in ${location} should begin with a documented assessment of membrane condition, seams, flashings, drainage, penetrations, and moisture before repair, coating, or replacement is selected.`,
+      `For commercial properties in ${location}, the defensible choice between repair, restoration, and replacement starts with roof-system condition, moisture findings, drainage performance, and remaining service life.`,
+      `Commercial roofers serving ${location} should document leak sources, wet insulation, drainage, edge details, penetrations, and repair history before recommending a scope.`,
+      `A practical commercial roofing plan for ${location} properties separates urgent leak control from repair, coating, maintenance, and replacement decisions supported by photos and condition findings.`,
+    ];
+    let hash = 0;
+    for (const character of route) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+    return variants[hash % variants.length];
   }
   return "";
 }
@@ -502,8 +511,13 @@ function updatePlainH1(html, market, location = null) {
   return html.replace(pattern, `<h1${match[1]}>${replacement}</h1>`);
 }
 
-function addVariantSentence(html, sentence) {
-  if (!sentence || html.includes(VARIANT_MARKER)) return html;
+function markedSpan(marker, sentence, answerFirst = false) {
+  const answerAttribute = answerFirst ? ` data-answer-first="${ANSWER_MARKER}"` : "";
+  return `<span data-rankhound-seo="${marker}"${answerAttribute}>${escapeHtml(sentence)}</span>`;
+}
+
+function addVariantSentence(html, sentence, answerFirst = false) {
+  if (!sentence) return html;
   const h1End = html.search(/<\/h1>/i);
   if (h1End < 0) return html;
   const head = html.slice(0, h1End + 5);
@@ -513,25 +527,44 @@ function addVariantSentence(html, sentence) {
   if (!match || (match.index ?? Infinity) > 3000 || /<(?:p|h[1-6]|section|div)\b/i.test(match[2])) {
     return html;
   }
-  const replacement = `<p${match[1]}>${match[2].trim()} <span data-rankhound-seo="${VARIANT_MARKER}">${escapeHtml(sentence)}</span></p>`;
+  const existingPattern = new RegExp(
+    `<span\\b(?=[^>]*\\bdata-rankhound-seo=["']${VARIANT_MARKER}["'])[^>]*>[\\s\\S]*?<\\/span>`,
+    "i",
+  );
+  const existing = match[2].match(existingPattern);
+  if (existing && !answerFirst && !existing[0].includes(`data-answer-first="${ANSWER_MARKER}"`)) {
+    return html;
+  }
+  const current = match[2].replace(existingPattern, "").trim();
+  const span = markedSpan(VARIANT_MARKER, sentence, answerFirst);
+  const content = answerFirst ? `${span} ${current}` : `${current} ${span}`;
+  const replacement = `<p${match[1]}>${content.trim()}</p>`;
   return head + tail.replace(pattern, replacement);
 }
 
 function addSupportToFirstPlainParagraph(html, sentence) {
-  if (!sentence || html.includes(MARKER)) return html;
+  if (!sentence) return html;
   const h1End = html.search(/<\/h1>/i);
   if (h1End < 0) return html;
   const head = html.slice(0, h1End + 5);
   const tail = html.slice(h1End + 5);
-  const pattern = /<p\b([^>]*)>([^<]{10,900})<\/p>/i;
+  const pattern = /<p\b([^>]*)>([\s\S]*?)<\/p>/i;
   const match = tail.match(pattern);
   if (!match) return html;
   if ((match.index ?? Infinity) > 2500) return html;
-  const current = stripTags(match[2]);
+  if (/<(?:p|h[1-6]|section|div)\b/i.test(match[2])) return html;
+  const existingPattern = new RegExp(
+    `<span\\b(?=[^>]*\\bdata-rankhound-seo=["']${MARKER}["'])[^>]*>[\\s\\S]*?<\\/span>`,
+    "i",
+  );
+  const currentHtml = match[2].replace(existingPattern, "").trim();
+  const current = stripTags(currentHtml);
   const topicCount = ["repair", "replacement", "coating", "maintenance", "inspection", "report"]
     .filter((term) => current.toLowerCase().includes(term)).length;
-  if (topicCount >= 4 || current.includes(sentence)) return html;
-  const replacement = `<p${match[1]}>${match[2].trim()} <span data-rankhound-seo="${MARKER}">${escapeHtml(sentence)}</span></p>`;
+  const existing = existingPattern.test(match[2]);
+  if (!existing && (topicCount >= 4 || current.includes(sentence))) return html;
+  const span = markedSpan(MARKER, sentence, true);
+  const replacement = `<p${match[1]}>${span} ${currentHtml}</p>`;
   return head + tail.replace(pattern, replacement);
 }
 
@@ -560,7 +593,13 @@ function transformHtml(html, route, intent, market, pillars) {
   next = updateSocialTags(updateDescriptionTag(updateTitleTag(next, title), description), title, description);
   if (route === "/" || location) next = updatePlainH1(next, market, location);
   if (route === "/" || intent) next = addSupportToFirstPlainParagraph(next, supportSentence(route, intent, market));
-  if (route === "/" || location) next = addVariantSentence(next, variantSentence(route, market, location));
+  if (route === "/" || location) {
+    next = addVariantSentence(
+      next,
+      variantSentence(route, market, location),
+      Boolean(location),
+    );
+  }
   next = addLinksToExistingSection(next, pillars);
   return next;
 }
@@ -657,6 +696,7 @@ function jsonFiles() {
     "data/pages.generated.json",
     "data/routes.generated.json",
     "data/rendered-pages.json",
+    "data/site-pages.json",
     "public/route-map.json",
   ]) {
     const file = path.join(ROOT, rel);
@@ -698,6 +738,18 @@ function routeFromHtmlFile(file, manifestMap) {
   ) {
     return "/";
   }
+  const sitePage = rel.match(
+    /^public\/site-pages\/(services|locations|service-areas|roof-systems|damage-repair|property-types|industries|capabilities)-(.+)\.html$/i,
+  );
+  if (sitePage) {
+    const taxonomy = sitePage[1].toLowerCase();
+    const slug = sitePage[2];
+    return normalizeRoute(slug.toLowerCase() === "index" ? taxonomy : `${taxonomy}/${slug}`);
+  }
+  const sitePageIndex = rel.match(
+    /^public\/site-pages\/index-(services|locations|service-areas|roof-systems|damage-repair|property-types|industries|capabilities)\.html$/i,
+  );
+  if (sitePageIndex) return normalizeRoute(sitePageIndex[1]);
   let value = rel
     .replace(/^public\/(?:__static-pages|rendered|rendered-pages|site-pages)\//, "")
     .replace(/^data\/rendered-pages\//, "")
@@ -763,9 +815,30 @@ for (const file of jsonFiles()) {
   const changed = walkRecords(data, file, market, pillars);
   if (!changed) continue;
   recordsChanged += changed;
-  const indent = previous.includes("\n  ") ? 2 : 0;
-  const next = `${JSON.stringify(data, null, indent)}${previous.endsWith("\n") ? "\n" : ""}`;
+  const serialized = previous.includes("\n  ")
+    ? JSON.stringify(data, null, 2)
+    : previous.includes("\n")
+      ? JSON.stringify(data, null, 1).replace(/^ +/gm, "")
+      : JSON.stringify(data);
+  const next = `${serialized}${previous.endsWith("\n") ? "\n" : ""}`;
   if (writeIfChanged(file, next, previous)) jsonFilesChanged++;
+}
+
+const generatedPagesModule = path.join(ROOT, "lib", "generated-pages.mjs");
+if (exists(generatedPagesModule)) {
+  const previous = read(generatedPagesModule);
+  const match = previous.match(/^(\s*export const pages\s*=\s*)([\s\S]*?)(;\s*)$/);
+  if (match) {
+    try {
+      const data = JSON.parse(match[2]);
+      const changed = walkRecords(data, generatedPagesModule, market, pillars);
+      if (changed) {
+        recordsChanged += changed;
+        const next = `${match[1]}${JSON.stringify(data)}${match[3]}`;
+        if (writeIfChanged(generatedPagesModule, next, previous)) jsonFilesChanged++;
+      }
+    } catch {}
+  }
 }
 
 const manifestMap = htmlManifestMap();
