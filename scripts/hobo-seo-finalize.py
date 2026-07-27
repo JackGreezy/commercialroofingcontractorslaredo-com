@@ -247,11 +247,15 @@ def set_metadata(soup: BeautifulSoup, route: str):
     else:
         t = soup.new_tag("title"); t.string = title; soup.head.append(t)
     for tag in list(soup.head.find_all("meta")):
-        if tag.get("name") in {"description", "robots", "twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"}:
+        if tag.get("name") in {
+            "description", "robots", "twitter:card", "twitter:title",
+            "twitter:description", "twitter:image", "twitter:image:alt",
+            "twitter:site", "twitter:creator", "be:orig_url", "be:norm_url",
+        }:
             tag.decompose()
             continue
         prop = tag.get("property")
-        if prop and (str(prop).startswith("og:") or prop in {"article:modified_time"}):
+        if prop and (str(prop).startswith("og:") or str(prop).startswith("article:")):
             tag.decompose()
     upsert_meta(soup, "name", "description", desc)
     robots = "noindex, follow" if route == "/404" else "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -376,6 +380,10 @@ def selected_palette() -> dict:
 
 def ensure_color_scheme_assets(soup: BeautifulSoup):
     soup = ensure_head(soup)
+    if cfg.get("preserve_donor_colors"):
+        for old in list(soup.head.find_all("style", id="rh-color-scheme-css")):
+            old.decompose()
+        return
     palette = selected_palette()
     for tag in list(soup.head.find_all("meta", attrs={"name": "theme-color"})):
         tag.decompose()
@@ -659,6 +667,23 @@ def legal_page(kind: str, date: str) -> str:
     else:
         soup = BeautifulSoup(f"<!doctype html><html lang='en-US'><head><title>{html.escape(page_title)}</title><meta name='description' content='{html.escape(desc)}'></head><body>{body}<footer><nav><a href='/privacy'>Privacy Policy</a> <a href='/terms'>Terms</a> <a href='/sitemap.xml'>Sitemap</a></nav></footer></body></html>", "html.parser")
     remove_legacy_legal_content(soup, kind)
+    hero_title = soup.select_one(".field--name-field-slide-header")
+    if hero_title:
+        hero_title.clear()
+        hero_title.append(title)
+    crumbs = soup.select("#breadcrumb .breadcrumb__item")
+    if crumbs:
+        crumbs[0].clear()
+        home = soup.new_tag("a", href="/")
+        home.string = "Home"
+        crumbs[0].append(home)
+    if len(crumbs) > 1:
+        crumbs[1].clear()
+        crumbs[1].append(title)
+    primary_h1 = soup.select_one("main h1")
+    for extra_h1 in list(soup.find_all("h1")):
+        if extra_h1 is not primary_h1:
+            extra_h1.decompose()
     set_metadata(soup, route)
     replace_banned_phrases(soup, int(hashlib.md5((BIZ["domain"] + kind).encode()).hexdigest(), 16))
     ensure_footer_links(soup)
@@ -725,6 +750,63 @@ def write_sitemap_robots_llms(routes: list[str]):
     lines += ["", "## Use guidance", "This file summarizes the site's crawlable commercial roofing content for search engines, AI assistants, and research tools. Use canonical URLs from the sitemap for citation and navigation."]
     (PUBLIC / "llms.txt").write_text("\n".join(lines) + "\n")
 
+def polish_not_found(soup: BeautifulSoup, route: str):
+    if route != "/404":
+        return
+    hero_title = soup.select_one(".field--name-field-slide-header")
+    if hero_title:
+        hero_title.clear()
+        hero_title.append("Page Not Found")
+    crumbs = soup.select("#breadcrumb .breadcrumb__item")
+    if crumbs:
+        crumbs[0].clear()
+        home = soup.new_tag("a", href="/")
+        home.string = "Home"
+        crumbs[0].append(home)
+    if len(crumbs) > 1:
+        crumbs[1].clear()
+        crumbs[1].append("Page Not Found")
+    card_links = [
+        ("Browse Commercial Roofing Services", "/services"),
+        ("Compare Commercial Roof Systems", "/roof-systems"),
+        ("Request a Roof Assessment", "/contact"),
+    ]
+    cards = soup.select("#section-1084 .field--name-field-long-text")
+    for card, (label, href) in zip(cards, card_links):
+        card.clear()
+        link = soup.new_tag("a", href=href)
+        link.string = label
+        card.append(link)
+    main = soup.find("main")
+    if main:
+        for item in list(main.find_all("ul", recursive=False)):
+            item.decompose()
+        back = next(
+            (
+                a for a in main.find_all("a", recursive=False)
+                if (a.get("href") or "") == "/" and "back to" in clean(a.get_text(" ", strip=True)).lower()
+            ),
+            None,
+        )
+        if back:
+            actions = soup.new_tag("div")
+            actions["class"] = ["rr-404-actions"]
+            back.wrap(actions)
+    old = soup.head.find("style", id="rr-404-polish")
+    if old:
+        old.decompose()
+    style = soup.new_tag("style", id="rr-404-polish")
+    style.string = """
+#section-1084 .field--name-field-three-columns{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#section-1084 .field--name-field-three-columns>.field__item{width:auto!important;max-width:none!important}
+#section-1084 .field--name-field-three-columns>.field__item>div{display:flex!important;align-items:center!important;justify-content:center!important;height:100%!important;min-height:190px!important;padding:30px!important;box-sizing:border-box!important;text-align:center!important}
+#section-1084 .field--name-field-long-text a{color:#fff!important;font-family:Campton,Karbon,Arial,sans-serif!important;font-size:24px!important;font-weight:700!important;line-height:1.2!important;text-decoration:none!important}
+.rr-404-actions{padding:55px 24px 70px!important;text-align:center!important}
+.rr-404-actions .button{display:inline-block!important}
+@media(max-width:760px){#section-1084 .field--name-field-three-columns{grid-template-columns:1fr!important}}
+"""
+    soup.head.append(style)
+
 def patch_all_html():
     salt = int(hashlib.md5(BIZ["domain"].encode()).hexdigest(), 16)
     for p in html_paths():
@@ -734,6 +816,7 @@ def patch_all_html():
         if not route:
             # data/rendered fragment; infer from filename/stem when possible
             route = "/" + p.stem.replace("__", "/") if p.stem not in {"home", "index"} else "/"
+        polish_not_found(soup, route)
         set_metadata(soup, route)
         replace_visible_address(soup)
         replace_banned_phrases(soup, salt)

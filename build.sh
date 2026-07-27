@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="/Users/jackgreenberg/Desktop/rank-and-rent"
 S="$ROOT/David/clones/scripts"
 PROJ="$ROOT/commercial-roofing/commercialroofingcontractorslaredo-com"
-REFHOST="dvxsl-com"
+REFHOST="pepperconstruction-com"
 VOICE="$S/voice/commercial-roofing.json"
 CFG="$PROJ/home.config.json"
 MAP="$S/relabel-map-$REFHOST.json"
@@ -30,3 +30,8 @@ python3 "$PROJ/scripts/hobo-seo-finalize.py" "$PROJ"
 mkdir -p "$PROJ/qa-out"
 python3 "$S/verify_site.py" "$PROJ" --map "$MAP" --json "$PROJ/qa-out/verify.json"
 node "$S/qa_shots.mjs" "$PROJ"
+rm -f "$PROJ/public/home.html.ref" \
+  "$PROJ/public/about.html.ref" \
+  "$PROJ/public/contact.html.ref" \
+  "$PROJ/public/index.html.ref" \
+  "$PROJ/public/slug.html.ref"
