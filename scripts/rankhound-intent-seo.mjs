@@ -48,6 +48,39 @@ function sitemapRoutes() {
     .filter(Boolean);
 }
 
+function ensureHomepageInSitemap() {
+  const file = path.join(ROOT, "public", "sitemap.xml");
+  if (!exists(file)) return false;
+  const previous = read(file);
+  const locs = [...previous.matchAll(/<loc>\s*([^<]+?)\s*<\/loc>/gi)].map((match) =>
+    match[1].trim(),
+  );
+  if (!locs.length) return false;
+  let homepage;
+  try {
+    const first = new URL(locs[0].replace(/&amp;/g, "&"));
+    homepage = `${first.protocol}//${first.host}/`;
+  } catch {
+    return false;
+  }
+  const hasHomepage = locs.some((value) => {
+    try {
+      const url = new URL(value.replace(/&amp;/g, "&"));
+      return `${url.protocol}//${url.host}/` === homepage && (url.pathname === "/" || url.pathname === "");
+    } catch {
+      return false;
+    }
+  });
+  if (hasHomepage) return false;
+  const next = previous.replace(
+    /(<urlset\b[^>]*>)/i,
+    `$1\n  <url><loc>${escapeHtml(homepage)}</loc></url>`,
+  );
+  if (next === previous) return false;
+  if (APPLY) fs.writeFileSync(file, next);
+  return true;
+}
+
 function homeRecordCandidates() {
   const found = [];
   const direct = path.join(ROOT, "pages", "home.json");
@@ -471,7 +504,7 @@ function walkRecords(node, file, market, pillars, hint = null, seen = new WeakSe
   if (!node || typeof node !== "object" || seen.has(node)) return 0;
   seen.add(node);
   let count = 0;
-  if (typeof node.html === "string" || node.route || node.path || node.slug) {
+  if (hint || typeof node.html === "string" || node.route || node.path || node.slug) {
     const route = routeFromRecord(node, hint, file);
     if (route && transformRecord(node, route, market, pillars)) count++;
   }
@@ -496,7 +529,13 @@ function jsonFiles() {
       if (entry.isFile() && entry.name.endsWith(".json")) out.push(path.join(dir, entry.name));
     }
   }
-  for (const rel of ["about.json", "data/pages.generated.json", "data/routes.generated.json"]) {
+  for (const rel of [
+    "about.json",
+    "data/pages.generated.json",
+    "data/routes.generated.json",
+    "data/rendered-pages.json",
+    "public/route-map.json",
+  ]) {
     const file = path.join(ROOT, rel);
     if (exists(file)) out.push(file);
   }
@@ -528,11 +567,19 @@ function routeFromHtmlFile(file, manifestMap) {
   const fromManifest = manifestMap.get(path.resolve(file));
   if (fromManifest) return fromManifest;
   const rel = path.relative(ROOT, file).replace(/\\/g, "/");
-  if (/^(?:public\/(?:__static-pages\/)?|data\/rendered-pages\/)(?:home|index|root)(?:\/index)?\.html$/i.test(rel)) return "/";
+  if (
+    /^(?:public\/(?:__static-pages|rendered|rendered-pages|site-pages)\/|data\/rendered-pages\/|rendered\/(?:pages\/)?|\.site\/pages\/)(?:home|index|root)(?:\/index)?\.html$/i.test(
+      rel,
+    )
+  ) {
+    return "/";
+  }
   let value = rel
-    .replace(/^public\/(?:__static-pages\/)?/, "")
+    .replace(/^public\/(?:__static-pages|rendered|rendered-pages|site-pages)\//, "")
     .replace(/^data\/rendered-pages\//, "")
     .replace(/^rendered\/pages\//, "")
+    .replace(/^rendered\//, "")
+    .replace(/^\.site\/pages\//, "")
     .replace(/\/index\.html$/i, "")
     .replace(/\.html$/i, "");
   value = value.replace(/__/g, "/");
@@ -542,8 +589,13 @@ function routeFromHtmlFile(file, manifestMap) {
 function htmlFiles() {
   const dirs = [
     path.join(ROOT, "public", "__static-pages"),
+    path.join(ROOT, "public", "rendered"),
+    path.join(ROOT, "public", "rendered-pages"),
+    path.join(ROOT, "public", "site-pages"),
     path.join(ROOT, "data", "rendered-pages"),
     path.join(ROOT, "rendered", "pages"),
+    path.join(ROOT, "rendered"),
+    path.join(ROOT, ".site", "pages"),
   ];
   const direct = [path.join(ROOT, "public", "home.html"), path.join(ROOT, "public", "index.html"), path.join(ROOT, "public", "root.html")];
   const out = direct.filter(exists);
@@ -568,6 +620,7 @@ function writeIfChanged(file, next, previous) {
   return true;
 }
 
+const sitemapChanged = ensureHomepageInSitemap();
 const routes = sitemapRoutes();
 const market = deriveMarket();
 const pillars = selectPillars(routes);
@@ -610,6 +663,7 @@ const report = {
   jsonFilesChanged,
   recordsChanged,
   htmlFilesChanged,
+  sitemapChanged,
 };
 console.log(JSON.stringify(report));
 
