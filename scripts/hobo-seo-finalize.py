@@ -247,6 +247,8 @@ def set_metadata(soup: BeautifulSoup, route: str):
     else:
         t = soup.new_tag("title"); t.string = title; soup.head.append(t)
     for tag in list(soup.head.find_all("meta")):
+        if not getattr(tag, "attrs", None):
+            continue
         if tag.get("name") in {
             "description", "robots", "twitter:card", "twitter:title",
             "twitter:description", "twitter:image", "twitter:image:alt",
@@ -261,6 +263,8 @@ def set_metadata(soup: BeautifulSoup, route: str):
     robots = "noindex, follow" if route == "/404" else "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     upsert_meta(soup, "name", "robots", robots)
     for link in soup.head.find_all("link"):
+        if not getattr(link, "attrs", None):
+            continue
         rel = link.get("rel") or []
         rels = [r.lower() for r in (rel if isinstance(rel, list) else str(rel).split())]
         if "canonical" in rels:
@@ -294,60 +298,98 @@ def set_metadata(soup: BeautifulSoup, route: str):
 
 def map_embed(address: str) -> str:
     src = "https://www.google.com/maps?q=" + quote(address) + "&output=embed"
-    return f'<div data-rh-map="true"><iframe title="Map for {html.escape(BIZ["name"])}" src="{src}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
+    return f'<div data-rh-map="true"><iframe title="Service area map" src="{src}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
 
-def replace_visible_address(soup: BeautifulSoup):
+def replace_visible_address(soup: BeautifulSoup, route: str):
     address = BIZ["address"]
     if not address or not soup.body:
         return
-    embed = map_embed(address)
-    exact = address
+    is_contact = route.rstrip("/") in {"/contact", "/contact-us"}
     street = address.split(",")[0].strip()
-    zip_match = re.search(r"\b\d{5}(?:-\d{4})?\b", address)
+    zip_match = re.search(r"\\b\\d{5}(?:-\\d{4})?\\b", address)
     postal = zip_match.group(0) if zip_match else ""
-    found_exact_address = False
-    # Replace exact address text in visible body text nodes only.
+
+    # Remove inherited and previously injected maps before placing the one
+    # intentional contact-page embed.
+    for node in list(soup.body.select("[data-rh-map]")):
+        node.decompose()
+    for frame in list(soup.body.find_all("iframe")):
+        src = clean(frame.get("src")).lower()
+        if "google." in src and "/maps" in src:
+            frame.decompose()
+
+    contact_slot = None
     for node in list(soup.body.find_all(string=True)):
         parent = node.parent
-        if parent and parent.name in {"script", "style", "noscript", "template", "iframe"}:
+        if parent and parent.name in {"iframe"}:
             continue
-        txt = str(node)
-        if exact in txt:
-            found_exact_address = True
-            parts = txt.split(exact)
-            frag = BeautifulSoup("", "html.parser")
-            for i, part in enumerate(parts):
-                if part:
-                    frag.append(NavigableString(part))
-                if i < len(parts) - 1:
-                    frag.append(BeautifulSoup(embed, "html.parser"))
-            node.replace_with(frag)
-    # Replace split address blocks such as:
-    # 123 Main St, Suite 100<br>City, ST 12345
-    split_candidates = sorted(
-        list(soup.body.find_all(["p", "address", "li", "span", "div"])),
-        key=lambda t: len(t.get_text(" ", strip=True)),
+        text = str(node)
+        if address not in text:
+            continue
+        if is_contact and contact_slot is None and not parent.find_parent("footer"):
+            contact_slot = parent
+        node.replace_with(NavigableString(text.replace(address, "")))
+
+    # Catch compact split-address blocks such as a street line followed by
+    # city/state/postal text.
+    candidates = sorted(
+        list(soup.body.find_all(["p", "address", "li", "span", "div", "td"])),
+        key=lambda tag: len(tag.get_text(" ", strip=True)),
     )
-    for tag in split_candidates:
+    for tag in candidates:
         if tag.find_parent(["script", "style", "noscript", "template", "iframe"]):
             continue
-        if tag.find("form"):
+        if tag.find("form") or tag.select_one("[data-rh-map]"):
             continue
-        if tag.select_one("[data-rh-map]"):
-            continue
-        text = tag.get_text(" ", strip=True)
+        text = re.sub(r"\s+", " ", tag.get_text(" ", strip=True).replace("\xa0", " "))
+        normalized_street = re.sub(r"\s+", " ", street.replace("\xa0", " "))
         if len(text) > 520:
             continue
-        has_street = bool(street and street in text)
-        has_place = bool((BIZ["city"] and BIZ["city"] in text) or (BIZ["state"] and re.search(rf"\b{re.escape(BIZ['state'])}\b", text)) or (postal and postal in text))
+        has_street = bool(normalized_street and normalized_street in text)
+        has_place = bool(
+            (BIZ["city"] and BIZ["city"] in text)
+            or (postal and postal in text)
+        )
         if has_street and has_place:
+            if is_contact and contact_slot is None and not tag.find_parent("footer"):
+                contact_slot = tag
             tag.clear()
-            tag.append(BeautifulSoup(embed, "html.parser"))
-            found_exact_address = True
-    # Only add an embed when a visible physical address was actually present.
-    if found_exact_address and not soup.body.select_one("[data-rh-map]"):
-        target = soup.find("footer") if soup.find("footer") else soup.body
-        target.append(BeautifulSoup(embed, "html.parser"))
+
+    # Address strings in body CSS/JS can still render through generated
+    # content, so remove them too. The metadata copy remains in <head>.
+    for node in list(soup.body.find_all(string=True)):
+        if node.parent and node.parent.name == "iframe":
+            continue
+        text = str(node)
+        if address in text:
+            node.replace_with(NavigableString(text.replace(address, "")))
+    for tag in soup.body.find_all(True):
+        for key, value in list(tag.attrs.items()):
+            values = value if isinstance(value, list) else [value]
+            if not any(address in str(item) for item in values):
+                continue
+            if tag.name == "iframe" and key == "src":
+                continue
+            if isinstance(value, list):
+                tag[key] = [str(item).replace(address, "") for item in value]
+            else:
+                tag[key] = str(value).replace(address, "")
+
+    if not is_contact:
+        return
+    embed = BeautifulSoup(map_embed(address), "html.parser").find()
+    if contact_slot and contact_slot.parent and contact_slot.name not in {"html", "body", "main"}:
+        if contact_slot.name == "a":
+            contact_slot.replace_with(embed)
+        else:
+            contact_slot.clear()
+            contact_slot.append(embed)
+        return
+    footer = soup.find("footer")
+    if footer:
+        footer.insert_before(embed)
+    else:
+        soup.body.append(embed)
 
 def replace_banned_phrases(soup: BeautifulSoup, salt: int):
     for node in list(soup.find_all(string=True)):
@@ -425,7 +467,7 @@ def ensure_mobile_dropdown_assets(soup: BeautifulSoup):
         return
     style = soup.new_tag("style", id="rh-seo-finalizer-css")
     style.string = """
-[data-rh-map]{width:min(680px,100%);margin:16px 0;overflow:hidden;border:0}[data-rh-map] iframe{display:block;width:100%;height:240px;border:0}img,video,iframe{max-width:100%}footer a[href='/sitemap.xml']{white-space:nowrap}.rh-seo-dropdown-menu{position:absolute;z-index:9999;display:none;min-width:240px;max-width:min(92vw,360px);padding:12px;margin-top:8px;background:#fff;color:#111;box-shadow:0 18px 45px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.12)}.rh-seo-dropdown-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}.rh-seo-dropdown-menu a{display:block!important;padding:9px 10px!important;color:inherit!important;text-decoration:none!important;line-height:1.25!important;white-space:normal!important}.rh-seo-dropdown-menu a:hover,.rh-seo-dropdown-menu a:focus{background:rgba(0,0,0,.06)}header [data-rh-dropdown-host]{position:relative!important}header [data-rh-dropdown-host].rh-open>.rh-seo-dropdown-menu,header [data-rh-dropdown-host]:hover>.rh-seo-dropdown-menu,header [data-rh-dropdown-host]:focus-within>.rh-seo-dropdown-menu{display:block}@media(max-width:900px){.rh-seo-dropdown-menu{display:none!important}[data-rh-map] iframe{height:210px}body{overflow-x:hidden}footer nav,footer ul{max-width:100%;flex-wrap:wrap}}
+[data-rh-map]{width:min(960px,calc(100% - 32px));margin:32px auto;overflow:hidden;border:0;min-height:240px}[data-rh-map] iframe{display:block;width:100%;height:clamp(240px,32vw,360px);border:0}img,video,iframe{max-width:100%}footer a[href='/sitemap.xml']{white-space:nowrap}.rh-seo-dropdown-menu{position:absolute;z-index:9999;display:none;min-width:240px;max-width:min(92vw,360px);padding:12px;margin-top:8px;background:#fff;color:#111;box-shadow:0 18px 45px rgba(0,0,0,.18);border:1px solid rgba(0,0,0,.12)}.rh-seo-dropdown-menu::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}.rh-seo-dropdown-menu a{display:block!important;padding:9px 10px!important;color:inherit!important;text-decoration:none!important;line-height:1.25!important;white-space:normal!important}.rh-seo-dropdown-menu a:hover,.rh-seo-dropdown-menu a:focus{background:rgba(0,0,0,.06)}header [data-rh-dropdown-host]{position:relative!important}header [data-rh-dropdown-host].rh-open>.rh-seo-dropdown-menu,header [data-rh-dropdown-host]:hover>.rh-seo-dropdown-menu,header [data-rh-dropdown-host]:focus-within>.rh-seo-dropdown-menu{display:block}@media(max-width:900px){.rh-seo-dropdown-menu{display:none!important}[data-rh-map] iframe{height:210px}body{overflow-x:hidden}footer nav,footer ul{max-width:100%;flex-wrap:wrap}}
 """
     soup.head.append(style)
     if soup.find("script", id="rh-seo-dropdowns"):
@@ -818,7 +860,7 @@ def patch_all_html():
             route = "/" + p.stem.replace("__", "/") if p.stem not in {"home", "index"} else "/"
         polish_not_found(soup, route)
         set_metadata(soup, route)
-        replace_visible_address(soup)
+        replace_visible_address(soup, route)
         replace_banned_phrases(soup, salt)
         ensure_footer_links(soup)
         ensure_mobile_dropdown_assets(soup)
