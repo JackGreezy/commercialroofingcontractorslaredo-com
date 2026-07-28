@@ -445,4 +445,182 @@
     });
     form.dataset.rrAsyncReady = "true";
   }
+
+  const getDropdownHosts = () => [...document.querySelectorAll(
+    "header [data-rh-dropdown-host]"
+  )].filter((host) => host.querySelector(".rh-seo-dropdown-menu") || host.__rrDropdownMenu);
+  const closeDropdowns = (except = null) => {
+    for (const host of getDropdownHosts()) {
+      if (host === except) continue;
+      host.__rrCloseDropdown?.();
+    }
+  };
+  const enhanceDropdowns = () => {
+    for (const host of getDropdownHosts()) {
+      if (host.dataset.rrDropdownReady === "true") continue;
+      const menu = host.querySelector(":scope > .rh-seo-dropdown-menu,.rh-seo-dropdown-menu");
+      const trigger = host.querySelector(":scope > a, :scope > [role='button'] a, :scope > [role='button']");
+      if (!menu || !trigger) continue;
+      const links = [...menu.querySelectorAll("a[href]")];
+      if (!links.length) continue;
+      const marker = document.createComment("rr-dropdown-origin");
+      menu.before(marker);
+      let closeTimer;
+      let suppressPointerOpenUntil = 0;
+      const positionMenu = () => {
+        const triggerRect = trigger.getBoundingClientRect();
+        const viewportPadding = 12;
+        menu.style.setProperty("top", `${Math.round(triggerRect.bottom - 1)}px`, "important");
+        menu.style.setProperty("left", `${Math.round(triggerRect.left)}px`, "important");
+        const menuRect = menu.getBoundingClientRect();
+        const clampedLeft = Math.max(
+          viewportPadding,
+          Math.min(triggerRect.left, innerWidth - menuRect.width - viewportPadding)
+        );
+        menu.style.setProperty("left", `${Math.round(clampedLeft)}px`, "important");
+      };
+      const portalMenu = () => {
+        if (menu.parentElement !== document.body) document.body.appendChild(menu);
+        menu.classList.add("rr-dropdown-portal");
+        positionMenu();
+      };
+      const restoreMenu = () => {
+        menu.classList.remove("rr-dropdown-portal-open");
+      };
+      const setOpen = (open, focusFirst = false) => {
+        window.clearTimeout(closeTimer);
+        if (open) {
+          closeDropdowns(host);
+          portalMenu();
+          host.classList.add("rh-open");
+          menu.classList.add("rr-dropdown-portal-open");
+          trigger.setAttribute("aria-expanded", "true");
+          requestAnimationFrame(() => {
+            positionMenu();
+            if (focusFirst) links[0].focus();
+          });
+        } else {
+          host.classList.remove("rh-open");
+          trigger.setAttribute("aria-expanded", "false");
+          restoreMenu();
+        }
+      };
+      host.__rrCloseDropdown = (suppressPointer = false) => {
+        if (suppressPointer) suppressPointerOpenUntil = performance.now() + 320;
+        setOpen(false);
+      };
+      host.__rrDropdownMenu = menu;
+      host.__rrPositionDropdown = positionMenu;
+      const scheduleClose = () => {
+        window.clearTimeout(closeTimer);
+        closeTimer = window.setTimeout(() => {
+          if (!host.matches(":hover") &&
+              !menu.matches(":hover") &&
+              !host.contains(document.activeElement) &&
+              !menu.contains(document.activeElement)) {
+            setOpen(false);
+          }
+        }, 260);
+      };
+      const focusLink = (index) => links[(index + links.length) % links.length].focus();
+
+      menu.setAttribute("aria-hidden", "false");
+      trigger.setAttribute("aria-haspopup", "menu");
+      trigger.setAttribute("aria-expanded", "false");
+      host.addEventListener("pointerenter", () => {
+        if (performance.now() >= suppressPointerOpenUntil) setOpen(true);
+      });
+      host.addEventListener("pointerleave", scheduleClose);
+      menu.addEventListener("pointerenter", () => {
+        window.clearTimeout(closeTimer);
+        menu.classList.add("rr-dropdown-portal-open");
+      });
+      menu.addEventListener("pointerleave", scheduleClose);
+      host.addEventListener("focusout", (event) => {
+        if (!host.contains(event.relatedTarget) && !menu.contains(event.relatedTarget)) scheduleClose();
+      });
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown" || event.key === " ") {
+          event.preventDefault();
+          setOpen(true, true);
+        }
+        if (event.key === "Escape") {
+          event.preventDefault();
+          host.__rrCloseDropdown?.(true);
+          trigger.focus();
+        }
+      });
+      trigger.addEventListener("click", (event) => {
+        if (matchMedia("(hover: none) and (pointer: coarse)").matches &&
+            !host.classList.contains("rh-open")) {
+          event.preventDefault();
+          setOpen(true);
+        }
+      });
+      menu.addEventListener("keydown", (event) => {
+        const current = Math.max(0, links.indexOf(document.activeElement));
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          focusLink(current + 1);
+        } else if (event.key === "ArrowUp") {
+          event.preventDefault();
+          focusLink(current - 1);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          focusLink(0);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          focusLink(links.length - 1);
+        } else if (event.key === "Escape") {
+          event.preventDefault();
+          host.__rrCloseDropdown?.(true);
+          trigger.focus();
+        }
+      });
+      for (const link of links) link.addEventListener("click", () => setOpen(false));
+      host.dataset.rrDropdownReady = "true";
+    }
+  };
+  if (!document.documentElement.dataset.rrDropdownDelegation) {
+    document.documentElement.dataset.rrDropdownDelegation = "true";
+    document.addEventListener("pointerdown", (event) => {
+      const inside = getDropdownHosts().some((host) =>
+        host.contains(event.target) ||
+        host.__rrDropdownMenu?.contains?.(event.target)
+      );
+      if (!inside) closeDropdowns();
+    }, true);
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      const openHost = getDropdownHosts().find((host) =>
+        host.classList.contains("rh-open") ||
+        host.__rrDropdownMenu?.classList.contains("rr-dropdown-portal-open")
+      );
+      if (!openHost) return;
+      openHost.__rrCloseDropdown?.(true);
+      const trigger = openHost.querySelector(":scope > a, :scope > [role='button'] a, :scope > [role='button']");
+      trigger?.focus();
+    });
+    addEventListener("resize", () => {
+      for (const host of getDropdownHosts()) {
+        if (host.__rrDropdownMenu?.classList.contains("rr-dropdown-portal-open")) {
+          host.__rrPositionDropdown?.();
+        }
+      }
+    });
+    addEventListener("scroll", () => {
+      for (const host of getDropdownHosts()) {
+        if (host.__rrDropdownMenu?.classList.contains("rr-dropdown-portal-open")) {
+          host.__rrPositionDropdown?.();
+        }
+      }
+    }, true);
+  }
+  enhanceDropdowns();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", enhanceDropdowns, { once: true });
+  }
+  window.setTimeout(enhanceDropdowns, 0);
+  window.setTimeout(enhanceDropdowns, 250);
+  window.setTimeout(enhanceDropdowns, 750);
 })();

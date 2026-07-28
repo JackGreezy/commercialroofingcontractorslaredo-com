@@ -7,6 +7,165 @@
   --rr-taste-line: rgba(0, 38, 62, 0.18);
 }
 
+/* Keep each cloned header, but make its taxonomy dropdowns readable and selectable. */
+@media (min-width: 901px) {
+  html body header,
+  html body header :where(nav, ul, li, [class*="menu"], [class*="Menu"]) {
+    overflow: visible !important;
+  }
+
+  html body header {
+    isolation: isolate !important;
+    position: relative !important;
+    z-index: 10000 !important;
+  }
+
+  html body header [data-rh-dropdown-host] {
+    position: relative !important;
+    z-index: 10010 !important;
+  }
+
+  html body header .rh-seo-dropdown-menu {
+    background: #fff !important;
+    border: 1px solid rgba(15, 23, 42, 0.16) !important;
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.2) !important;
+    box-sizing: border-box !important;
+    color: #111827 !important;
+    height: auto !important;
+    left: 0 !important;
+    margin: 0 !important;
+    max-height: min(70vh, 560px) !important;
+    max-width: min(380px, calc(100vw - 32px)) !important;
+    min-width: min(300px, calc(100vw - 32px)) !important;
+    opacity: 1 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 10px !important;
+    pointer-events: auto !important;
+    right: auto !important;
+    top: calc(100% - 1px) !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: max-content !important;
+    z-index: 10020 !important;
+  }
+
+  html body header [data-rh-dropdown-host][data-rr-dropdown-align="right"] > .rh-seo-dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  html body header .rh-seo-dropdown-menu::before {
+    background: transparent !important;
+    content: "" !important;
+    display: block !important;
+    height: 12px !important;
+    left: 0 !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: -12px !important;
+  }
+
+  html body header .rh-seo-dropdown-menu a,
+  html body header .rh-seo-dropdown-menu a:link,
+  html body header .rh-seo-dropdown-menu a:visited {
+    background: transparent !important;
+    box-sizing: border-box !important;
+    color: #111827 !important;
+    display: block !important;
+    font-family: inherit !important;
+    font-size: 0.92rem !important;
+    font-weight: 650 !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    min-height: 42px !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 11px 12px !important;
+    pointer-events: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    visibility: visible !important;
+    white-space: normal !important;
+  }
+
+  html body header .rh-seo-dropdown-menu a:hover,
+  html body header .rh-seo-dropdown-menu a:focus-visible {
+    background: #eef1f4 !important;
+    color: #0b1728 !important;
+    outline: 2px solid var(--rr-taste-accent) !important;
+    outline-offset: -2px !important;
+  }
+}
+
+@media (min-width: 901px) {
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal {
+    background: #fff !important;
+    border: 1px solid rgba(15, 23, 42, 0.16) !important;
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.2) !important;
+    box-sizing: border-box !important;
+    color: #111827 !important;
+    display: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    max-height: min(70vh, 560px) !important;
+    max-width: min(380px, calc(100vw - 32px)) !important;
+    min-width: min(300px, calc(100vw - 32px)) !important;
+    opacity: 1 !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 10px !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    right: auto !important;
+    transform: none !important;
+    visibility: visible !important;
+    width: max-content !important;
+    z-index: 2147483000 !important;
+  }
+
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal.rr-dropdown-portal-open {
+    display: block !important;
+  }
+
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal a,
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal a:link,
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal a:visited {
+    background: transparent !important;
+    box-sizing: border-box !important;
+    color: #111827 !important;
+    display: block !important;
+    font-family: inherit !important;
+    font-size: 0.92rem !important;
+    font-weight: 650 !important;
+    height: auto !important;
+    letter-spacing: normal !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    min-height: 42px !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    padding: 11px 12px !important;
+    pointer-events: auto !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    visibility: visible !important;
+    white-space: normal !important;
+  }
+
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal a:hover,
+  html body .rh-seo-dropdown-menu.rr-dropdown-portal a:focus-visible {
+    background: #eef1f4 !important;
+    color: #0b1728 !important;
+    outline: 2px solid var(--rr-taste-accent) !important;
+    outline-offset: -2px !important;
+  }
+}
+
 /* Equal, content-safe cards within this site's existing grid system. */
 .ftb-items-project,
 .ftb-items,
