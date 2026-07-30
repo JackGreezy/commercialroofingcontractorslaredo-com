@@ -493,7 +493,7 @@ def ensure_mobile_dropdown_assets(soup: BeautifulSoup):
     const header = document.querySelector('header'); if(!header) return;
     Object.keys(data).forEach(function(route){
       header.querySelectorAll('a[href="'+route+'"],a[href="'+route.replace(/^\//,'')+'"]').forEach(function(anchor){
-        if(anchor.dataset.rhDropdownReady) return;
+        if(anchor.dataset.rhDropdownReady || anchor.hasAttribute("data-rr-dropdown-trigger") || anchor.closest(".rr-dropdown-host")) return;
         const host = anchor.parentElement || anchor;
         host.dataset.rhDropdownHost = 'true';
         const menu = document.createElement('div'); menu.className = 'rh-seo-dropdown-menu'; menu.setAttribute('role','menu');
