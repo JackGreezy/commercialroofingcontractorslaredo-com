@@ -1,5 +1,18 @@
 import { sendLeadEmails } from "../../../lib/email/sendgrid.js";
 
+function isBlockedContactName(body) {
+  const source = body instanceof FormData
+    ? Object.fromEntries(body.entries())
+    : body && typeof body === "object" ? body : {};
+  const first = String(source.firstName ?? source.first_name ?? source.first ?? "");
+  const last = String(source.lastName ?? source.last_name ?? source.last ?? "");
+  const candidates = [source.name, source.fullName, source.full_name, source.contactName, [first, last].filter(Boolean).join(" ")];
+  return candidates.some((value) => {
+    const normalized = String(value ?? "").toLowerCase().replace(/[^a-z]+/g, " ").trim();
+    return normalized === "joanna riggs" || normalized === "trey webb" || normalized === "trey web";
+  });
+}
+
 export const runtime = "nodejs";
 
 const buckets = new Map();
@@ -162,6 +175,10 @@ export async function POST(request) {
   }
 
   if (clean(body._company) || clean(body.website)) return json({ ok: true, success: true }, 200, headers);
+
+  if (isBlockedContactName(body)) {
+    return json({ ok: true, success: true, message: "Your request has been received." }, 200, headers);
+  }
 
   const lead = normalizeLead(body, request);
   if (isMarketingSpam(lead)) {
