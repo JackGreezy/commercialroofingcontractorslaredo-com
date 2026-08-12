@@ -10,7 +10,7 @@ const scriptTag = '<script defer id="rr-website-taste-js" src="/website-taste.js
 const contactForm = `<form action="/api/submit" class="rr-contact-form" data-contact-form method="post">
 <input name="page" type="hidden" value="/contact"/>
 <input name="serviceType" type="hidden" value="Commercial Roofing"/>
-<input aria-hidden="true" autocomplete="off" class="hp-field" name="_company" tabindex="-1" type="text"/>
+<input aria-hidden="true" autocomplete="off" name="_company" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden" tabindex="-1" type="text"/>
 <label class="rr-contact-field">Name
 <input autocomplete="name" name="name" placeholder="Your name" required type="text"/>
 </label>
@@ -37,7 +37,7 @@ const contactForm = `<form action="/api/submit" class="rr-contact-form" data-con
 <textarea name="notes" placeholder="Tell us about the roof, issue, access, and schedule" required rows="7"></textarea>
 </label>
 <button class="rr-contact-submit" type="submit">Send Roof Request</button>
-<p aria-live="polite" class="form-status" data-form-status role="status"></p>
+<p aria-live="polite" data-form-status role="status"></p>
 </form>`;
 
 const files = [];

@@ -3,9 +3,10 @@
   "name": "Commercial Roofing Contractors of Laredo",
   "city": "Laredo",
   "region": "Laredo, Webb County, and nearby South Texas communities",
-  "phone": "555-555-6150",
+  "phone": "",
   "email": "sales@commercialroofingcontractorslaredo.com",
-  "domain": "commercialroofingcontractorslaredo.com"
+  "domain": "commercialroofingcontractorslaredo.com",
+  "vertical": "commercial-roofing"
  },
  "taxonomies": {
   "locations": {

@@ -288,9 +288,11 @@ def set_metadata(soup: BeautifulSoup, route: str):
         old.decompose()
     lb = {
         "@context": "https://schema.org", "@type": "RoofingContractor", "name": BIZ["name"],
-        "url": SITE + "/", "telephone": BIZ["phone"], "email": BIZ["email"], "image": og_image,
+        "url": SITE + "/", "email": BIZ["email"], "image": og_image,
         "areaServed": BIZ["region"] or BIZ["city"], "address": {"@type": "PostalAddress", "streetAddress": BIZ["address"]},
     }
+    if BIZ["phone"]:
+        lb["telephone"] = BIZ["phone"]
     script = soup.new_tag("script", type="application/ld+json")
     script["data-rh-localbusiness"] = "true"
     script.string = json.dumps(lb, ensure_ascii=False)
@@ -589,6 +591,8 @@ def legal_section(kind: str, date: str) -> str:
             f"Contact {email} or {phone} with questions about information submitted through the website.",
             f"For changes to a submitted inquiry or communication preference, use {email} or {phone}.",
         ][v]
+        if not phone:
+            choices = f"Questions, corrections, and requests to stop active follow-up can be sent to {email}."
         security = [
             "No website transmission can be guaranteed perfectly secure, but the site is maintained with reasonable safeguards, form validation, HTTPS hosting, and abuse-prevention measures.",
             "The site uses practical safeguards such as HTTPS, form validation, spam controls, and routine technical maintenance.",
@@ -660,6 +664,8 @@ def legal_section(kind: str, date: str) -> str:
         f"Contact {email} or {phone} with questions about website use.",
         f"To ask about these terms, use {email} or {phone}.",
     ][v]
+    if not phone:
+        contact = f"Questions about these terms or a submitted inquiry can be sent to {email}."
     return f"""<main><section><h1>{title}</h1><p><strong>Effective date:</strong> {date}</p><p>{openers[v]}</p><h2>General website information</h2><p>{info}</p><h2>Responsible use</h2><p>{use}</p><h2>Inquiries and project discussions</h2><p>{response}</p><h2>Technical services</h2><p>{third}</p><h2>Contact</h2><p>{contact}</p></section></main>"""
 
 def remove_legacy_legal_content(soup: BeautifulSoup, kind: str):
