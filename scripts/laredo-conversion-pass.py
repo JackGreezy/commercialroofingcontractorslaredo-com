@@ -24,7 +24,7 @@ def replace_text(node, text: str):
 def remove_fake_phone(soup: BeautifulSoup):
     for link in list(soup.select('a[href^="tel:"]')):
         href = re.sub(r"\D", "", link.get("href", ""))
-        if href == FAKE_TEL or FAKE_DISPLAY in link.get_text(" ", strip=True):
+        if href in {FAKE_TEL, "15555555555"} or FAKE_DISPLAY in link.get_text(" ", strip=True):
             parent = link.find_parent("li")
             (parent or link).decompose()
     for text in list(soup.find_all(string=lambda value: value and FAKE_DISPLAY in value)):
@@ -60,6 +60,18 @@ def set_home_metadata(soup: BeautifulSoup):
 def home_pass(soup: BeautifulSoup):
     soup.body["data-laredo-home"] = "true"
     set_home_metadata(soup)
+
+    # This pass may run before every release. Recreate each conversion section
+    # once so repeated builds never stack duplicate homepage content.
+    for marker in (
+        "data-laredo-emergency",
+        "data-laredo-decision",
+        "data-laredo-report",
+        "data-laredo-service",
+        "data-laredo-faq",
+    ):
+        for node in soup.select(f"[{marker}]"):
+            node.decompose()
 
     slides = soup.select("#highlighted .slide")
     if slides:
