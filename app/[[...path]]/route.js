@@ -35,7 +35,7 @@ function decorate(html, request) {
   if (!html) return html;
   let output = html.replace(
     /<link rel="icon" href="#" type="image\/vnd\.microsoft\.icon">/i,
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">'
+    '<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">'
   );
   const url = new URL(request.url);
   if (url.searchParams.get("submitted") === "1" && /<\/form>/i.test(output)) {
