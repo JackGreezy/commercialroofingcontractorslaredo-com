@@ -30,6 +30,7 @@ python3 "$PROJ/scripts/hobo-seo-finalize.py" "$PROJ"
 node "$PROJ/scripts/website-taste-pass.mjs"
 python3 "$PROJ/scripts/laredo-conversion-pass.py"
 mkdir -p "$PROJ/qa-out"
+node "$PROJ/scripts/finalize-lead-controls.mjs" "$PROJ"
 python3 "$S/verify_site.py" "$PROJ" --map "$MAP" --json "$PROJ/qa-out/verify.json"
 node "$S/qa_shots.mjs" "$PROJ"
 rm -f "$PROJ/public/home.html.ref" \
