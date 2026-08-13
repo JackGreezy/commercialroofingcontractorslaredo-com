@@ -24,6 +24,7 @@ const runtimeFormSources = new Set([
   "app/ContactHydrator.tsx",
   "app/lib/sitePage.tsx",
   "app/san-antonio-homepage.js",
+  "app/site-renderer.jsx",
   "lib/generated-pages.mjs",
   "lib/site-html.js",
 ]);
@@ -312,9 +313,30 @@ function normalizeText(text) {
   return { output, changed };
 }
 
+function filesystemFiles(repo) {
+  const files = [];
+  function visit(directory, relativeDirectory = "") {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (skippedParts.has(entry.name)) continue;
+      const relative = relativeDirectory ? path.join(relativeDirectory, entry.name) : entry.name;
+      const absolute = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(absolute, relative);
+      else if (entry.isFile()) files.push(relative.split(path.sep).join("/"));
+    }
+  }
+  visit(repo);
+  return files;
+}
+
 function trackedFiles(repo) {
-  const output = execFileSync("git", ["-C", repo, "ls-files", "-z"], { encoding: "buffer" });
-  return output.toString("utf8").split("\0").filter(Boolean).filter((relative) => {
+  let files;
+  try {
+    const output = execFileSync("git", ["-C", repo, "ls-files", "-z"], { encoding: "buffer", stdio: ["ignore", "pipe", "ignore"] });
+    files = output.toString("utf8").split("\0").filter(Boolean);
+  } catch {
+    files = filesystemFiles(repo);
+  }
+  return files.filter((relative) => {
     const parts = relative.split("/");
     return relative !== "scripts/normalize-contact-forms.mjs" &&
       (path.extname(relative).toLowerCase() === ".html" || runtimeFormSources.has(relative)) &&
