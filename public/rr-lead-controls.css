@@ -5,6 +5,7 @@
 [data-rr-mobile-phone]{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:2147483000;display:none;width:58px;height:58px;align-items:center;justify-content:center;border:2px solid color-mix(in srgb,var(--rr-call-color,#fff) 72%,transparent);border-radius:999px;background:var(--rr-call-bg,#173f55);color:var(--rr-call-color,#fff);box-shadow:0 10px 30px rgba(0,0,0,.3);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
 [data-rr-mobile-phone]:hover,[data-rr-mobile-phone]:focus-visible{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.36)}
 [data-rr-mobile-phone] svg{width:27px;height:27px}
+[data-rr-mobile-cta-suppressed],[data-rr-menu-duplicate]{display:none!important;visibility:hidden!important;pointer-events:none!important}
 [data-rr-contact-callout]{display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;margin:0 0 24px;padding:18px 20px;border:1px solid color-mix(in srgb,currentColor 22%,transparent);background:color-mix(in srgb,currentColor 5%,transparent);box-sizing:border-box}
 [data-rr-contact-callout] p{margin:0!important}
 [data-rr-contact-callout] strong{display:block;font:inherit;font-weight:700}
@@ -13,21 +14,28 @@
 .rr-fallback-carousel-controls{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:18px 0 0}
 .rr-fallback-carousel-controls .rr-carousel-control{display:grid;place-items:center;width:46px;height:46px;padding:0;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}
 .rr-fallback-carousel-controls .rr-carousel-control svg{width:21px;height:21px}
+html[data-rr-page-kind="home"] .rr-carousel-control{position:relative!important;z-index:2147482200!important;pointer-events:auto!important;touch-action:manipulation!important}
+[data-rr-carousel-control-retired]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+html:not([data-rr-page-kind="home"]) .rr-fallback-carousel-controls{display:none!important;visibility:hidden!important;pointer-events:none!important}
+html[data-rr-page-kind="slug"] [data-swiper-navigation],html[data-rr-page-kind="slug"] .glide__arrows{display:none!important;visibility:hidden!important;pointer-events:none!important}
 
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel{overflow:visible!important;height:auto!important;max-height:none!important}
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-list,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-container,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__track,
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel .glide__track,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-stage-outer{overflow:visible!important;height:auto!important;max-height:none!important}
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-track,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-wrapper,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__list,
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel .glide__slides,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-stage,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel [data-rr-track]{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))!important;gap:20px!important;width:100%!important;height:auto!important;max-height:none!important;transform:none!important;translate:none!important;left:auto!important}
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-slide,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-slide,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__slide,
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel .glide__slide,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-item,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel [data-rr-slide]{position:relative!important;inset:auto!important;display:block!important;width:auto!important;max-width:100%!important;height:auto!important;margin:0!important;opacity:1!important;visibility:visible!important;transform:none!important;translate:none!important}
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel.rr-detail-static-single .slick-slide:not(:first-child),
@@ -39,12 +47,14 @@ html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-arrow,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-button-prev,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-button-next,
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__arrows,
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel .glide__arrows,
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel [data-swiper-navigation],
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-nav,
-html[data-rr-page-kind="slug"] .rr-detail-static-carousel [class*="carousel-control"],
-html[data-rr-page-kind="slug"] .rr-detail-static-carousel [class*="slider-control"],
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel [class*="carousel-control" i],
+html[data-rr-page-kind="slug"] .rr-detail-static-carousel [class*="slider-control" i],
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel [aria-label*="previous" i],
 html[data-rr-page-kind="slug"] .rr-detail-static-carousel [aria-label*="next" i]{display:none!important;pointer-events:none!important}
 
 @media(min-width:901px){[data-rr-desktop-phone]{display:inline-flex!important}}
-@media(max-width:900px){[data-rr-desktop-phone]{display:none!important}[data-rr-mobile-phone]{display:flex!important}[data-rr-contact-callout]{align-items:flex-start;flex-direction:column}[data-rr-contact-callout] a{width:100%;box-sizing:border-box}}
-@media(max-width:640px){html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-track,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-wrapper,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__list,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-stage,html[data-rr-page-kind="slug"] .rr-detail-static-carousel [data-rr-track]{grid-template-columns:1fr!important}}
+@media(max-width:900px){html{max-width:100%!important;overflow-x:clip!important}body{max-width:100%!important}[data-rr-desktop-phone]{display:none!important}[data-rr-mobile-phone]{display:flex!important}[data-rr-contact-callout]{align-items:flex-start;flex-direction:column}[data-rr-contact-callout] a{width:100%;box-sizing:border-box}.rr-burger{position:relative!important;inset:auto!important;flex:0 0 auto!important;min-width:48px!important;min-height:48px!important;box-sizing:border-box!important;padding:0!important;overflow:visible!important;transform:none!important}.rr-burger[data-rr-menu-relocated]{position:absolute!important;top:50%!important;right:12px!important;bottom:auto!important;left:auto!important;margin:0!important;z-index:2147482500!important;transform:translateY(-50%)!important}.rr-burger::before,.rr-burger::after,.rr-burger>svg,.rr-burger>i{display:none!important;content:none!important}.rr-burger>span{position:absolute!important;left:50%!important;right:auto!important;bottom:auto!important;display:block!important;width:26px!important;height:2px!important;margin:0!important;padding:0!important;border:0!important;border-radius:2px!important;background:currentColor!important;opacity:1!important;visibility:visible!important;translate:none!important;transform:translate(-50%,-50%)!important}.rr-burger>span:nth-child(1){top:calc(50% - 7px)!important}.rr-burger>span:nth-child(2){top:50%!important}.rr-burger>span:nth-child(3){top:calc(50% + 7px)!important}}
+@media(max-width:640px){html[data-rr-page-kind="slug"] .rr-detail-static-carousel .slick-track,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .swiper-wrapper,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .splide__list,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .glide__slides,html[data-rr-page-kind="slug"] .rr-detail-static-carousel .owl-stage,html[data-rr-page-kind="slug"] .rr-detail-static-carousel [data-rr-track]{grid-template-columns:1fr!important}}

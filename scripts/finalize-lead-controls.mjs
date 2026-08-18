@@ -26,8 +26,8 @@ const walk = (directory) => {
 };
 walk(publicDir);
 
-const styleTag = '<link href="/rr-lead-controls.css?v=20260813" id="rr-lead-controls-css" rel="stylesheet"/>';
-const scriptTag = '<script defer id="rr-lead-controls-js" src="/rr-lead-controls.js?v=20260813-2"></script>';
+const styleTag = '<link href="/rr-lead-controls.css?v=20260818g" id="rr-lead-controls-css" rel="stylesheet"/>';
+const scriptTag = '<script defer id="rr-lead-controls-js" src="/rr-lead-controls.js?v=20260818g"></script>';
 const payload = JSON.stringify({
   phone: formattedPhone,
   phoneTel,
