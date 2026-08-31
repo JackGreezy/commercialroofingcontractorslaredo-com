@@ -11,7 +11,7 @@
   "email": "sales@commercialroofingcontractorslaredo.com",
   "address": "1005 Zaragoza St, Suite 200, Laredo, TX 78040",
   "vertical": "commercial-roofing",
-  "hero_image": "/ours/locations/commercial-roofing-contractors-laredo-tx-01.webp",
+  "hero_image": "/ours/service-areas/commercial-roofing-contractors-laredo-tx-01.webp",
   "wordmark_l1": "Commercial Roofing Contractors",
   "wordmark_l2": "of Laredo",
   "nav": [
@@ -33,7 +33,7 @@
     ],
     [
       "Service Areas",
-      "/locations"
+      "/service-areas"
     ],
     [
       "Contact",

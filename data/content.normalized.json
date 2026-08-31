@@ -11,7 +11,7 @@
  "taxonomies": {
   "locations": {
    "title": "Service Areas",
-   "route": "/locations",
+   "route": "/service-areas",
    "items": [
     {
      "slug": "killam-industrial-park",
@@ -27,23 +27,23 @@
      "related": [
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Mirando City Was Built by Oil. So Are Its Roofs.",
-       "href": "/locations/mirando-city"
+       "href": "/service-areas/mirando-city"
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "PVC Membrane Roofs for Grease, Chemical, and Rooftop Equipment Exposure",
@@ -93,23 +93,23 @@
      "related": [
       {
        "label": "Roof Work for La Presa's Water District Buildings and Small Stores",
-       "href": "/locations/la-presa"
+       "href": "/service-areas/la-presa"
       },
       {
        "label": "Roofing for the Barns and Storage Buildings Out at Laredo Ranchettes",
-       "href": "/locations/laredo-ranchettes"
+       "href": "/service-areas/laredo-ranchettes"
       },
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Mirando City Was Built by Oil. So Are Its Roofs.",
-       "href": "/locations/mirando-city"
+       "href": "/service-areas/mirando-city"
       },
       {
        "label": "Gravel-Surfaced Built-Up Roofs on Laredo's Government and Legacy Buildings",
@@ -159,23 +159,23 @@
      "related": [
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "PVC Membrane Roofs for Grease, Chemical, and Rooftop Equipment Exposure",
@@ -225,23 +225,23 @@
      "related": [
       {
        "label": "Courthouse-Town Roofing in San Diego, Texas",
-       "href": "/locations/san-diego"
+       "href": "/service-areas/san-diego"
       },
       {
        "label": "Roof Work in a Historic Riverfront Village",
-       "href": "/locations/san-ygnacio"
+       "href": "/service-areas/san-ygnacio"
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Roofing for Falcon Lake's Motels, Marinas, and Zapata County Buildings",
-       "href": "/locations/zapata"
+       "href": "/service-areas/zapata"
       },
       {
        "label": "Working Roofs Along Highway 359 in Aguilares",
-       "href": "/locations/aguilares"
+       "href": "/service-areas/aguilares"
       },
       {
        "label": "Tear-Off and Deck Replacement on Laredo's Industrial Roofs",
@@ -287,23 +287,23 @@
      "related": [
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Keeping Water Moving Off Flat Roofs Built for Big Warehouses",
@@ -353,23 +353,23 @@
      "related": [
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Gravel-Surfaced Built-Up Roofs on Laredo's Government and Legacy Buildings",
@@ -419,23 +419,23 @@
      "related": [
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Documenting Roof Damage the Way an Adjuster Needs to See It",
@@ -485,23 +485,23 @@
      "related": [
       {
        "label": "Roof Work for La Presa's Water District Buildings and Small Stores",
-       "href": "/locations/la-presa"
+       "href": "/service-areas/la-presa"
       },
       {
        "label": "Roofing for the Barns and Storage Buildings Out at Laredo Ranchettes",
-       "href": "/locations/laredo-ranchettes"
+       "href": "/service-areas/laredo-ranchettes"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Mirando City Was Built by Oil. So Are Its Roofs.",
-       "href": "/locations/mirando-city"
+       "href": "/service-areas/mirando-city"
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Repairing Wind and Hail Damage on Laredo's Commercial Roofs",
@@ -551,23 +551,23 @@
      "related": [
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Roofing for Falcon Lake's Motels, Marinas, and Zapata County Buildings",
-       "href": "/locations/zapata"
+       "href": "/service-areas/zapata"
       },
       {
        "label": "Working Roofs Along Highway 359 in Aguilares",
-       "href": "/locations/aguilares"
+       "href": "/service-areas/aguilares"
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Full Reroof Projects for Laredo's Cross-Dock and Cold-Storage Buildings",
@@ -617,23 +617,23 @@
      "related": [
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Roofing the Cross-Dock and Bonded Warehouse Roofs of Killam Industrial Park",
-       "href": "/locations/killam-industrial-park"
+       "href": "/service-areas/killam-industrial-park"
       },
       {
        "label": "Silicone Recoat Systems for Laredo's Aging Flat Roofs",
@@ -683,23 +683,23 @@
      "related": [
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Documenting Roof Damage the Way an Adjuster Needs to See It",
@@ -749,23 +749,23 @@
      "related": [
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Roofing the Cross-Dock and Bonded Warehouse Roofs of Killam Industrial Park",
-       "href": "/locations/killam-industrial-park"
+       "href": "/service-areas/killam-industrial-park"
       },
       {
        "label": "Standing Seam Metal Roofs for Laredo's Retail and Government Buildings",
@@ -815,23 +815,23 @@
      "related": [
       {
        "label": "Working Roofs Along Highway 359 in Aguilares",
-       "href": "/locations/aguilares"
+       "href": "/service-areas/aguilares"
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "PVC Membrane Roofs for Grease, Chemical, and Rooftop Equipment Exposure",
@@ -881,23 +881,23 @@
      "related": [
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Full Reroof Projects for Laredo's Cross-Dock and Cold-Storage Buildings",
@@ -947,23 +947,23 @@
      "related": [
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Keeping Water Moving Off Flat Roofs Built for Big Warehouses",
@@ -1013,23 +1013,23 @@
      "related": [
       {
        "label": "Roofing for the Barns and Storage Buildings Out at Laredo Ranchettes",
-       "href": "/locations/laredo-ranchettes"
+       "href": "/service-areas/laredo-ranchettes"
       },
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Mirando City Was Built by Oil. So Are Its Roofs.",
-       "href": "/locations/mirando-city"
+       "href": "/service-areas/mirando-city"
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "TPO Membrane Roofs for Laredo's Cross-Dock Warehouses",
@@ -1079,23 +1079,23 @@
      "related": [
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Full Reroof Projects for Laredo's Cross-Dock and Cold-Storage Buildings",
@@ -1145,23 +1145,23 @@
      "related": [
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "What a Roof Inspection Actually Covers on a Laredo Warehouse",
@@ -1207,23 +1207,23 @@
      "related": [
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Full Reroof Projects for Laredo's Cross-Dock and Cold-Storage Buildings",
@@ -1273,23 +1273,23 @@
      "related": [
       {
        "label": "Roofing for Falcon Lake's Motels, Marinas, and Zapata County Buildings",
-       "href": "/locations/zapata"
+       "href": "/service-areas/zapata"
       },
       {
        "label": "Working Roofs Along Highway 359 in Aguilares",
-       "href": "/locations/aguilares"
+       "href": "/service-areas/aguilares"
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Modified Bitumen Roofs on Laredo's Older Commercial Buildings",
@@ -1339,23 +1339,23 @@
      "related": [
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Working Roofs Along Highway 359 in Aguilares",
-       "href": "/locations/aguilares"
+       "href": "/service-areas/aguilares"
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Highway Junction Roofing at Botines",
-       "href": "/locations/botines"
+       "href": "/service-areas/botines"
       },
       {
        "label": "Ranch Country Roofs Around Bruni",
-       "href": "/locations/bruni"
+       "href": "/service-areas/bruni"
       },
       {
        "label": "Full Reroof Projects for Laredo's Cross-Dock and Cold-Storage Buildings",
@@ -1405,23 +1405,23 @@
      "related": [
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Mirando City Was Built by Oil. So Are Its Roofs.",
-       "href": "/locations/mirando-city"
+       "href": "/service-areas/mirando-city"
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "EPDM Roofs on Laredo's Older Commercial Buildings",
@@ -1471,23 +1471,23 @@
      "related": [
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Small-Roof Repair for Ranchos Penitas West's Store, Church, and Water Building",
-       "href": "/locations/ranchos-penitas-west"
+       "href": "/service-areas/ranchos-penitas-west"
       },
       {
        "label": "Roof Repair for Rio Bravo's Small Commercial Buildings",
-       "href": "/locations/rio-bravo"
+       "href": "/service-areas/rio-bravo"
       },
       {
        "label": "Courthouse-Town Roofing in San Diego, Texas",
-       "href": "/locations/san-diego"
+       "href": "/service-areas/san-diego"
       },
       {
        "label": "Exposed-Fastener R-Panel Roofs on Laredo's Industrial Buildings",
@@ -1537,23 +1537,23 @@
      "related": [
       {
        "label": "Roofing the Cross-Dock and Bonded Warehouse Roofs of Killam Industrial Park",
-       "href": "/locations/killam-industrial-park"
+       "href": "/service-areas/killam-industrial-park"
       },
       {
        "label": "Roof Work for La Presa's Water District Buildings and Small Stores",
-       "href": "/locations/la-presa"
+       "href": "/service-areas/la-presa"
       },
       {
        "label": "Roofing for the Barns and Storage Buildings Out at Laredo Ranchettes",
-       "href": "/locations/laredo-ranchettes"
+       "href": "/service-areas/laredo-ranchettes"
       },
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "EPDM Roofs on Laredo's Older Commercial Buildings",
@@ -1603,23 +1603,23 @@
      "related": [
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Small-Roof Repair for Ranchos Penitas West's Store, Church, and Water Building",
-       "href": "/locations/ranchos-penitas-west"
+       "href": "/service-areas/ranchos-penitas-west"
       },
       {
        "label": "Roof Repair for Rio Bravo's Small Commercial Buildings",
-       "href": "/locations/rio-bravo"
+       "href": "/service-areas/rio-bravo"
       },
       {
        "label": "Courthouse-Town Roofing in San Diego, Texas",
-       "href": "/locations/san-diego"
+       "href": "/service-areas/san-diego"
       },
       {
        "label": "Tear-Off and Deck Replacement on Laredo's Industrial Roofs",
@@ -1665,23 +1665,23 @@
      "related": [
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "A Maintenance Schedule That Matches Laredo's Heat and Storm Cycle",
@@ -1727,23 +1727,23 @@
      "related": [
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Tracking Down Roof Leaks on Laredo's Flat-Roof Warehouses",
@@ -1789,23 +1789,23 @@
      "related": [
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "Travel Center and Truck Stop Roofing at the Encinal I-35 Exit",
-       "href": "/locations/encinal"
+       "href": "/service-areas/encinal"
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "TPO Membrane Roofs for Laredo's Cross-Dock Warehouses",
@@ -1881,7 +1881,7 @@
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -1935,7 +1935,7 @@
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Flex Space Roofs Take On a Different Penetration Every Time a Bay Turns Over",
@@ -1997,7 +1997,7 @@
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Commercial Roof Repair",
@@ -2055,7 +2055,7 @@
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -2117,7 +2117,7 @@
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -2283,7 +2283,7 @@
       },
       {
        "label": "Roofing the Cross-Dock and Bonded Warehouse Roofs of Killam Industrial Park",
-       "href": "/locations/killam-industrial-park"
+       "href": "/service-areas/killam-industrial-park"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -2345,7 +2345,7 @@
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -2403,7 +2403,7 @@
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -2461,7 +2461,7 @@
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -2523,7 +2523,7 @@
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "School Roof Projects Run on the Summer Calendar, Not Ours",
@@ -2585,7 +2585,7 @@
       },
       {
        "label": "Roof Work for La Presa's Water District Buildings and Small Stores",
-       "href": "/locations/la-presa"
+       "href": "/service-areas/la-presa"
       },
       {
        "label": "School Roof Projects Run on the Summer Calendar, Not Ours",
@@ -2643,7 +2643,7 @@
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -2709,7 +2709,7 @@
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -2763,7 +2763,7 @@
       },
       {
        "label": "Roof Repair for Rio Bravo's Small Commercial Buildings",
-       "href": "/locations/rio-bravo"
+       "href": "/service-areas/rio-bravo"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -2813,7 +2813,7 @@
       },
       {
        "label": "Roofing Work for the Handful of Buildings That Make Up Lopeño",
-       "href": "/locations/lopeno"
+       "href": "/service-areas/lopeno"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -2871,7 +2871,7 @@
       },
       {
        "label": "Roof Work in a Historic Riverfront Village",
-       "href": "/locations/san-ygnacio"
+       "href": "/service-areas/san-ygnacio"
       },
       {
        "label": "Distribution Center Roofs That Answer to What's Racked Below",
@@ -2925,7 +2925,7 @@
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -2987,7 +2987,7 @@
       },
       {
        "label": "Small-Roof Repair for Ranchos Penitas West's Store, Church, and Water Building",
-       "href": "/locations/ranchos-penitas-west"
+       "href": "/service-areas/ranchos-penitas-west"
       },
       {
        "label": "Grocery Roofs Carry Refrigeration Equipment the Rest of the Building Depends On",
@@ -3045,7 +3045,7 @@
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -3107,7 +3107,7 @@
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -3181,7 +3181,7 @@
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -3253,7 +3253,7 @@
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Distribution Center Roofs That Answer to What's Racked Below",
@@ -3315,7 +3315,7 @@
       },
       {
        "label": "Eagle Ford Staging Meets Ranch Country in Catarina",
-       "href": "/locations/catarina"
+       "href": "/service-areas/catarina"
       },
       {
        "label": "Distribution Center Roofs That Answer to What's Racked Below",
@@ -3381,7 +3381,7 @@
       },
       {
        "label": "Small-Roof Repair for Ranchos Penitas West's Store, Church, and Water Building",
-       "href": "/locations/ranchos-penitas-west"
+       "href": "/service-areas/ranchos-penitas-west"
       },
       {
        "label": "Flex Space Roofs Take On a Different Penetration Every Time a Bay Turns Over",
@@ -3443,7 +3443,7 @@
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Strip Center Roofs Cross Tenant Lines Even When the Lease Doesn't",
@@ -3509,7 +3509,7 @@
       },
       {
        "label": "Roofing the I-35 Corridor Through Dilley",
-       "href": "/locations/dilley"
+       "href": "/service-areas/dilley"
       },
       {
        "label": "Hotel Roofs Have to Perform While Guests Are Still Checked In",
@@ -3575,7 +3575,7 @@
       },
       {
        "label": "Courthouse-Town Roofing in San Diego, Texas",
-       "href": "/locations/san-diego"
+       "href": "/service-areas/san-diego"
       },
       {
        "label": "School Roof Projects Run on the Summer Calendar, Not Ours",
@@ -3641,7 +3641,7 @@
       },
       {
        "label": "Courthouse-Town Roofing in San Diego, Texas",
-       "href": "/locations/san-diego"
+       "href": "/service-areas/san-diego"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -3703,7 +3703,7 @@
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -3771,7 +3771,7 @@
       },
       {
        "label": "Serving Artesia Wells Off the I-35 Brush Country Stretch",
-       "href": "/locations/artesia-wells"
+       "href": "/service-areas/artesia-wells"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -3833,7 +3833,7 @@
       },
       {
        "label": "Roof Work in a Historic Riverfront Village",
-       "href": "/locations/san-ygnacio"
+       "href": "/service-areas/san-ygnacio"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -3899,7 +3899,7 @@
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Distribution Center Roofs That Answer to What's Racked Below",
@@ -3961,7 +3961,7 @@
       },
       {
        "label": "Roofing for the Barns and Storage Buildings Out at Laredo Ranchettes",
-       "href": "/locations/laredo-ranchettes"
+       "href": "/service-areas/laredo-ranchettes"
       },
       {
        "label": "Hotel Roofs Have to Perform While Guests Are Still Checked In",
@@ -4027,7 +4027,7 @@
       },
       {
        "label": "Small-Roof Repair for Ranchos Penitas West's Store, Church, and Water Building",
-       "href": "/locations/ranchos-penitas-west"
+       "href": "/service-areas/ranchos-penitas-west"
       },
       {
        "label": "Office Roofs Near the Bridge Sit Above Paperwork That Can't Get Wet",
@@ -4093,7 +4093,7 @@
       },
       {
        "label": "Roof Repair for the Small Storefronts That Serve Pueblo Nuevo",
-       "href": "/locations/pueblo-nuevo"
+       "href": "/service-areas/pueblo-nuevo"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -4155,7 +4155,7 @@
       },
       {
        "label": "Roof Work in a Historic Riverfront Village",
-       "href": "/locations/san-ygnacio"
+       "href": "/service-areas/san-ygnacio"
       },
       {
        "label": "Warehouse Roofs Sized for Laredo's Cross-Dock Volume",
@@ -4217,7 +4217,7 @@
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Medical Office Roofs Sit Above Equipment That Can't Tolerate a Surprise Leak",
@@ -4289,7 +4289,7 @@
       },
       {
        "label": "Roofing Ranch Headquarters and Hunting Camp Buildings at Four Points",
-       "href": "/locations/four-points"
+       "href": "/service-areas/four-points"
       },
       {
        "label": "Roof Documentation Written to Survive the Claims File Review",
@@ -4335,7 +4335,7 @@
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Roof Reports Built for the Asset Manager Reviewing a Portfolio, Not a Building",
@@ -4381,7 +4381,7 @@
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roofing for the Freight Operators Who Run Laredo's Inland Port",
@@ -4427,7 +4427,7 @@
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "Roofing Documentation Built for a Public Procurement File",
@@ -4473,7 +4473,7 @@
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roofing for the Freight Operators Who Run Laredo's Inland Port",
@@ -4519,7 +4519,7 @@
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Roof Work for the Cold Chain That Cannot Go Down",
@@ -4565,7 +4565,7 @@
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "Roof Work Scoped Around Patient Care, Not a Standard Punch List",
@@ -4611,7 +4611,7 @@
       },
       {
        "label": "The Few Roofs That Matter in Oilton",
-       "href": "/locations/oilton"
+       "href": "/service-areas/oilton"
       },
       {
        "label": "A Roof Contractor That Fits Into a Property Manager's Work-Order System",
@@ -4657,7 +4657,7 @@
       },
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "Roof Documentation Written to Survive the Claims File Review",
@@ -4703,7 +4703,7 @@
       },
       {
        "label": "Keeping the Roofs Over Larga Vista's Store, Church, and Water Building Sound",
-       "href": "/locations/larga-vista"
+       "href": "/service-areas/larga-vista"
       },
       {
        "label": "A Roof Contractor That Fits Into a Property Manager's Work-Order System",
@@ -4749,7 +4749,7 @@
       },
       {
        "label": "Hotel and Workforce-Housing Roofing in Cotulla's Eagle Ford Corridor",
-       "href": "/locations/cotulla"
+       "href": "/service-areas/cotulla"
       },
       {
        "label": "Roof Work Scoped Around Patient Care, Not a Standard Punch List",
@@ -4795,7 +4795,7 @@
       },
       {
        "label": "Metal Building Roofing for Hebbronville's Ranching and Oilfield Economy",
-       "href": "/locations/hebbronville"
+       "href": "/service-areas/hebbronville"
       },
       {
        "label": "Roof Documentation Written to Survive the Claims File Review",
@@ -4847,7 +4847,7 @@
       },
       {
        "label": "Roofing for the Bait Shops, Marinas, and RV Parks Around Falcon Lake",
-       "href": "/locations/falcon"
+       "href": "/service-areas/falcon"
       },
       {
        "label": "Distribution Center Roofs That Answer to What's Racked Below",
@@ -4893,7 +4893,7 @@
       },
       {
        "label": "Small Commercial Roofing Along El Cenizo's Riverfront Streets",
-       "href": "/locations/el-cenizo"
+       "href": "/service-areas/el-cenizo"
       },
       {
        "label": "School Roof Projects Run on the Summer Calendar, Not Ours",
@@ -4939,7 +4939,7 @@
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "Cold Storage Roofs Fight Condensation From Both Directions",
@@ -4985,7 +4985,7 @@
       },
       {
        "label": "Keeping Roofs Sealed Along Laredo's Busiest Freight Corridor",
-       "href": "/locations/world-trade-bridge-area"
+       "href": "/service-areas/world-trade-bridge-area"
       },
       {
        "label": "School Roof Projects Run on the Summer Calendar, Not Ours",
@@ -5031,7 +5031,7 @@
       },
       {
        "label": "Oilfield and Hunting-Country Roofing at the Freer Highway 44 Crossroads",
-       "href": "/locations/freer"
+       "href": "/service-areas/freer"
       },
       {
        "label": "QSR Roofs Along Mines Road Take More Grease and Heat Than the Building Size Suggests",
@@ -5077,7 +5077,7 @@
       },
       {
        "label": "Flat-Roof Repair for Downtown Laredo's Historic Commercial Buildings",
-       "href": "/locations/downtown-laredo"
+       "href": "/service-areas/downtown-laredo"
       },
       {
        "label": "Flex Space Roofs Take On a Different Penetration Every Time a Bay Turns Over",

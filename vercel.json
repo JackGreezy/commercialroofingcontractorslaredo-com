@@ -1,0 +1,300 @@
+{
+  "rewrites": [],
+  "redirects": [
+    {
+      "source": "/locations/:path*",
+      "destination": "/service-areas/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/locations",
+      "destination": "/service-areas",
+      "permanent": true
+    },
+    {
+      "source": "/locations/aguilares",
+      "destination": "/service-areas/aguilares",
+      "permanent": true
+    },
+    {
+      "source": "/locations/aguilares/",
+      "destination": "/service-areas/aguilares",
+      "permanent": true
+    },
+    {
+      "source": "/locations/artesia-wells",
+      "destination": "/service-areas/artesia-wells",
+      "permanent": true
+    },
+    {
+      "source": "/locations/artesia-wells/",
+      "destination": "/service-areas/artesia-wells",
+      "permanent": true
+    },
+    {
+      "source": "/locations/botines",
+      "destination": "/service-areas/botines",
+      "permanent": true
+    },
+    {
+      "source": "/locations/botines/",
+      "destination": "/service-areas/botines",
+      "permanent": true
+    },
+    {
+      "source": "/locations/bruni",
+      "destination": "/service-areas/bruni",
+      "permanent": true
+    },
+    {
+      "source": "/locations/bruni/",
+      "destination": "/service-areas/bruni",
+      "permanent": true
+    },
+    {
+      "source": "/locations/catarina",
+      "destination": "/service-areas/catarina",
+      "permanent": true
+    },
+    {
+      "source": "/locations/catarina/",
+      "destination": "/service-areas/catarina",
+      "permanent": true
+    },
+    {
+      "source": "/locations/cotulla",
+      "destination": "/service-areas/cotulla",
+      "permanent": true
+    },
+    {
+      "source": "/locations/cotulla/",
+      "destination": "/service-areas/cotulla",
+      "permanent": true
+    },
+    {
+      "source": "/locations/dilley",
+      "destination": "/service-areas/dilley",
+      "permanent": true
+    },
+    {
+      "source": "/locations/dilley/",
+      "destination": "/service-areas/dilley",
+      "permanent": true
+    },
+    {
+      "source": "/locations/downtown-laredo",
+      "destination": "/service-areas/downtown-laredo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/downtown-laredo/",
+      "destination": "/service-areas/downtown-laredo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/el-cenizo",
+      "destination": "/service-areas/el-cenizo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/el-cenizo/",
+      "destination": "/service-areas/el-cenizo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/encinal",
+      "destination": "/service-areas/encinal",
+      "permanent": true
+    },
+    {
+      "source": "/locations/encinal/",
+      "destination": "/service-areas/encinal",
+      "permanent": true
+    },
+    {
+      "source": "/locations/falcon",
+      "destination": "/service-areas/falcon",
+      "permanent": true
+    },
+    {
+      "source": "/locations/falcon/",
+      "destination": "/service-areas/falcon",
+      "permanent": true
+    },
+    {
+      "source": "/locations/four-points",
+      "destination": "/service-areas/four-points",
+      "permanent": true
+    },
+    {
+      "source": "/locations/four-points/",
+      "destination": "/service-areas/four-points",
+      "permanent": true
+    },
+    {
+      "source": "/locations/freer",
+      "destination": "/service-areas/freer",
+      "permanent": true
+    },
+    {
+      "source": "/locations/freer/",
+      "destination": "/service-areas/freer",
+      "permanent": true
+    },
+    {
+      "source": "/locations/hebbronville",
+      "destination": "/service-areas/hebbronville",
+      "permanent": true
+    },
+    {
+      "source": "/locations/hebbronville/",
+      "destination": "/service-areas/hebbronville",
+      "permanent": true
+    },
+    {
+      "source": "/locations/killam-industrial-park",
+      "destination": "/service-areas/killam-industrial-park",
+      "permanent": true
+    },
+    {
+      "source": "/locations/killam-industrial-park/",
+      "destination": "/service-areas/killam-industrial-park",
+      "permanent": true
+    },
+    {
+      "source": "/locations/la-presa",
+      "destination": "/service-areas/la-presa",
+      "permanent": true
+    },
+    {
+      "source": "/locations/la-presa/",
+      "destination": "/service-areas/la-presa",
+      "permanent": true
+    },
+    {
+      "source": "/locations/laredo-ranchettes",
+      "destination": "/service-areas/laredo-ranchettes",
+      "permanent": true
+    },
+    {
+      "source": "/locations/laredo-ranchettes/",
+      "destination": "/service-areas/laredo-ranchettes",
+      "permanent": true
+    },
+    {
+      "source": "/locations/larga-vista",
+      "destination": "/service-areas/larga-vista",
+      "permanent": true
+    },
+    {
+      "source": "/locations/larga-vista/",
+      "destination": "/service-areas/larga-vista",
+      "permanent": true
+    },
+    {
+      "source": "/locations/lopeno",
+      "destination": "/service-areas/lopeno",
+      "permanent": true
+    },
+    {
+      "source": "/locations/lopeno/",
+      "destination": "/service-areas/lopeno",
+      "permanent": true
+    },
+    {
+      "source": "/locations/mirando-city",
+      "destination": "/service-areas/mirando-city",
+      "permanent": true
+    },
+    {
+      "source": "/locations/mirando-city/",
+      "destination": "/service-areas/mirando-city",
+      "permanent": true
+    },
+    {
+      "source": "/locations/oilton",
+      "destination": "/service-areas/oilton",
+      "permanent": true
+    },
+    {
+      "source": "/locations/oilton/",
+      "destination": "/service-areas/oilton",
+      "permanent": true
+    },
+    {
+      "source": "/locations/pueblo-nuevo",
+      "destination": "/service-areas/pueblo-nuevo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/pueblo-nuevo/",
+      "destination": "/service-areas/pueblo-nuevo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/ranchos-penitas-west",
+      "destination": "/service-areas/ranchos-penitas-west",
+      "permanent": true
+    },
+    {
+      "source": "/locations/ranchos-penitas-west/",
+      "destination": "/service-areas/ranchos-penitas-west",
+      "permanent": true
+    },
+    {
+      "source": "/locations/rio-bravo",
+      "destination": "/service-areas/rio-bravo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/rio-bravo/",
+      "destination": "/service-areas/rio-bravo",
+      "permanent": true
+    },
+    {
+      "source": "/locations/san-diego",
+      "destination": "/service-areas/san-diego",
+      "permanent": true
+    },
+    {
+      "source": "/locations/san-diego/",
+      "destination": "/service-areas/san-diego",
+      "permanent": true
+    },
+    {
+      "source": "/locations/san-ygnacio",
+      "destination": "/service-areas/san-ygnacio",
+      "permanent": true
+    },
+    {
+      "source": "/locations/san-ygnacio/",
+      "destination": "/service-areas/san-ygnacio",
+      "permanent": true
+    },
+    {
+      "source": "/locations/world-trade-bridge-area",
+      "destination": "/service-areas/world-trade-bridge-area",
+      "permanent": true
+    },
+    {
+      "source": "/locations/world-trade-bridge-area/",
+      "destination": "/service-areas/world-trade-bridge-area",
+      "permanent": true
+    },
+    {
+      "source": "/locations/zapata",
+      "destination": "/service-areas/zapata",
+      "permanent": true
+    },
+    {
+      "source": "/locations/zapata/",
+      "destination": "/service-areas/zapata",
+      "permanent": true
+    },
+    {
+      "source": "/locations/",
+      "destination": "/service-areas",
+      "permanent": true
+    }
+  ]
+}

@@ -200,7 +200,7 @@ def pick_og_image(route: str, soup: BeautifulSoup | None = None) -> str:
             src = clean(img.get("src") or img.get("data-src") or img.get("srcset", "").split(" ")[0])
             if src and not src.startswith("data:") and not src.endswith(".svg"):
                 candidates.append(src)
-    for glob in ["ours/locations/*.webp", "ours/**/*.webp", "images/**/*.*"]:
+    for glob in ["ours/service-areas/*.webp", "ours/**/*.webp", "images/**/*.*"]:
         for p in PUBLIC.glob(glob):
             if p.is_file() and p.suffix.lower() in {".webp", ".jpg", ".jpeg", ".png"}:
                 candidates.append("/" + str(p.relative_to(PUBLIC)).replace("\\", "/"))
@@ -760,7 +760,7 @@ def sitemap_routes() -> list[str]:
     for route in route_item:
         routes.add(route)
     routes.update(["/", "/about", "/contact", "/privacy", "/terms"])
-    order = {"/":0,"/about":1,"/contact":2,"/services":3,"/roof-systems":4,"/industries":5,"/project-types":6,"/locations":7,"/manufacturers":8,"/privacy":98,"/terms":99}
+    order = {"/":0,"/about":1,"/contact":2,"/services":3,"/roof-systems":4,"/industries":5,"/project-types":6,"/service-areas":7,"/manufacturers":8,"/privacy":98,"/terms":99}
     return sorted(routes, key=lambda r: (order.get(r, 50), r.count("/"), r))
 
 def write_sitemap_robots_llms(routes: list[str]):
@@ -782,7 +782,7 @@ def write_sitemap_robots_llms(routes: list[str]):
         f"- Roof systems: {SITE}/roof-systems",
         f"- Industries: {SITE}/industries",
         f"- Project types: {SITE}/project-types",
-        f"- Service areas: {SITE}/locations",
+        f"- Service areas: {SITE}/service-areas",
         f"- Manufacturers: {SITE}/manufacturers",
         f"- Contact: {SITE}/contact",
         f"- Sitemap: {SITE}/sitemap.xml",

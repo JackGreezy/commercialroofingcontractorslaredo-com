@@ -1511,7 +1511,7 @@ body :where(
 
 /* Prevent the unstyled 300x150 map/iframe "mini picture" regression. */
 [data-rh-map="true"] {
-  background: #dde6eb url("/ours/locations/commercial-roofing-contractors-laredo-tx-01.webp") center / cover no-repeat;
+  background: #dde6eb url("/ours/service-areas/commercial-roofing-contractors-laredo-tx-01.webp") center / cover no-repeat;
   min-height: 360px;
   overflow: hidden;
   position: relative;
