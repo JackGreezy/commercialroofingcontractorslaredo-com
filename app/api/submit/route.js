@@ -42,7 +42,11 @@ const MARKETING_PATTERNS = [
   /\blead generation\b/i,
   /\b(?:get|generate|bring|deliver)\s+(?:you\s+)?more leads?\b/i,
   /\breputation management\b/i,
-  /\bcold outreach\b/i
+  /\bcold outreach\b/i,
+  /\b(?:newsletter|mailing list|email list)\b/i,
+  /\b(?:product|company|business)\s+(?:news|updates?)\b/i,
+  /\b(?:send|email)\s+(?:me|us)\s+(?:your\s+)?(?:news(?:letter)?|news and updates|email updates?)\b/i,
+  /\b(?:add|put|include|sign)\s+(?:me|us)\s+(?:up\s+)?(?:to|on|for)\s+(?:your\s+)?(?:email|mailing|newsletter)(?:\s+list)?\b/i
 ];
 
 function json(body, status = 200, headers = {}) {
