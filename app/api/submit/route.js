@@ -23,6 +23,7 @@ const IDENTITY_LIMIT = 2;
 const MAX_BODY_BYTES = 32 * 1024;
 const REQUIRED_FIELDS = ["name", "phone", "email", "timeline", "message"];
 const MARKETING_PATTERNS = [
+  /\bi would like more information\.\s+please contact me by email\b/i,
   /\bseo\b/i,
   /\bindex(?:ing|ed|ation)?\b/i,
   /\bsearch engine optimization\b/i,
