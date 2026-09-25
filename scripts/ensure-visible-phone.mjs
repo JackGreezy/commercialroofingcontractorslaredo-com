@@ -3,12 +3,24 @@ import path from 'node:path';
 
 const root = path.resolve(process.argv[2] || process.cwd());
 const publicDir = path.join(root, 'public');
-const files = [
+const seedFiles = [
   'index.html', 'home.html', 'contact.html', 'contact-us.html',
   'services.html', 'service-areas.html',
   '__static-pages/index.html', '__static-pages/home.html',
   '__static-pages/contact.html', '__static-pages/contact-us.html',
 ].map((file) => path.join(publicDir, file)).filter(fs.existsSync);
+
+function collectHtmlFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const file = path.join(dir, entry.name);
+    if (entry.isDirectory()) return collectHtmlFiles(file);
+    if (!entry.isFile() || !entry.name.endsWith('.html')) return [];
+    if (/^(?:404|500|not-found)\.html$/i.test(entry.name)) return [];
+    return [file];
+  });
+}
+const files = collectHtmlFiles(publicDir);
 
 function readPhone() {
   const config = path.join(root, 'lib', 'contact-config.js');
@@ -18,7 +30,7 @@ function readPhone() {
     const href = source.match(/\bphoneTel:\s*['"]([^'"]+)['"]/);
     if (display && href) return { display: display[1], href: href[1] };
   }
-  for (const file of files) {
+  for (const file of seedFiles) {
     const source = fs.readFileSync(file, 'utf8');
     const match = source.match(/<script[^>]*id=['"]rr-lead-controls-config['"][^>]*>([\s\S]*?)<\/script>/i);
     if (!match) continue;
