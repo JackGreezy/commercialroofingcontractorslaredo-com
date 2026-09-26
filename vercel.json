@@ -1,5 +1,34 @@
 {
-  "rewrites": [],
+  "rewrites": [
+    {
+      "source": "/services/wind-storm-damage-roof-insurance-claims",
+      "destination": "/weather-response?route=%2Fservices%2Fwind-storm-damage-roof-insurance-claims"
+    },
+    {
+      "source": "/services/storm-damage-roof-repair",
+      "destination": "/weather-response?route=%2Fservices%2Fstorm-damage-roof-repair"
+    },
+    {
+      "source": "/services/hail-damage-roof-insurance-claims",
+      "destination": "/weather-response?route=%2Fservices%2Fhail-damage-roof-insurance-claims"
+    },
+    {
+      "source": "/services/emergency-tarp-dry-in",
+      "destination": "/weather-response?route=%2Fservices%2Femergency-tarp-dry-in"
+    },
+    {
+      "source": "/services/commercial-roof-leak-repair",
+      "destination": "/weather-response?route=%2Fservices%2Fcommercial-roof-leak-repair"
+    },
+    {
+      "source": "/services/commercial-roof-inspection",
+      "destination": "/weather-response?route=%2Fservices%2Fcommercial-roof-inspection"
+    },
+    {
+      "source": "/",
+      "destination": "/weather-response?route=%2F"
+    }
+  ],
   "redirects": [
     {
       "source": "/cdn-cgi/l/email-protection",
@@ -301,5 +330,7 @@
       "destination": "/service-areas",
       "permanent": true
     }
-  ]
+  ],
+  "framework": "nextjs",
+  "outputDirectory": null
 }

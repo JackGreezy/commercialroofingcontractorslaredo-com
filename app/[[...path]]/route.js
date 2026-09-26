@@ -1,3 +1,4 @@
+import { withLiveWeatherResponse } from "../../lib/live-weather-activation";
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -65,9 +66,13 @@ async function htmlResponse(parts, request, status = 200) {
   });
 }
 
-export async function GET(request, context) {
+async function weatherOriginalGET(request, context) {
   const parts = cleanParts(await context.params);
   const page = await htmlResponse(parts, request);
   if (page) return page;
   return (await htmlResponse(["404"], request, 404)) || new Response("Not found", { status: 404 });
+}
+
+export async function GET(request, context) {
+  return withLiveWeatherResponse(await weatherOriginalGET(request, context), "commercialroofingcontractorslaredo-com", request);
 }
