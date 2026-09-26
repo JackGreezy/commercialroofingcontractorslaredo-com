@@ -15,6 +15,8 @@ export function optimizeFleetImages(html){
  if(!html)return html;
  const canonical=html.match(/<link\b(?=[^>]*\brel\s*=\s*["']canonical["'])[^>]*>/i)?.[0];
  if(pathname(attr(canonical||'','href'))!=='/')return html;
+ if(config.optionalGoogleFonts)html=html.replace(/<link\b[^>]*href=["'][^"']*fonts\.googleapis\.com[^"']*["'][^>]*>/gi,t=>t.replace(/display=swap/g,'display=optional'));
+ if(config.blockingStylesheets?.length)html=html.replace(/<link\b[^>]*>/gi,t=>config.blockingStylesheets.includes(pathname(attr(t,'href')))?t.replace(/\srel=["'][^"']+["']/i,' rel="stylesheet"').replace(/\s(?:as|onload)=(?:"[^"]*"|'[^']*')/gi,''):t);
  html=html.replace(/<style\b[^>]*id=["']fleet-mobile-images["'][^>]*>[\s\S]*?<\/style>/gi,'').replace(/<script\b[^>]*data-fleet-background-loader[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*data-fleet-hero-preload[^>]*>/gi,'');
  html=html.replace(/<img\b[^>]*>/gi,tag=>{
   const source=attr(tag,'src'),item=image(source);if(!item)return tag;
@@ -30,7 +32,7 @@ export function optimizeFleetImages(html){
  html=html.replace(/<[a-z][^>]*\bstyle=("[^"]*"|'[^']*')[^>]*>/gi,tag=>{
   const quoted=tag.match(/\bstyle=("[^"]*"|'[^']*')/i)?.[1];if(!quoted)return tag;
   const style=quoted.slice(1,-1).replace(/&quot;/gi,'"').replace(/&#(?:0*39|x0*27);|&apos;/gi,"'").replace(/&amp;/gi,'&');
-  const found=style.match(/(?:^|;)\s*(background(?:-image)?|--hero-image)\s*:\s*([^;]+)/i);if(!found)return tag;
+  const found=[...style.matchAll(/(?:^|;)\s*(background(?:-image)?|--[\w-]+)\s*:\s*([^;]+)/gi)].find(m=>[...m[2].matchAll(/url\(["']?([^)'"\s]+)["']?\)/gi)].some(u=>image(u[1])?.backgroundVariants));if(!found)return tag;
   const original=found[2].replace(/\s*!important\s*$/i,'').replace(/^var\(--fleet-mobile-bg,\s*([\s\S]*)\)$/,'$1');
   let changed=false,mayDefer=false;
   const value=original.replace(/url\(["']?([^)'"\s]+)["']?\)/gi,(all,url)=>{const item=image(url);if(!item?.backgroundVariants)return all;changed=true;mayDefer ||= config.lazyBackgrounds.includes(pathname(url));return `image-set(${item.backgroundVariants.map(v=>`url('${v.src}') ${v.density}x`).join(', ')})`});
