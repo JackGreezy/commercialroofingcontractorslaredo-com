@@ -1,0 +1,12 @@
+{
+  "siteId": "commercialroofingcontractorslaredo-com",
+  "routes": {
+    "/": "/index.html",
+    "/services/commercial-roof-inspection": "/services/commercial-roof-inspection.html",
+    "/services/commercial-roof-leak-repair": "/services/commercial-roof-leak-repair.html",
+    "/services/emergency-tarp-dry-in": "/services/emergency-tarp-dry-in.html",
+    "/services/hail-damage-roof-insurance-claims": "/services/hail-damage-roof-insurance-claims.html",
+    "/services/storm-damage-roof-repair": "/services/storm-damage-roof-repair.html",
+    "/services/wind-storm-damage-roof-insurance-claims": "/services/wind-storm-damage-roof-insurance-claims.html"
+  }
+}
