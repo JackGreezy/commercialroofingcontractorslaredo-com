@@ -32,6 +32,15 @@ html body[data-laredo-home] [data-laredo-kicker] {
   text-transform: uppercase;
 }
 
+/* The bright orange kicker above reads fine on the dark navy
+   [data-laredo-emergency] band and the dark green [data-laredo-service]
+   band, but on the light #fff/#f3f5f4 sections (decision, report, faq)
+   it only reaches ~1.9:1 contrast. Darken it there to ~4.9:1 while
+   keeping the same accent hue. */
+html body[data-laredo-home] :where([data-laredo-decision], [data-laredo-report], [data-laredo-faq]) [data-laredo-kicker] {
+  color: #b25900;
+}
+
 html body[data-laredo-home] :where([data-laredo-emergency], [data-laredo-decision], [data-laredo-report], [data-laredo-service], [data-laredo-faq]) h2 {
   font-family: Campton, Karbon, Arial, sans-serif;
   font-size: clamp(2rem, 4vw, 4.3rem);
@@ -1469,7 +1478,9 @@ body :where(
 
 .rr-contact-submit {
   align-items: center;
-  background: var(--rr-taste-accent);
+  /* Match the site's own primary-button green instead of the shared taste
+     accent (orange); white text only reaches 1.89:1 on the accent. */
+  background: #00954c;
   border: 0;
   color: #fff;
   cursor: pointer;
