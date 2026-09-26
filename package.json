@@ -6,7 +6,7 @@
     "build": "next build --webpack",
     "dev": "next dev",
     "start": "next start",
-    "prebuild": "node scripts/normalize-contact-forms.mjs && node scripts/finalize-lead-controls.mjs && node scripts/inject-rankhound-conversions.mjs && node scripts/ensure-visible-phone.mjs"
+    "prebuild": "node scripts/repair-protected-contact-links.mjs && node scripts/normalize-contact-forms.mjs && node scripts/finalize-lead-controls.mjs && node scripts/inject-rankhound-conversions.mjs && node scripts/ensure-visible-phone.mjs && node scripts/repair-protected-contact-links.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

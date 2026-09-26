@@ -1,0 +1,7 @@
+import fs from 'node:fs';import path from 'node:path';
+function fix(s){return s.replace(/(<a\b[^>]*\bhref=["'])(?:https?:\/\/[^/"']+)?\/cdn-cgi\/l\/email-protection[^"']*(["'][^>]*>)([\s\S]*?)(<\/a>)/gi,(_,start,end,text,close)=>start+'/contact'+end+'Send a roof request'+close)}
+function walk(d){return fs.existsSync(d)?fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]):[]}
+let changed=0;
+for(const file of ['public','rendered','data'].flatMap(walk).filter(f=>f.endsWith('.html'))){const before=fs.readFileSync(file,'utf8'),after=fix(before);if(before!==after){fs.writeFileSync(file,after);changed++}}
+for(const file of ['data','pages','services','service-areas','industries','property-types','project-types','roof-systems','manufacturers','damage-repair','capabilities'].flatMap(walk).filter(f=>f.endsWith('.json')&&!/project-pages/.test(f))){let raw;try{raw=JSON.parse(fs.readFileSync(file,'utf8'))}catch{continue}let touched=false;function visit(o){if(!o||typeof o!=='object')return;for(const[k,v]of Object.entries(o)){if(typeof v==='string'&&v.includes('/cdn-cgi/l/email-protection')){const after=fix(v);if(after!==v){o[k]=after;touched=true}}else if(v&&typeof v==='object')visit(v)}}visit(raw);if(touched){fs.writeFileSync(file,JSON.stringify(raw,null,2)+'\n');changed++}}
+console.log('Repaired protected contact links in',changed,'files');
