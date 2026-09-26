@@ -1,0 +1,418 @@
+{
+  "domain": "commercialroofingcontractorslaredo.com",
+  "images": {
+    "/images/brand/logo-on-light.png": {
+      "width": 841,
+      "height": 291,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/bbeb4faa5948b9ac.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/c7b0bb7096b134ea.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/646ca1defae6a3f0.webp",
+          "width": 841
+        }
+      ],
+      "mobileSize": "298px"
+    },
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-01.webp": {
+      "width": 1600,
+      "height": 1049,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/c855f0c987ffdf42.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/5911755e61704233.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/26636a39118c9f59.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-02.webp": {
+      "width": 1200,
+      "height": 799,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/c22cfc9db01701c2.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/deb0f311e720c49d.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/a2cd9a4a6256b93d.webp",
+          "width": 1200
+        }
+      ]
+    },
+    "/ours/services/emergency-tarp-dry-in-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1024,
+      "height": 683,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/e1cc2ffcf7192dc9.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/5efd5812b231048b.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/b9f7d5885cb8d9b6.webp",
+          "width": 1024
+        }
+      ]
+    },
+    "/ours/services/commercial-roof-leak-repair-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1280,
+      "height": 896,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/419566b4a81f9d19.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/0421a136dc22b4e0.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/771a89e352ca43c3.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/services/commercial-roof-inspection-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 2000,
+      "height": 1333,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/8dbf1948ebb250c4.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/6d57734769e7c595.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/dc25339438b6b0a0.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/services/commercial-roof-tear-off-replacement-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 2400,
+      "height": 1354,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/661eabbc05ce4ee8.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/61ec6440bdb13d6f.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/ac7dafb58a6573f3.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/roof-systems/tpo-60-mil-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1440,
+      "height": 810,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/1a246acd08f1c33f.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/f4ee5069c53e4d61.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/32cbb46bebe3ba3f.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/roof-systems/tpo-80-mil-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1500,
+      "height": 1125,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/5c1af03247c9da3c.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/f771a79dfc4f5665.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/cf1698113fe6063d.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/roof-systems/pvc-roof-systems-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1400,
+      "height": 1050,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/5d2fb31421e48f12.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/dd865239783303b9.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/185e19a182d241d8.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/services/preventive-maintenance-programs-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/9f6ff1f628aa68ad.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/e902d4fe137114eb.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/d7fdf4faf1613a1d.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/project-types/warehouse-roofing-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1920,
+      "height": 1080,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/aade9b1a99dd3349.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/69181397700a5cf8.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/4d3c4574fbb5ed4f.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/project-types/distribution-center-roofing-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1920,
+      "height": 1239,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/bf65a5dfc6305f13.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/8f36eabbbcd9ab0d.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/a3e03ffe95e180c3.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/project-types/cold-storage-roofing-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 2400,
+      "height": 1600,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/a5de1ab0c91474a8.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/ccecd3245cebbb91.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/cf183f0f86921688.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-03.webp": {
+      "width": 2400,
+      "height": 1800,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/d36005e294eeaef1.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/4f952d7dd19cf9a2.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/7eb40bb1a8bc21f0.webp",
+          "width": 1240
+        }
+      ],
+      "backgroundVariants": [
+        {
+          "src": "/performance/fleet-images/4edae47c45828725.webp",
+          "density": 1,
+          "width": 560
+        },
+        {
+          "src": "/performance/fleet-images/73f9412f0e27a5e9.webp",
+          "density": 2,
+          "width": 1120
+        },
+        {
+          "src": "/performance/fleet-images/5c0e1ee715f7da34.webp",
+          "density": 3,
+          "width": 1680
+        }
+      ]
+    },
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-08.webp": {
+      "width": 1400,
+      "height": 1050,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/c63a01f593f3d8cd.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/ce60efd0498dd83c.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/4be2d3fc750601fc.webp",
+          "width": 1240
+        }
+      ],
+      "backgroundVariants": [
+        {
+          "src": "/performance/fleet-images/d136c0b9b00c35e9.webp",
+          "density": 1,
+          "width": 704
+        },
+        {
+          "src": "/performance/fleet-images/c5b1881be6e4add1.webp",
+          "density": 2,
+          "width": 1400
+        },
+        {
+          "src": "/performance/fleet-images/c5b1881be6e4add1.webp",
+          "density": 3,
+          "width": 1400
+        }
+      ]
+    },
+    "/ours/industries/logistics-3pl-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1800,
+      "height": 1187,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/4cf01dda0548f94c.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/aa9301e11502601e.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/a1f552abc2b71316.webp",
+          "width": 1240
+        }
+      ],
+      "backgroundVariants": [
+        {
+          "src": "/performance/fleet-images/c874015c8d6a8ab2.webp",
+          "density": 1,
+          "width": 720
+        },
+        {
+          "src": "/performance/fleet-images/9189a20bd0b46301.webp",
+          "density": 2,
+          "width": 1440
+        },
+        {
+          "src": "/performance/fleet-images/090b320fbb7d2cd2.webp",
+          "density": 3,
+          "width": 1800
+        }
+      ]
+    },
+    "/ours/manufacturers/carlisle-syntec-commercial-roofing-contractors-laredo-tx.webp": {
+      "width": 1600,
+      "height": 901,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/6dbd23dc189cf82a.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/d2fecfc46aa69147.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/964e3735e2916f40.webp",
+          "width": 1240
+        }
+      ],
+      "backgroundVariants": [
+        {
+          "src": "/performance/fleet-images/20454f0c94e08e7c.webp",
+          "density": 1,
+          "width": 912
+        },
+        {
+          "src": "/performance/fleet-images/42e71096bc696cf8.webp",
+          "density": 2,
+          "width": 1600
+        },
+        {
+          "src": "/performance/fleet-images/42e71096bc696cf8.webp",
+          "density": 3,
+          "width": 1600
+        }
+      ]
+    }
+  },
+  "lazyImages": [
+    "/ours/services/emergency-tarp-dry-in-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/services/commercial-roof-leak-repair-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/services/commercial-roof-inspection-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/services/commercial-roof-tear-off-replacement-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/roof-systems/tpo-60-mil-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/roof-systems/tpo-80-mil-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/roof-systems/pvc-roof-systems-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/services/preventive-maintenance-programs-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/project-types/warehouse-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/project-types/distribution-center-roofing-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/project-types/cold-storage-roofing-commercial-roofing-contractors-laredo-tx.webp"
+  ],
+  "lazyBackgrounds": [
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-03.webp",
+    "/ours/service-areas/commercial-roofing-contractors-laredo-tx-08.webp",
+    "/ours/industries/logistics-3pl-commercial-roofing-contractors-laredo-tx.webp",
+    "/ours/manufacturers/carlisle-syntec-commercial-roofing-contractors-laredo-tx.webp"
+  ],
+  "heroImage": "/ours/service-areas/commercial-roofing-contractors-laredo-tx-02.webp"
+}
