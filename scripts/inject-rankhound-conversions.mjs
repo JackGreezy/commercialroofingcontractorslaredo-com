@@ -58,4 +58,14 @@ for (const file of await htmlFiles(root)) {
   }
 }
 
+for (const extraDir of ["data/leak-first-rendered", "rendered", "data/rendered-pages"]) {
+  let extraFiles = [];
+  try { extraFiles = await htmlFiles(path.join(root, "..", extraDir)); } catch {}
+  for (const file of extraFiles) {
+    const previous = await readFile(file, "utf8");
+    if (previous.includes('class="rh-rain-intent-link"') && !previous.includes('id="rh-rain-intent-style"') && /<\/head>/i.test(previous)) {
+      await writeFile(file, previous.replace(/<\/head>/i, `${rainIntentStyle}</head>`));
+    }
+  }
+}
 console.log(`RankHound conversion surfaces updated: ${changed}`);
