@@ -33,6 +33,7 @@ try {
   sitemap = await readFile(path.join(root, "sitemap.xml"), "utf8");
 } catch {}
 
+const rainIntentStyle = `<style id="rh-rain-intent-style">:where(p.rh-rain-intent-link){box-sizing:border-box;width:min(1180px,calc(100% - 48px));padding:4px 0;font-size:15px;line-height:1.5;text-align:left}p.rh-rain-intent-link{margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0}:where(:not(.rh-rain-intent-link)+p.rh-rain-intent-link){padding-top:36px}:where(p.rh-rain-intent-link:not(:has(+.rh-rain-intent-link))){padding-bottom:36px}:where(p.rh-rain-intent-link a){font-weight:600;text-decoration:underline;text-underline-offset:3px}</style>`;
 let changed = 0;
 for (const file of await htmlFiles(root)) {
   const relative = path.relative(root, file).replaceAll(path.sep, "/");
@@ -50,6 +51,7 @@ for (const file of await htmlFiles(root)) {
       .join("");
     if (links && /<footer\b/i.test(next)) next = next.replace(/<footer\b/i, `${links}<footer`);
   }
+  if (next.includes('class="rh-rain-intent-link"') && !next.includes('id="rh-rain-intent-style"') && /<\/head>/i.test(next)) next = next.replace(/<\/head>/i, `${rainIntentStyle}</head>`);
   if (next !== previous) {
     await writeFile(file, next);
     changed += 1;
