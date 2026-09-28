@@ -1,4 +1,5 @@
 import { sendLeadEmails } from "../../../lib/email/sendgrid.js";
+import { verifyContactTurnstile } from "../../../lib/turnstile.js";
 
 function isBlockedContactName(body) {
   const source = body instanceof FormData
@@ -193,6 +194,18 @@ export async function POST(request) {
   const validationError = validateLead(lead);
   if (validationError) {
     return json({ ok: false, success: false, message: validationError, error: validationError }, 400, headers);
+  }
+
+  const verification = await verifyContactTurnstile(
+    body.turnstileToken || body["cf-turnstile-response"],
+    clientIp(request)
+  );
+  if (!verification.ok) {
+    const message = verification.unavailable
+      ? "Contact verification is temporarily unavailable. Please call us directly."
+      : "Please complete the security check and try again.";
+    return json({ ok: false, success: false, message, error: "turnstile-verification-failed" },
+      verification.unavailable ? 503 : 403, headers);
   }
 
   const identityKey = `${lead.email.toLowerCase()}|${lead.phone.replace(/\D/g, "")}`;
