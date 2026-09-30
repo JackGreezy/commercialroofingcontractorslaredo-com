@@ -1721,3 +1721,47 @@ body :where(
     max-width: none !important;
   }
 }
+
+/* Service-intent content: same article column and type as the other service pages */
+.rr-leak-wrap .text-formatted>h1{margin:0 0 16px;color:#00954f;font-family:inherit;font-size:clamp(30px,3.6vw,42px);font-weight:500;line-height:1.2;text-transform:none}
+.rr-leak-wrap .text-formatted>h1+p{font-size:20px;line-height:1.6}
+.rr-leak-wrap .rr-leak-actions{margin:8px 0 12px}
+.rr-leak-wrap [data-rh-leak-rich]>section{margin:0}
+.rr-leak-wrap [data-rh-leak-rich] ul{list-style:disc;padding-left:1.3em}
+.rr-leak-wrap [data-rh-leak-faq]{margin-top:clamp(28px,3vw,42px)}
+.rr-leak-wrap details{margin:0 0 12px;border:1px solid #d9dcdf;background:#f6f7f8}
+.rr-leak-wrap summary{cursor:pointer;list-style:none;position:relative;padding:15px 52px 15px 20px;font-size:19px;font-weight:500;line-height:1.4;color:#04583a}
+.rr-leak-wrap summary::-webkit-details-marker{display:none}
+.rr-leak-wrap summary::after{content:"+";position:absolute;right:20px;top:10px;font-size:28px;line-height:1;color:#00954f}
+.rr-leak-wrap details[open] summary::after{content:"\2212"}
+.rr-leak-wrap details p{margin:0;padding:0 20px 18px;font-size:17px;line-height:1.6}
+html body .rh-leak-funnel{box-sizing:border-box;width:min(1140px,calc(100% - 48px));max-width:none;margin:0 auto;padding:clamp(36px,4vw,56px) 0 clamp(48px,6vw,80px);color:#53565a}
+html body .rh-leak-funnel>header{position:static!important;display:block!important;background:transparent!important;box-shadow:none!important;height:auto!important;min-height:0!important;padding:0!important;margin:0!important;color:inherit!important;z-index:auto!important;overflow:visible!important;max-width:760px}
+html body .rh-leak-funnel>header p,html body .rh-leak-funnel>header h2{background:transparent!important}
+html body .rh-leak-funnel>header>p:first-child{margin:0 0 8px;color:#00954f!important;font-family:Karbon,Arial,Helvetica,sans-serif;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+html body .rh-leak-funnel>header h2{margin:0 0 12px;color:#00954f!important;font-size:clamp(24px,2.8vw,30px);font-weight:500;line-height:1.25}
+html body .rh-leak-funnel>header p:not(:first-child){color:#53565a!important;font-size:17px;line-height:1.6;margin:0}
+html body .rh-leak-funnel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin:26px 0}
+html body .rh-leak-funnel-grid a{display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:116px;padding:18px 20px;border:1px solid #d9dcdf;border-top:3px solid #00954f;background:#fff;color:#53565a;text-decoration:none}
+html body .rh-leak-funnel-grid a:hover{box-shadow:0 8px 22px rgba(0,0,0,.1)}
+html body .rh-leak-funnel-grid span{font-family:Karbon,Arial,Helvetica,sans-serif;font-size:13px;line-height:1.4;color:#5f6368;opacity:1}
+html body .rh-leak-funnel-grid strong{color:#04583a;font-size:19px;font-weight:500;line-height:1.3}
+html body .rh-leak-funnel-contact{margin:0}
+html body .rh-leak-funnel-contact a{display:inline-block;padding:10px 18px 11px;background:#00954f;color:#fff!important;font-family:Karbon,Arial,Helvetica,sans-serif;font-size:16px;letter-spacing:.02em;text-decoration:none;text-transform:uppercase}
+@media(max-width:640px){html body .rh-leak-funnel{width:calc(100% - 36px)}html body .rh-leak-funnel-grid{grid-template-columns:1fr}}
+
+/* legal pages (privacy / terms) */
+html body main.layout-3col__full>section:has(>h1):has(>h2){box-sizing:border-box;width:min(880px,calc(100% - 48px));margin:0 auto;padding:clamp(40px,5vw,72px) 0 clamp(48px,6vw,88px)}
+html body main.layout-3col__full>section:has(>h1):has(>h2)>h1{margin:0 0 14px;color:#00954f;font-size:clamp(30px,3.6vw,40px);font-weight:500;line-height:1.2}
+html body main.layout-3col__full>section:has(>h1):has(>h2)>h2{margin:32px 0 10px;font-size:clamp(22px,2.6vw,28px);font-weight:500;line-height:1.3}
+html body main.layout-3col__full>section:has(>h1):has(>h2)>p{margin:0 0 14px;font-size:18px;line-height:1.65;overflow-wrap:anywhere}
+@media(max-width:640px){html body main.layout-3col__full>section:has(>h1):has(>h2){width:calc(100% - 36px)}}
+
+/* small contrast fixes */
+html body .breadcrumb__item,html body .breadcrumb__item a{color:#5f6368!important}
+html body .rr-contact-form .rr-contact-submit{color:#fff!important}
+[data-rh-leak-page]{display:flow-root}
+html body .rh-leak-funnel{clear:both}
+/* footer: no empty map frame, tidy copyright line, centered padded link row */
+html body footer.footer .rr-footer-map:empty{display:none!important}
+.rr-leak-wrap [data-rh-leak-rich]>section{padding:0}
