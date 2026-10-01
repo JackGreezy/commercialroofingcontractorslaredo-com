@@ -246,7 +246,7 @@ const ROUTE_RULES = {
   coatings: {
     include: [/\bcoatings?\b/i, /fluid-applied/i, /roof-restoration/i],
     prefer: [/commercial-roof-coatings?/i, /\/services\//i, /roof-restoration/i],
-    reject: [/residential/i],
+    reject: [/residential/i, /hail|wind|storm|snow|humidity|damage|uv-heat|heat/i],
     label: "Commercial Roof Coatings",
   },
   maintenance: {
