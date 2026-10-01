@@ -440,7 +440,7 @@ def ensure_color_scheme_assets(soup: BeautifulSoup):
     style = soup.new_tag("style", id="rh-color-scheme-css")
     style["data-rh-scheme"] = palette["name"]
     style.string = f"""
-/* RankHound color scheme: {palette['name']} */
+/* color scheme: {palette['name']} */
 :root{{--rh-primary:{palette['primary']};--rh-secondary:{palette['secondary']};--rh-accent:{palette['accent']};--rh-accent-2:{palette['accent2']};--rh-surface:{palette['surface']};--rh-ink:{palette['ink']};--rh-button-text:{palette['button']};--darkBlue:var(--rh-primary)!important;--colorBlue:var(--rh-secondary)!important;--colorGreen:var(--rh-accent-2)!important;--orange:var(--rh-accent)!important;--W-Resolute-Blue:var(--rh-primary)!important;--colorText:var(--rh-ink)!important;--wp--preset--color--vivid-cyan-blue:var(--rh-secondary)!important;--wp--preset--color--luminous-vivid-amber:var(--rh-accent)!important;}}
 html body{{accent-color:var(--rh-accent);color:var(--rh-ink);}}
 html body a:not(.rr-wordmark):not([href^="tel:"]):not([href^="mailto:"]){{color:var(--rh-secondary);}}
