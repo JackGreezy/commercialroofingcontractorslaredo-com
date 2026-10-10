@@ -17,7 +17,9 @@
   const handset = '<span class="rr-call-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.6 2.8 9.3 8l-2 1.8c1.3 2.7 3.5 4.9 6.2 6.2l1.8-2 5.2 2.7-.8 3.4c-.2.8-.9 1.4-1.8 1.4C9.4 21.5 2.5 14.6 2.5 6.1c0-.9.6-1.6 1.4-1.8l2.7-.7Z" fill="currentColor"/></svg></span>';
   const telHref = `tel:${phoneTel}`;
 
+  // rr-controls-qa-20261010
   const isVisible = (element) => {
+    if (element.checkVisibility && !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) return false;
     const rect = element.getBoundingClientRect();
     const style = getComputedStyle(element);
     return rect.width > 3 && rect.height > 3 && style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || 1) > 0;
@@ -35,7 +37,9 @@
     }
 
     if (!window.matchMedia("(max-width: 900px)").matches) return;
-    const visibleBurgers = burgers.filter(isVisible);
+    const nativeBurgers = burgers.filter((burger) => !burger.classList.contains("rr-burger-fallback") && isVisible(burger));
+    if (nativeBurgers.length) burgers.filter((burger) => burger.classList.contains("rr-burger-fallback")).forEach((burger) => burger.remove());
+    const visibleBurgers = burgers.filter((burger) => burger.isConnected && isVisible(burger));
     visibleBurgers.slice(1).forEach((burger) => burger.setAttribute("data-rr-menu-duplicate", ""));
     const primaryBurger = visibleBurgers[0];
     const header = primaryBurger?.closest("header") || document.querySelector("header");
@@ -127,22 +131,32 @@
   const suppressOverlappingMobileCtas = () => {
     const mobilePhone = document.querySelector("[data-rr-mobile-phone]");
     document.querySelectorAll("[data-rr-mobile-cta-suppressed]").forEach((element) => element.removeAttribute("data-rr-mobile-cta-suppressed"));
-    if (!mobilePhone || !window.matchMedia("(max-width: 900px)").matches || !isVisible(mobilePhone)) return;
-
+    if (!mobilePhone || !window.matchMedia("(max-width: 900px)").matches) return;
     const phoneRect = mobilePhone.getBoundingClientRect();
+    if (phoneRect.width < 3 || phoneRect.height < 3) return;
+    const weatherVisible = [...document.querySelectorAll(".rh-live-weather")].some((banner) => { const rect = banner.getBoundingClientRect(); return rect.bottom > 0 && rect.top < innerHeight; });
+    const visibility = weatherVisible ? "hidden" : "visible";
+    if (mobilePhone.style.getPropertyValue("visibility") !== visibility) mobilePhone.style.setProperty("visibility", visibility, "important");
+    // Keep one floating phone action. A fixed parent counts even if its link is static.
     for (const element of document.querySelectorAll("a, button, [role=button]")) {
-      if (element === mobilePhone || element.closest("[data-rr-mobile-phone]") || element.closest("[data-rr-mobile]")) continue;
-      const style = getComputedStyle(element);
-      if (style.position !== "fixed" && style.position !== "sticky") continue;
-      const rect = element.getBoundingClientRect();
-      const overlapWidth = Math.max(0, Math.min(phoneRect.right, rect.right) - Math.max(phoneRect.left, rect.left));
-      const overlapHeight = Math.max(0, Math.min(phoneRect.bottom, rect.bottom) - Math.max(phoneRect.top, rect.top));
-      const signature = [element.className, element.id, element.getAttribute("aria-label"), element.textContent, element.getAttribute("href")].join(" ");
-      if (overlapWidth * overlapHeight > 80 && /call|phone|roof|help|emergency|contact/i.test(signature)) {
-        element.setAttribute("data-rr-mobile-cta-suppressed", "");
+      if (element === mobilePhone || element.closest("[data-rr-mobile-phone], [data-rr-mobile], header, nav, .rh-live-weather")) continue;
+      const signature = [element.className, element.id, element.getAttribute("aria-label"), element.getAttribute("href")].join(" ");
+      if (!element.matches('a[href^="tel:"]') && !/call|phone|help|emergency|contact/i.test(signature)) continue;
+      for (let fixed = element; fixed && fixed !== document.body; fixed = fixed.parentElement) {
+        const style = getComputedStyle(fixed);
+        if (style.position !== "fixed" && style.position !== "sticky") continue;
+        const rect = fixed.getBoundingClientRect();
+        if (rect.width > 3 && rect.height > 3 && rect.right > 0 && rect.left < innerWidth && rect.top >= innerHeight / 2 && rect.top < innerHeight) fixed.setAttribute("data-rr-mobile-cta-suppressed", "");
+        break;
       }
     }
   };
+  window.addEventListener("scroll", suppressOverlappingMobileCtas, { passive: true });
+  document.addEventListener("visibilitychange", suppressOverlappingMobileCtas);
+  const controlObserver = new MutationObserver((records) => { if (records.some((record) => record.addedNodes.length || record.removedNodes.length)) requestAnimationFrame(() => { normalizeMobileMenu(); suppressOverlappingMobileCtas(); }); });
+  controlObserver.observe(document.body, { childList: true, subtree: true });
+  if (window.ResizeObserver) { const headerObserver = new ResizeObserver(() => requestAnimationFrame(() => { normalizeMobileMenu(); suppressOverlappingMobileCtas(); })); document.querySelectorAll("header, .w-nav").forEach((header) => headerObserver.observe(header)); }
+  if (document.fonts?.ready) document.fonts.ready.then(() => { normalizeMobileMenu(); suppressOverlappingMobileCtas(); });
 
   requestAnimationFrame(() => {
     normalizeMobileMenu();
