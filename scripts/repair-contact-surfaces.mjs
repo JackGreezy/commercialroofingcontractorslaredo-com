@@ -67,6 +67,16 @@ function repairHtml(before, file) {
         });
       });
     }
+    html = html.replace(/<form\b[\s\S]*?<\/form\s*>/gi, form => {
+      if (!/action=["']\/api\/(?:contact|submit)/i.test(form) || /<form\b[^>]*role=["']search["']/i.test(form)) return form;
+      return form.replace(/<input\b[^>]*>/gi, input => {
+        if (!/\btype=["']hidden["']/i.test(input)) return input;
+        const name = input.match(/\bname=["']([^"']+)["']/i)?.[1];
+        if (!['name', 'phone', 'email', 'timeline', 'address', 'message'].includes(name)) return input;
+        const occurrences = [...form.matchAll(new RegExp(`<(?:input|select|textarea)\\b[^>]*\\bname=["']${name}["']`, 'gi'))];
+        return occurrences.length > 1 ? '' : input;
+      });
+    });
     for (const form of html.matchAll(/<form\b[\s\S]*?<\/form\s*>/gi)) {
       if (/<form\b[^>]*role=["']search["']/i.test(form[0])) continue;
       if (!/action=["']\/api\/(?:contact|submit)(?:["'?/])|data-contact-form/i.test(form[0])) continue;

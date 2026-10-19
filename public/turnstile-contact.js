@@ -1,4 +1,11 @@
 (function () {
+  if (window.__rrContactSubmitInstalled) return;
+  window.__rrContactSubmitInstalled = true;
+  var handlers = new WeakMap();
+  window.addEventListener('submit', function (event) {
+    var handler = handlers.get(event.target);
+    if (handler) handler(event);
+  }, true);
   var seen = new WeakSet();
   var siteKeyPromise;
   var scriptPromise;
@@ -105,7 +112,7 @@
         });
     }
 
-    form.addEventListener('submit', function (event) {
+    handlers.set(form, function (event) {
       event.preventDefault();
       event.stopImmediatePropagation();
       if (!form.reportValidity()) return;
@@ -115,7 +122,7 @@
         return;
       }
       send();
-    }, true);
+    });
 
     Promise.all([siteKey(), loader()]).then(function (values) {
       requireToken = true;

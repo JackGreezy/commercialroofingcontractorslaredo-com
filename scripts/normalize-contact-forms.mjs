@@ -21,6 +21,9 @@ const ignoredNames = new Set([
 
 const skippedParts = new Set(["node_modules", ".next", ".git", "qa-out", "assets-f"]);
 const runtimeFormSources = new Set([
+  "data/site-pages.json",
+  "data/routes.generated.json",
+  "data/rendered-pages.json",
   "app/ContactHydrator.tsx",
   "app/lib/sitePage.tsx",
   "app/san-antonio-homepage.js",
@@ -350,7 +353,7 @@ function normalizeRepo(repo) {
   let formsChanged = 0;
   for (const relative of trackedFiles(repo)) {
     const file = path.join(repo, relative);
-    if (!fs.existsSync(file) || fs.statSync(file).size > 5_000_000) continue;
+    if (!fs.existsSync(file) || (fs.statSync(file).size > 5_000_000 && !relative.endsWith(".json"))) continue;
     const text = fs.readFileSync(file, "utf8");
     if (!/<form\b/i.test(text)) continue;
     const result = normalizeText(text);
