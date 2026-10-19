@@ -285,6 +285,7 @@ function normalizeForm(form, jsx = false) {
     return `<form${next}>`;
   });
   form = form.replace(/<(div|p|li)\b([^>]*)>\s*<label\b[^>]*>[\s\S]*?<\/label\s*>\s*<\/\1\s*>/gi, (unit, tag, raw) => {
+    if (controlsIn(unit).length) return unit;
     return /field|input|control|row|form|wrap|group|column|col\b/i.test(raw) ? "" : unit;
   });
   return form;
