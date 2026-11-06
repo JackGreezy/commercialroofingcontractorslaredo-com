@@ -11,3 +11,15 @@ qa-out/
 public/qa-out/
 public/ours/brand/
 scripts/__pycache__/
+
+# Generated AI reading surfaces
+/node_modules/
+/.next/
+/.vercel/
+/data/ai-source/
+/data/ai-pages.generated.json
+/lib/ai/routes.generated.json
+/public/ai.txt
+/public/llms-full.txt
+/data/ai-native-pages.json
+/lib/ai/pages.generated.json

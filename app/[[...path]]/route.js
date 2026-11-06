@@ -1,3 +1,4 @@
+import { withAiResponse } from "../../lib/ai/response.mjs";
 import { optimizeFleetImages } from "../../scripts/optimize-fleet-images.mjs";
 import { withLiveWeatherResponse } from "../../lib/live-weather-activation";
 import fs from "node:fs/promises";
@@ -75,6 +76,10 @@ async function weatherOriginalGET(request, context) {
   return (await htmlResponse(["404"], request, 404)) || new Response("Not found", { status: 404 });
 }
 
-export async function GET(request, context) {
+async function originalAiGET(request, context) {
   return withLiveWeatherResponse(await weatherOriginalGET(request, context), "commercialroofingcontractorslaredo-com", request);
+}
+
+export async function GET(request, context) {
+  return withAiResponse(await originalAiGET(request, context), request);
 }

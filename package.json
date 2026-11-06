@@ -6,7 +6,10 @@
     "build": "next build --webpack",
     "dev": "next dev",
     "start": "next start",
-    "prebuild": "node scripts/repair-protected-contact-links.mjs && node scripts/normalize-contact-forms.mjs && node scripts/finalize-lead-controls.mjs && node scripts/inject-rankhound-conversions.mjs && node scripts/ensure-visible-phone.mjs && node scripts/repair-protected-contact-links.mjs && node scripts/sync-weather-response-routes.mjs && node scripts/inject-turnstile.mjs && node scripts/inject-weather-theme.mjs && node scripts/normalize-contact-forms.mjs && node scripts/repair-contact-surfaces.mjs"
+    "prebuild": "node scripts/repair-protected-contact-links.mjs && node scripts/normalize-contact-forms.mjs && node scripts/finalize-lead-controls.mjs && node scripts/inject-rankhound-conversions.mjs && node scripts/ensure-visible-phone.mjs && node scripts/repair-protected-contact-links.mjs && node scripts/sync-weather-response-routes.mjs && node scripts/inject-turnstile.mjs && node scripts/inject-weather-theme.mjs && node scripts/normalize-contact-forms.mjs && node scripts/repair-contact-surfaces.mjs && node scripts/ai/build.mjs && node scripts/check-ai-site.mjs",
+    "ai:build": "node scripts/ai/build.mjs",
+    "ai:check": "node scripts/check-ai-site.mjs",
+    "predev": "node scripts/ai/build.mjs && node scripts/check-ai-site.mjs"
   },
   "dependencies": {
     "next": "16.2.9",

@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { prefersMarkdown, markdownResponse } from '../lib/ai/http.mjs';
+import { parseHtml, metadata, markdownFromTree } from './ai/format.mjs';
+const registry = JSON.parse(fs.readFileSync('data/ai-pages.generated.json', 'utf8'));
+for (const value of ['', '*/*', 'text/html', 'text/markdown, text/html', 'text/html;q=1, text/markdown;q=0.5', 'text/markdown;q=0', 'text/markdown;q=bad', 'text/*']) assert.equal(prefersMarkdown(value), false, value);
+for (const value of ['text/markdown', 'text/markdown;q=1, text/html;q=0.5', 'text/markdown;q=0.5, text/html;q=0', 'text/markdown;q=0.9, */*;q=0.1']) assert.equal(prefersMarkdown(value), true, value);
+assert.equal(metadata(parseHtml('<meta content="noindex" name="robots">')).noindex, true);
+assert.equal(markdownFromTree(parseHtml('<body><header>secret nav</header><main><h1>Roofing</h1><p>Visible <a href="/contact">contact</a></p><div hidden>private</div><script>leak</script><footer>footer</footer></main></body>'), 'https://example.com/'), '# Roofing\n\nVisible [contact](https://example.com/contact)');
+assert.equal(markdownFromTree(parseHtml('<body><main></main><article><h1>About</h1><p>Our roofing work.</p></article><footer>footer</footer></body>'), 'https://example.com/'), '# About\n\nOur roofing work.');
+assert.ok(markdownFromTree(parseHtml('<body><main><h1>Services</h1></main><article><p>Commercial roof repairs and detailed roof inspections for occupied properties.</p></article><footer>footer</footer></body>'), 'https://example.com/').includes('Commercial roof repairs'));
+const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8');
+const routes = [...sitemap.matchAll(/<loc>\s*([^<]+)\s*<\/loc>/g)].map(m => new URL(m[1]).pathname.replace(/\/+$/, '') || '/');
+for (const route of routes) assert.ok(registry.pages[route] || registry.skipped.some(s => s.route === route && s.reason), 'Missing renderer: ' + route);
+for (const [route, page] of Object.entries(registry.pages)) {
+  assert.ok(!/^\/(?:api|admin|portal|dashboard|auth|sign-in|sign-up|onboarding|dev-access)(?:\/|$)/.test(route), route);
+  assert.ok(page.markdown.length > 50, route);
+  assert.ok(!/<(?:script|style|nav|footer)\b/i.test(page.markdown), route);
+  const html = fs.readFileSync(page.source, 'utf8');
+  assert.ok(html.includes('name="ai-summary"'), route);
+  assert.ok(html.includes(page.markdownUrl), route);
+  const response = markdownResponse(page);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('content-location'), page.canonical);
+  assert.equal(response.headers.get('x-robots-tag'), 'noindex, follow');
+}
+assert.equal(markdownResponse(null).status, 404);
+assert.equal(await markdownResponse(registry.pages['/'], 'HEAD').text(), '');
+assert.equal(markdownResponse(registry.pages['/'], 'OPTIONS').status, 204);
+assert.ok(fs.readFileSync('public/llms-full.txt', 'utf8').length < 500000);
+console.log(JSON.stringify({ passed: true, pages: Object.keys(registry.pages).length, skipped: registry.skipped, fullPages: registry.fullRoutes.length }));
