@@ -1,6 +1,9 @@
 (function () {
   function start() {
-  if (window.__rankhoundGrowthV2) return;
+  if (window.__rankhoundGrowthV3) return;
+  var upgradeOnly = !!window.__rankhoundGrowthV2;
+  window.__rankhoundGrowthV3 = true;
+  window.__rankhoundGrowthVersion = 'mobile-intent-v3';
   window.__rankhoundGrowthV2 = true;
   window.__rankhoundConversionEvents = true;
   var compactForms = true;
@@ -12,6 +15,7 @@
   var submittingForm = null;
   var qa = new URLSearchParams(location.search).get('rh_qa') === '1';
   var firstSource = 'direct';
+  if (!upgradeOnly) {
   try {
     var saved = JSON.parse(window.sessionStorage.getItem('rh_contact_source_v1') || 'null');
     var sources = ['direct', 'internal_unknown', 'google_search', 'google_paid', 'bing_search', 'bing_paid', 'duckduckgo_search', 'yahoo_search', 'email', 'other_referral', 'other_campaign'];
@@ -36,6 +40,7 @@
   }
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   if (qa) window.va('beforeSend', function () { return null; });
+  }
 
   function send(name, extra) {
     if (qa) return;
@@ -48,7 +53,9 @@
     if (!form || form.tagName !== 'FORM') return false;
     var action;
     try { action = new URL(form.getAttribute('action') || '', location.href); } catch (_) { return false; }
-    return action.origin === location.origin && /^\/api\/(contact|submit)\/?$/.test(action.pathname);
+    if (action.origin !== location.origin) return false;
+    return /^\/api\/(contact|submit)\/?$/.test(action.pathname) ||
+      (!form.getAttribute('action') && ['name', 'phone', 'email'].every(function (name) { return !!form.querySelector('[name="' + name + '"]'); }));
   }
 
   function placement(link) {
@@ -58,6 +65,7 @@
     return 'content';
   }
 
+  if (!upgradeOnly) {
   document.addEventListener('click', function (event) {
     var clickedForm = event.target && (event.target.form || event.target.closest && event.target.closest('form'));
     if (leadForm(clickedForm)) submittingForm = clickedForm;
@@ -130,9 +138,19 @@
     };
   }
 
+  }
+
   function shorten(form) {
-    if (!compactForms || !leadForm(form) || form.dataset.rhShortForm === 'v2') return;
+    if (!compactForms || !leadForm(form)) return;
+    var button = form.querySelector('button[type="submit"], input[type="submit"]');
+    var caption = button && (button.textContent || button.value || '');
+    if (button && /send|submit|request/i.test(caption) && !/sending|processing|sent|received|thank/i.test(caption)) {
+      if (button.tagName === 'INPUT') button.value = 'Get a callback';
+      else button.textContent = 'Get a callback';
+    }
+    if (form.dataset.rhIntentForm === 'v3') { compactOptionalDetails(form); return; }
     form.dataset.rhShortForm = 'v2';
+    form.dataset.rhIntentForm = 'v3';
     ['timeline', 'address', 'message'].forEach(function (name) {
       var control = form.querySelector('[name="' + name + '"]');
       if (!control) return;
@@ -147,15 +165,142 @@
         if (firstText && !/optional/i.test(firstText.nodeValue)) firstText.nodeValue = firstText.nodeValue.trim().replace(/\s*\*$/, '') + ' (optional)\n';
       }
     });
-    var note = document.createElement('p');
+    var note = form.querySelector('.rh-callback-note') || document.createElement('p');
     note.className = 'rh-callback-note';
-    note.textContent = 'Name, phone and email are enough to request a callback. Property details are optional.';
-    form.insertBefore(note, form.firstChild);
-    var button = form.querySelector('button[type="submit"], input[type="submit"]');
-    if (button && /send|submit|request/i.test(button.textContent || button.value || '')) {
-      if (button.tagName === 'INPUT') button.value = 'Request a callback';
-      else button.textContent = 'Request a callback';
+    note.textContent = 'Get a callback about your roof. Property details are optional.';
+    if (!note.parentNode) form.insertBefore(note, form.firstChild);
+    compactOptionalDetails(form);
+  }
+
+  function compactOptionalDetails(form) {
+    var controls = ['timeline', 'address', 'message', 'serviceType', 'roofNeed'].map(function (name) { return form.querySelector('[name="' + name + '"]'); }).filter(function (control) { return control && !control.required && !control.hasAttribute('required'); });
+    if (!controls.length) return;
+    function safeGroup(node) {
+      var fields = Array.prototype.slice.call(node.querySelectorAll('input:not([type="hidden"]), select, textarea'));
+      return fields.length && fields.every(function (field) { return ['timeline', 'address', 'message', 'serviceType', 'roofNeed'].indexOf(field.name || field.getAttribute('name')) !== -1 && !field.required && !field.hasAttribute('required'); }) && !node.querySelector('button, input[type="submit"], iframe, [data-sitekey], [id*="turnstile"], [class*="turnstile"], [id*="captcha"], [class*="captcha"], [name="cf-turnstile-response"]');
     }
+    controls.forEach(function (control) {
+      var wrapper = control, parent = control.parentNode;
+      if (parent && parent !== form) {
+        var fields = parent.querySelectorAll('input:not([type="hidden"]), select, textarea');
+        if (fields.length === 1 && safeGroup(parent)) wrapper = parent;
+      }
+      wrapper.classList.add('rh-optional-field');
+      if (control.labels) Array.prototype.forEach.call(control.labels, function (label) { if (safeGroup(label)) label.classList.add('rh-optional-field'); });
+    });
+    form.setAttribute('data-rh-compact-callback', '');
+    if (form.querySelector('.rh-property-disclosure')) return;
+    var disclosure = document.createElement('details'); disclosure.className = 'rh-property-disclosure';
+    var summary = document.createElement('summary'); summary.textContent = 'Add property details (optional)'; disclosure.appendChild(summary);
+    form.dataset.rhDetailsOpen = 'false';
+    disclosure.addEventListener('toggle', function () { form.dataset.rhDetailsOpen = disclosure.hasAttribute('open') ? 'true' : 'false'; });
+    var submit = form.querySelector('button[type="submit"], input[type="submit"]');
+    var before = submit;
+    while (before && before.parentNode !== form) before = before.parentNode;
+    if (before && !before.querySelector('[name="name"], [name="phone"], [name="email"]')) form.insertBefore(disclosure, before);
+    else form.appendChild(disclosure);
+  }
+
+  function phoneLink() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('a[href^="tel:"]'));
+    function valid(link) { var digits = (link.getAttribute('href') || '').replace(/\D/g, ''); return digits.length >= 10 && !/5555555/.test(digits); }
+    var headers = 'header, [role="banner"], #masthead, #header, #site-header, .site-header, .main-header, .elementor-location-header';
+    return links.find(function (link) { return valid(link) && link.closest(headers); }) || links.find(valid);
+  }
+
+  function visibleElement(element) {
+    if (!element || !element.getBoundingClientRect || !window.getComputedStyle) return false;
+    var rect = element.getBoundingClientRect(), style = window.getComputedStyle(element);
+    if (element.checkVisibility && !element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })) return false;
+    return rect.width >= 20 && rect.height >= 12 && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+  }
+
+  function callbackAnchor() {
+    var forms = Array.prototype.filter.call(document.querySelectorAll('form'), leadForm);
+    var selected = forms.find(function (form) {
+      return visibleElement(form) || visibleElement(form.querySelector('[name="phone"]'));
+    });
+    if (!selected && !window.getComputedStyle) selected = forms[0];
+    var anchor = document.getElementById('roof-callback-form');
+    if (selected) {
+      if (!anchor) { anchor = document.createElement('div'); anchor.id = 'roof-callback-form'; anchor.style.scrollMarginTop = '120px'; }
+      if (anchor.nextElementSibling !== selected) selected.parentNode.insertBefore(anchor, selected);
+    } else if (anchor && anchor.tagName !== 'FORM') anchor.remove();
+    var href = selected ? '#roof-callback-form' : '/contact#roof-callback-form';
+    document.querySelectorAll('a[data-rh-callback]').forEach(function (link) {
+      if (link.getAttribute('href') !== href) link.setAttribute('href', href);
+      if (link.closest('.rh-growth-actions') && link.textContent !== 'Get a callback') link.textContent = 'Get a callback';
+    });
+    return href;
+  }
+
+  function mobileHeroActions() {
+    if (!(window.innerWidth > 0 && window.innerWidth < 768) || !window.getComputedStyle) return;
+    var existing = document.querySelector('.rh-mobile-intent-actions');
+    if (/^\/(?:contact(?:-us)?(?:\.html)?|privacy[^/]*|terms[^/]*|thank-you|404)\/?$/i.test(location.pathname)) {
+      if (existing) existing.remove();
+      return;
+    }
+    var headers = 'header, [role="banner"], #masthead, #header, #site-header, .site-header, .main-header, .elementor-location-header';
+    var heading = Array.prototype.find.call(document.querySelectorAll('h1'), function (candidate) {
+      var hero = candidate.closest('.page-title-wrap, .hero, .hero-section, [data-hero], .home-hero, .hero-content');
+      var header = candidate.closest(headers);
+      var navigation = candidate.closest('nav, [role="navigation"], .site-logo, .site-title, .brand, .logo');
+      return !navigation && (!header || hero) && candidate.textContent.trim() && visibleElement(candidate);
+    });
+    var source = phoneLink();
+    if (!heading || !source) return;
+    var rect = heading.getBoundingClientRect(), computed = window.getComputedStyle(heading);
+    var fontSize = parseFloat(computed.fontSize) || 40;
+    var viewport = window.innerHeight || 800;
+    var target = Math.min(44, fontSize);
+    var maxHeight = Math.max(112, Math.min(210, viewport * .3));
+    if (rect.height > maxHeight) target = Math.min(target, Math.max(30, fontSize * maxHeight / rect.height));
+    heading.classList.add('rh-mobile-intent-heading');
+    var size = Math.round(target) + 'px';
+    if (heading.style.getPropertyValue('--rh-mobile-h1-size') !== size) heading.style.setProperty('--rh-mobile-h1-size', size);
+    heading.querySelectorAll('span, strong, em, b').forEach(function (child) {
+      if ((parseFloat(window.getComputedStyle(child).fontSize) || 0) > target + .5) child.classList.add('rh-mobile-intent-large-type');
+    });
+    var scope = heading.closest('section, main, article, [data-hero], .hero, .hero-section') || heading.parentNode;
+    var aboveFoldCall = Array.prototype.find.call(scope.querySelectorAll('a[href^="tel:"]'), function (link) {
+      if (link.closest('.rh-growth-actions, .rh-mobile-intent-actions') || !visibleElement(link)) return false;
+      var box = link.getBoundingClientRect();
+      return box.width >= 96 && box.height >= 40 && box.top >= rect.top && box.bottom <= viewport - 76;
+    });
+    if (aboveFoldCall) {
+      heading.setAttribute('data-rh-mobile-intent', 'existing-call');
+      aboveFoldCall.setAttribute('data-rh-placement', 'mobile-hero');
+      if (existing) existing.remove();
+      scope.querySelectorAll('.rh-mobile-redundant-contact').forEach(function (link) { link.classList.remove('rh-mobile-redundant-contact'); });
+      return;
+    }
+    heading.setAttribute('data-rh-mobile-intent', 'call-and-callback');
+    if (existing && existing.previousElementSibling === heading) return;
+    if (existing) existing.remove();
+    var panel = document.createElement('div');
+    panel.className = 'rh-mobile-intent-actions';
+    panel.setAttribute('role', 'group');
+    panel.setAttribute('aria-label', 'Roofing contact options');
+    panel.setAttribute('data-rh-placement', 'mobile-hero');
+    if (computed.textAlign === 'center') { panel.style.marginLeft = 'auto'; panel.style.marginRight = 'auto'; }
+    else if (computed.textAlign === 'right') panel.style.marginLeft = 'auto';
+    var bar = document.querySelector('.rh-growth-actions');
+    ['--rh-action-bg', '--rh-action-text'].forEach(function (name) {
+      var value = bar && bar.style.getPropertyValue(name);
+      if (value) panel.style.setProperty(name, value);
+    });
+    var call = document.createElement('a'); call.href = source.getAttribute('href'); call.textContent = 'Call now';
+    var callback = document.createElement('a'); callback.href = callbackAnchor(); callback.textContent = 'Get a callback'; callback.setAttribute('data-rh-callback', '');
+    panel.appendChild(call); panel.appendChild(callback);
+    heading.parentNode.insertBefore(panel, heading.nextSibling);
+    scope.querySelectorAll('a[href]').forEach(function (link) {
+      if (link.closest('.rh-mobile-intent-actions, .rh-growth-actions') || !visibleElement(link)) return;
+      var url;
+      try { url = new URL(link.getAttribute('href'), location.href); } catch (_) { return; }
+      var box = link.getBoundingClientRect();
+      if (url.origin === location.origin && /^\/contact(?:-us)?\/?$/.test(url.pathname) && box.top >= rect.top && box.top <= rect.bottom + 350 && box.height >= 30) link.classList.add('rh-mobile-redundant-contact');
+    });
   }
 
   function desktopHeaderPhone() {
@@ -209,36 +354,42 @@
   }
 
   function mobileActions() {
-    if (document.querySelector('.rh-growth-actions')) return;
-    var phone = Array.prototype.find.call(document.querySelectorAll('a[href^="tel:"]'), function (link) {
-      var digits = (link.getAttribute('href') || '').replace(/\D/g, '');
-      return digits.length >= 10 && !/5555555/.test(digits);
-    });
+    var phone = phoneLink();
     if (!phone) return;
-    var bar = document.createElement('nav');
+    var bars = Array.prototype.slice.call(document.querySelectorAll('.rh-growth-actions'));
+    var bar = bars.find(function (item) { return item.hasAttribute('data-rh-native-intent'); }) || bars[0] || document.createElement('nav');
+    bars.forEach(function (item) { if (item !== bar && !item.hasAttribute('data-rh-native-intent')) item.remove(); });
     bar.className = 'rh-growth-actions';
     bar.setAttribute('aria-label', 'Contact options');
     bar.setAttribute('data-rh-placement', 'mobile-actions');
-    var originalButton = document.querySelector('form button[type="submit"], form input[type="submit"]');
+    var originalButton = document.querySelector('form button[type="submit"], form input[type="submit"]') || document.querySelector('.fgfll-visible-phone a');
+    if (!originalButton && window.getComputedStyle) originalButton = Array.prototype.find.call(document.querySelectorAll('a[href]'), function (link) {
+      if (link.closest('.rh-growth-actions, .rh-mobile-intent-actions') || !visibleElement(link)) return false;
+      var href = link.getAttribute('href') || '', rect = link.getBoundingClientRect();
+      return rect.width >= 96 && rect.height >= 32 && (/^tel:/i.test(href) || /\/contact(?:[-/]|$)/i.test(href)) && !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(window.getComputedStyle(link).backgroundColor);
+    });
     if (originalButton && window.getComputedStyle) {
       var originalStyle = window.getComputedStyle(originalButton);
-      if (originalStyle.backgroundColor && !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(originalStyle.backgroundColor)) {
-        bar.style.setProperty('--rh-action-bg', originalStyle.backgroundColor);
+      var originalBackground = originalStyle.backgroundColor;
+      if (/^(transparent|rgba\(0, 0, 0, 0\))$/.test(originalBackground) && originalButton.closest('.fgfll-visible-phone')) originalBackground = window.getComputedStyle(originalButton.closest('.fgfll-visible-phone')).backgroundColor;
+      if (originalBackground && !/^(transparent|rgba\(0, 0, 0, 0\))$/.test(originalBackground)) {
+        bar.style.setProperty('--rh-action-bg', originalBackground);
         bar.style.setProperty('--rh-action-text', originalStyle.color);
       }
     }
-    var call = document.createElement('a');
+    var call = bar.querySelector('a[href^="tel:"]') || document.createElement('a');
     call.href = phone.getAttribute('href');
-    call.textContent = 'Call now';
-    var callback = document.createElement('a');
-    callback.href = /^\/contact\/?$/.test(location.pathname) && document.getElementById('roof-callback-form')
-      ? '#roof-callback-form' : '/contact#roof-callback-form';
-    callback.textContent = 'Request a callback';
+    if (call.textContent !== 'Call now') call.textContent = 'Call now';
+    var callback = bar.querySelector('a[data-rh-callback]') || document.createElement('a');
+    callback.href = callbackAnchor();
+    if (callback.textContent !== 'Get a callback') callback.textContent = 'Get a callback';
     callback.setAttribute('data-rh-callback', '');
-    bar.appendChild(call);
-    bar.appendChild(callback);
-    document.body.appendChild(bar);
+    if (!call.parentNode) bar.appendChild(call);
+    if (!callback.parentNode) bar.appendChild(callback);
+    if (!bar.parentNode) document.body.appendChild(bar);
     document.body.classList.add('rh-has-growth-actions');
+    if (bar.dataset.rhKeyboardReady) return;
+    bar.dataset.rhKeyboardReady = 'true';
     function keyboard() {
       var active = document.activeElement;
       bar.hidden = !!(active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName));
@@ -248,27 +399,46 @@
   }
 
   function ready() {
-    var style = document.createElement('style');
+    var style = document.getElementById('rh-growth-v2-style') || document.createElement('style');
     style.id = 'rh-growth-v2-style';
     style.textContent = '.rh-desktop-header-phone{display:none!important}@media(min-width:768px){.rh-header-phone-position{position:relative!important}.rh-header-phone-reserved-row{padding-top:calc(var(--rh-header-original-padding,0px) + 40px)!important;height:auto!important;min-height:calc(var(--rh-header-original-height,0px) + 40px)!important}.rh-desktop-header-phone{box-sizing:border-box;display:inline-flex!important;align-items:center;position:absolute!important;top:10px;right:clamp(20px,5vw,80px);z-index:5;min-height:28px;padding:2px 4px;color:var(--rh-header-phone-text,#173b4d)!important;background:transparent;font:inherit;font-size:16px!important;font-weight:700!important;line-height:1.4!important;letter-spacing:normal!important;text-transform:none!important;text-decoration:none!important;white-space:nowrap}.rh-desktop-header-phone:focus-visible{outline:2px solid currentColor;outline-offset:3px}body.rh-header-fixed-offset{padding-top:calc(var(--rh-header-body-padding,0px) + 40px)!important}}.rh-callback-note{grid-column:1/-1;font:inherit;font-size:.94em;line-height:1.5;margin:0 0 1rem}.rh-growth-actions{display:none!important}@media(max-width:767px){body.rh-has-growth-actions{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}.rh-growth-actions:not([hidden]){box-sizing:border-box;display:grid!important;grid-template-columns:1fr 1.35fr;gap:8px;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #d6dce0;box-shadow:0 -3px 14px #00000012}.rh-growth-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border:1px solid currentColor;border-radius:4px;font:inherit;font-size:14px;font-weight:700;line-height:1.25;text-decoration:none;color:#173b4d;background:#fff}.rh-growth-actions a:first-child{color:var(--rh-action-text,#fff);background:var(--rh-action-bg,#173b4d);border-color:var(--rh-action-bg,#173b4d)}.rh-growth-actions a:focus-visible{outline:3px solid #3783b4;outline-offset:2px}}';
-    document.head.appendChild(style);
+    style.textContent += '.rh-property-disclosure{display:none}@media(max-width:767px){body.rh-has-growth-actions [class*="-visible-phone"],body.rh-has-growth-actions [data-rr-mobile-phone],body.rh-has-growth-actions [class*="-sticky-help"],body.rh-has-growth-actions [class*="-mobile-help"],body.rh-has-growth-actions [class*="-mobile-emergency"],body.rh-has-growth-actions a.rr-call{display:none!important}form[data-rh-compact-callback][data-rh-details-open="false"] .rh-optional-field{display:none!important}form[data-rh-compact-callback]{row-gap:12px!important}form[data-rh-compact-callback] .rh-callback-note{margin-bottom:4px}.rh-property-disclosure{display:block;grid-column:1/-1;width:100%;margin:0;font:inherit;font-size:14px}.rh-property-disclosure summary{cursor:pointer;min-height:44px;padding:10px 0;line-height:1.5;text-decoration:underline}.rh-property-disclosure summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}form[data-rh-compact-callback] button[type="submit"],form[data-rh-compact-callback] input[type="submit"]{min-height:48px}}';
+    style.textContent += '.rh-mobile-intent-actions{display:none!important}@media(max-width:767px){:root .rh-mobile-intent-heading.rh-mobile-intent-heading.rh-mobile-intent-heading{font-size:var(--rh-mobile-h1-size,44px)!important;line-height:1.1!important;margin-bottom:12px!important}:root .rh-mobile-intent-heading .rh-mobile-intent-large-type{font-size:inherit!important;line-height:inherit!important}.rh-mobile-intent-actions{box-sizing:border-box;display:grid!important;grid-template-columns:1fr 1.35fr;gap:8px;width:min(100%,420px);margin:14px 0 20px;position:relative;z-index:2}.rh-mobile-intent-actions a{box-sizing:border-box;display:flex!important;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid #173b4d;border-radius:4px;font:inherit;font-size:16px!important;font-weight:700!important;line-height:1.25!important;letter-spacing:normal!important;text-transform:none!important;text-decoration:none!important;color:#173b4d!important;background:#fff!important}.rh-mobile-intent-actions a:first-child{color:var(--rh-action-text,#fff)!important;background:var(--rh-action-bg,#173b4d)!important;border-color:var(--rh-action-bg,#173b4d)}.rh-mobile-intent-actions a:focus-visible{outline:3px solid #3783b4;outline-offset:2px}.rh-mobile-redundant-contact{display:none!important}}';
+    if (!style.parentNode) document.head.appendChild(style);
     document.querySelectorAll('form').forEach(shorten);
-    var firstForm = Array.prototype.find.call(document.querySelectorAll('form'), leadForm);
-    if (firstForm && !document.getElementById('roof-callback-form')) {
-      var anchor = document.createElement('div');
-      anchor.id = 'roof-callback-form';
-      anchor.style.scrollMarginTop = '120px';
-      firstForm.parentNode.insertBefore(anchor, firstForm);
-    }
+    callbackAnchor();
     mobileActions();
     desktopHeaderPhone();
+    mobileHeroActions();
     window.addEventListener('resize', desktopHeaderPhone);
+    window.addEventListener('resize', mobileHeroActions);
+    document.addEventListener('animationend', mobileHeroActions, true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(mobileHeroActions);
+    setTimeout(mobileHeroActions, 600);
+    setTimeout(mobileHeroActions, 1800);
+    document.addEventListener('click', function (event) {
+      var link = event.target && event.target.closest && event.target.closest('a[data-rh-callback]');
+      if (!link || link.getAttribute('href') !== '#roof-callback-form') return;
+      setTimeout(function () {
+        var target = document.getElementById('roof-callback-form');
+        var form = target && target.nextElementSibling;
+        var input = leadForm(form) && form.querySelector('input[name="name"], input[name="phone"]');
+        if (input && input.focus) input.focus({ preventScroll: true });
+      }, 0);
+    });
     if (location.hash === '#roof-callback-form') {
       var callbackTarget = document.getElementById('roof-callback-form');
       if (callbackTarget && callbackTarget.scrollIntoView) callbackTarget.scrollIntoView();
     }
+    var refreshQueued = false;
     if (compactForms) new MutationObserver(function (mutations) {
-      if (mutations.some(function (m) { return m.addedNodes.length; })) { document.querySelectorAll('form').forEach(shorten); desktopHeaderPhone(); }
+      if (refreshQueued || !mutations.some(function (m) { return m.addedNodes.length; })) return;
+      refreshQueued = true;
+      setTimeout(function () {
+        refreshQueued = false;
+        document.querySelectorAll('form').forEach(shorten);
+        callbackAnchor(); mobileActions(); desktopHeaderPhone(); mobileHeroActions();
+      }, 100);
     }).observe(document.body, { childList: true, subtree: true });
     setTimeout(function () {
       if (window.vai || document.querySelector('script[src*="/_vercel/insights/script.js"]')) return;
@@ -279,7 +449,7 @@
       document.head.appendChild(script);
     }, 1500);
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready, { once: true });
+  if (document.readyState === 'loading' && !document.body) document.addEventListener('DOMContentLoaded', ready, { once: true });
   else ready();
   }
   if (document.documentElement.hasAttribute('data-rh-growth-react') && !window.__rankhoundGrowthHydrated) {

@@ -2,6 +2,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 const root=process.cwd();
+function parseGeneratedPagesModule(source) {
+ const prefix=source.match(/^(export\s+const\s+pages\s*=\s*)/);if(!prefix)throw new Error('Unknown generated-page module format');
+ let depth=0,inString=false,escaped=false,body='',end=-1,repaired=0;
+ for(let i=prefix[1].length;i<source.length;i++){
+  const char=source[i];
+  if(inString){
+   if(escaped){if(char==='\n'||char==='\r'){body=body.slice(0,-1);if(char==='\r'&&source[i+1]==='\n')i++;repaired++;}else body+=char;escaped=false;continue;}
+   if(char==='\\'){body+=char;escaped=true;continue;}
+   if(char==='"'){body+=char;inString=false;continue;}
+   if(char.charCodeAt(0)<32){body+=JSON.stringify(char).slice(1,-1);repaired++;}else body+=char;
+   continue;
+  }
+  body+=char;if(char==='"'){inString=true;continue;}if(char==='{'||char==='[')depth++;else if(char==='}'||char===']'){depth--;if(depth===0){end=i+1;break;}}
+ }
+ if(end<0)throw new Error('Generated-page object did not close');
+ return{prefix:prefix[1],pages:JSON.parse(body),suffix:source.slice(end),repaired};
+}
+
 const states=Object.fromEntries('AL:Alabama|AK:Alaska|AZ:Arizona|AR:Arkansas|CA:California|CO:Colorado|CT:Connecticut|DE:Delaware|FL:Florida|GA:Georgia|HI:Hawaii|ID:Idaho|IL:Illinois|IN:Indiana|IA:Iowa|KS:Kansas|KY:Kentucky|LA:Louisiana|ME:Maine|MD:Maryland|MA:Massachusetts|MI:Michigan|MN:Minnesota|MS:Mississippi|MO:Missouri|MT:Montana|NE:Nebraska|NV:Nevada|NH:New Hampshire|NJ:New Jersey|NM:New Mexico|NY:New York|NC:North Carolina|ND:North Dakota|OH:Ohio|OK:Oklahoma|OR:Oregon|PA:Pennsylvania|RI:Rhode Island|SC:South Carolina|SD:South Dakota|TN:Tennessee|TX:Texas|UT:Utah|VT:Vermont|VA:Virginia|WA:Washington|WV:West Virginia|WI:Wisconsin|WY:Wyoming|DC:District of Columbia'.split('|').map(s=>s.split(':')));
 function readRouteJson(file){
  const before=fs.readFileSync(file,'utf8');try{return JSON.parse(before)}catch(error){
@@ -34,11 +52,11 @@ fs.mkdirSync('data',{recursive:true});
 fs.writeFileSync('data/roofing-home-locality.json',JSON.stringify({city,state,stateName:states[state],domain,exempt:!city||!state||statewide},null,2)+'\n');
 if(!city||!state)throw new Error('Homepage locality could not be verified from current production source');
 if(statewide){console.log(JSON.stringify({h1Locality:'EXEMPT_OR_NO_VERIFIED_LOCALITY',city,state,domain}));}else{
- const locality=city+', '+state,escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),cityPattern=new RegExp(escape(city),'i');
- const valid=new RegExp(escape(city)+'\\s*,\\s*(?:'+state+'\\b|'+escape(states[state])+'\\b)','i');
+ const locality=city+', '+state,escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),cityPattern=new RegExp('\\b'+escape(city)+'\\b','i');
+ const valid=new RegExp('\\b'+escape(city)+'\\s*,\\s*(?:'+state+'\\b|'+escape(states[state])+'\\b)','i');
  const modifications=[];
- function transform(html){return html.replace(/(<h1\b[^>]*>)([\s\S]*?)(<\/h1>)/gi,(all,open,inner,close)=>{
-  const text=inner.replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();if(valid.test(text))return all;
+ function transform(html){return html.replace(/(<h1\b[^>]*>)([\s\S]*?)(<\/h1>)/gi,(all,open,inner,close,offset)=>{
+  const text=inner.replace(/<[^>]*>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();const prefix=html.slice(0,offset).toLowerCase();const inHeader=prefix.lastIndexOf('<header')>prefix.lastIndexOf('</header'),heroHeader=inHeader&&/\b(?:hero|page-title|screen-height|home-banner)\b/.test(prefix.slice(prefix.lastIndexOf('<header')));if(!text||/\b(?:site-title|brand|logo)\b/i.test(open)||(inHeader&&!heroHeader))return all;if(valid.test(text))return all;
   let next=inner;
   if(cityPattern.test(text)){
    let applied=false;next=inner.split(/(<[^>]+>)/g).map(token=>{if(applied||token.startsWith('<'))return token;if(cityPattern.test(token)){applied=true;return token.replace(cityPattern,match=>match===match.toUpperCase()?locality.toUpperCase():locality);}return token;}).join('');
@@ -60,7 +78,8 @@ if(statewide){console.log(JSON.stringify({h1Locality:'EXEMPT_OR_NO_VERIFIED_LOCA
  for(const f of ['data/manifest.json','data/rendered-pages/manifest.json','rendered/route-manifest.json'])if(fs.existsSync(f)){const m=readRouteJson(f);const x=(m.routes||m)['/'];const v=typeof x==='string'?x:x?.file;if(v){files.add(path.join(path.dirname(f),v));files.add(path.join('public/__static-pages',v));}}
  const mappingFiles=['rendered/manifest.json','.site/manifest.json','lib/weather-static-routes.json','public/site-pages/routes.json','public/route-map.json','data/route-map.json','data/rendered-pages.json','data/site-pages.json','data/site-catalog.generated.json','data/routes.generated.json','data/pages.generated.json'];
  for(const relative of mappingFiles){if(!fs.existsSync(relative))continue;const value=readRouteJson(relative);const table=value.routes||value.pages||value;let record=Array.isArray(value.records)?value.records.find(r=>r.route==='/'):Array.isArray(table)?table.find(r=>r.route==='/'):table['/'];if(!record)continue;let changed=false;if(typeof record==='object'&&typeof record.html==='string'){const after=transform(record.html);changed=after!==record.html;record.html=after;}if(changed)fs.writeFileSync(relative,JSON.stringify(value,null,2)+'\n');const name=typeof record==='string'?record:record.file||record.filePath;if(typeof name==='string'&&/\.html?$/.test(name)&&!name.includes('..')){const leaf=path.basename(name);for(const base of [path.dirname(relative),'public/site-pages','public/rendered-pages','public/__static-pages','data/rendered-pages','public/rendered','rendered/pages','public'])for(const candidate of [path.join(base,name),path.join(base,leaf)])if(path.resolve(root,candidate).startsWith(root+path.sep))files.add(candidate);}}
- const moduleFile='lib/generated-pages.mjs';if(fs.existsSync(moduleFile)){const before=fs.readFileSync(moduleFile,'utf8'),match=before.match(/^(export const pages = )([\s\S]*);\s*$/);assert.ok(match,'Unknown generated-page module format');const pages=JSON.parse(match[2]);if(typeof pages['/']?.html==='string'){const next=transform(pages['/'].html);if(next!==pages['/'].html){pages['/'].html=next;fs.writeFileSync(moduleFile,match[1]+JSON.stringify(pages)+';\n');}}}
+ const moduleFile='lib/generated-pages.mjs';if(fs.existsSync(moduleFile)){const before=fs.readFileSync(moduleFile,'utf8'),module=parseGeneratedPagesModule(before),pages=module.pages;let changed=module.repaired>0;if(typeof pages['/']?.html==='string'){const next=transform(pages['/'].html);if(next!==pages['/'].html){pages['/'].html=next;changed=true;}}if(changed)fs.writeFileSync(moduleFile,module.prefix+JSON.stringify(pages)+module.suffix);}
+
  for(const file of files){if(!fs.existsSync(file)||!fs.statSync(file).isFile())continue;const before=fs.readFileSync(file,'utf8'),after=transform(before);if(before!==after)fs.writeFileSync(file,after);}
  for(const jsonFile of ['data/pages.generated.json','data/routes.generated.json'])if(fs.existsSync(jsonFile)){const f=jsonFile,s=fs.readFileSync(f,'utf8'),pages=JSON.parse(s);if(typeof pages['/']?.html==='string'){const old=pages['/'].html;pages['/'].html=transform(old);if(old!==pages['/'].html)fs.writeFileSync(f,JSON.stringify(pages,null,2)+'\n');}}
  console.log(JSON.stringify({h1Locality:locality,modifications}));

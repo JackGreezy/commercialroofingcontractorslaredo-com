@@ -4,8 +4,30 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 
 const root = process.cwd();
+function parseGeneratedPagesModule(source) {
+ const prefix=source.match(/^(export\s+const\s+pages\s*=\s*)/);if(!prefix)throw new Error('Unknown generated-page module format');
+ let depth=0,inString=false,escaped=false,body='',end=-1,repaired=0;
+ for(let i=prefix[1].length;i<source.length;i++){
+  const char=source[i];
+  if(inString){
+   if(escaped){if(char==='\n'||char==='\r'){body=body.slice(0,-1);if(char==='\r'&&source[i+1]==='\n')i++;repaired++;}else body+=char;escaped=false;continue;}
+   if(char==='\\'){body+=char;escaped=true;continue;}
+   if(char==='"'){body+=char;inString=false;continue;}
+   if(char.charCodeAt(0)<32){body+=JSON.stringify(char).slice(1,-1);repaired++;}else body+=char;
+   continue;
+  }
+  body+=char;if(char==='"'){inString=true;continue;}if(char==='{'||char==='[')depth++;else if(char==='}'||char===']'){depth--;if(depth===0){end=i+1;break;}}
+ }
+ if(end<0)throw new Error('Generated-page object did not close');
+ return{prefix:prefix[1],pages:JSON.parse(body),suffix:source.slice(end),repaired};
+}
+
 const growthUrl = '/rankhound-conversion-events.js?v=' + crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'public/rankhound-conversion-events.js'))).digest('hex').slice(0, 12);
-const tag = '<script defer src="' + growthUrl + '"></script>';
+const callbackHeroCssPath = path.join(root, 'public/website-taste.css');
+const callbackHeroCss = fs.existsSync(callbackHeroCssPath) ? fs.readFileSync(callbackHeroCssPath, 'utf8') : '';
+const callbackHeroCssUrl = callbackHeroCss.includes('Roofing callback hero: preserve native desktop phone behavior')
+ ? '/website-taste.css?v=' + crypto.createHash('sha256').update(callbackHeroCss).digest('hex').slice(0,12) : null;
+const tag = '<script async src="' + growthUrl + '"></script>';
 const legacyFiles = fs.readdirSync(path.join(root,'public')).filter(name => /-conversion-events\.js$/.test(name) && name !== 'rankhound-conversion-events.js').filter(name => {
  const content=fs.readFileSync(path.join(root,'public',name),'utf8').replace(/__\w+ConversionEvents/g,'__legacyConversionEvents');
  return crypto.createHash('sha256').update(content).digest('hex') === '668fcf5aac098d3edeb9050bde1cf0d8efb69d1be5e3a5fc6ddb8e304eb70ca1';
@@ -20,6 +42,17 @@ function optionalFields(html) {
 }
 function transform(html, inject = true) {
   let next = replaceLegacy(optionalFields(html)).replace(/(<script\b[^>]*\bsrc=)["']\/(?:rankhound|fgfll)-conversion-events\.js(?:\?[^"']*)?["']/gi, '$1' + '"' + growthUrl + '"');
+  if (callbackHeroCssUrl) next = next.replace(/(href=)["']\/website-taste\.css(?:\?[^"']*)?["']/gi, '$1' + '"' + callbackHeroCssUrl + '"');
+  if (callbackHeroCssUrl && !/<a\b[^>]*\bdata-rr-desktop-phone\b/i.test(next)) {
+    const match = [...next.matchAll(/href=["']tel:([^"']+)["']/gi)].find(m => { const d=m[1].replace(/\D/g,''); return d.length>=10&&!/5555555/.test(d); });
+    if (match) {
+      const digits=match[1].replace(/\D/g,''), national=digits.length===11&&digits[0]==='1'?digits.slice(1):digits;
+      const label=national.length===10?'('+national.slice(0,3)+') '+national.slice(3,6)+'-'+national.slice(6):digits;
+      const anchor='<a href="tel:'+match[1]+'" data-rr-desktop-phone class="rr-desktop-phone" data-rh-server-header-phone>Call '+label+'</a>';
+      next=next.replace(/(<header\b[\s\S]*?<\/nav>)(\s*<\/div>)/i,'$1'+anchor+'$2');
+    }
+  }
+
   if (!scriptTag.test(next) && inject) {
     const index = next.toLowerCase().lastIndexOf('</body>');
     next = index < 0 ? next + tag : next.slice(0, index) + tag + next.slice(index);
@@ -27,7 +60,7 @@ function transform(html, inject = true) {
   var seenGrowth = false;
   next = next.replace(/<script\b[^>]*\bsrc=["']\/rankhound-conversion-events\.js(?:\?[^"']*)?["'][^>]*>\s*<\/script>/gi, element => { if (seenGrowth) return ''; seenGrowth = true; return element; });
   return next.replace(/<script\b[^>]*\bsrc=["']\/(?:rankhound|fgfll)-conversion-events\.js(?:\?[^"']*)?["'][^>]*>/gi, opening =>
-    opening.replace(/integrity=(["'])(.*?)\1/i, (_, quote, values) => {
+    opening.replace(/\sdefer(?:=(?:["'][^"']*["']|true|\{true\}))?/gi, '').replace(/^<script\b/i, '<script async').replace(/\basync(?:\s+async)+/gi, 'async').replace(/integrity=(["'])(.*?)\1/i, (_, quote, values) => {
       const bytes = fs.readFileSync(path.join(root, 'public/rankhound-conversion-events.js'));
       const hashes = values.split(/\s+/).map(value => {
         const algorithm = value.split('-')[0];
@@ -56,7 +89,7 @@ for(const relative of ['data/pages.generated.json','data/routes.generated.json',
  const file=path.join(root,relative);if(!fs.existsSync(file))continue;const value=JSON.parse(fs.readFileSync(file,'utf8'));let changed=false;const records=Array.isArray(value.records)?value.records:Object.values(value);for(const record of records){if(record&&typeof record.html==='string'){const next=transform(record.html,/<html\b/i.test(record.html));if(next!==record.html){record.html=next;changed=true;}}}if(changed)fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n');
 }
 
-const generatedModule=path.join(root,'lib/generated-pages.mjs');if(fs.existsSync(generatedModule)){const before=fs.readFileSync(generatedModule,'utf8'),match=before.match(/^(export const pages = )([\s\S]*);\s*$/);if(!match)throw new Error('Unknown generated-page module format');const pages=JSON.parse(match[2]);let changed=false;for(const page of Object.values(pages)){if(page&&typeof page.html==='string'){const next=transform(page.html,/<html\b/i.test(page.html));if(next!==page.html){page.html=next;changed=true;}}}if(changed)fs.writeFileSync(generatedModule,match[1]+JSON.stringify(pages)+';\n');}
+const generatedModule=path.join(root,'lib/generated-pages.mjs');if(fs.existsSync(generatedModule)){const before=fs.readFileSync(generatedModule,'utf8'),module=parseGeneratedPagesModule(before),pages=module.pages;let changed=module.repaired>0;for(const page of Object.values(pages)){if(page&&typeof page.html==='string'){const next=transform(page.html,/<html\b/i.test(page.html));if(next!==page.html){page.html=next;changed=true;}}}if(changed)fs.writeFileSync(generatedModule,module.prefix+JSON.stringify(pages)+module.suffix);}
 execFileSync(process.execPath, [path.join(root, 'scripts/ensure-roofing-home-locality.mjs')], { cwd: root, stdio: 'inherit' });
 for (const relative of ['app/lib/sitePage.tsx', 'app/ContactHydrator.tsx', 'app/site-renderer.jsx']) {
   const file = path.join(root, relative);
@@ -71,11 +104,13 @@ for (const relative of ['app/layout.tsx', 'app/layout.jsx', 'app/layout.js']) {
   if (!before.includes('</body>')) continue;
   let after = replaceLegacy(before).replace(/<script\b[^>]*\bsrc=["']\/turnstile-contact\.js["'][^>]*\/?>\s*(?:<\/script>)?/gi, '');
   if(['ConversionEvents.jsx','ConversionEvents.js','ConversionEvents.tsx'].some(name=>{const file=path.join(root,'app',name);return fs.existsSync(file)&&crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')==='c5653702627bac599e6355cf8b93b7c56d730615cf5afaa4d202366d352c2d03';})){after=after.replace(/^import\s+ConversionEvents\s+from\s+["']\.\/ConversionEvents["'];?\s*$/gm,'').replace(/<ConversionEvents\s*\/>/g,'');}
+  if (/<ConversionEvents\s*\/>/.test(after)) throw new Error('Review this legacy React conversion component before adding another tracker');
   after = after.replace(/(<script\b[^>]*\bsrc=)["']\/(?:rankhound|fgfll)-conversion-events\.js(?:\?[^"']*)?["']/gi, '$1' + '"' + growthUrl + '"');
   if (!after.includes('data-rh-growth-react')) after = after.replace(/<html\b/, '<html data-rh-growth-react=""');
   if (!after.includes('import RankHoundGrowth')) after = after.replace(/^(\s*["']use client["'];?\s*)?/, (prefix) => prefix + 'import RankHoundGrowth from "./RankHoundGrowth";\n');
   if (!after.includes('<RankHoundGrowth')) after = after.replace('</body>', '<RankHoundGrowth /></body>');
-  if (!after.includes('/rankhound-conversion-events.js')) after = after.replace('</body>', '<script defer src="' + growthUrl + '" /></body>');
+  if (!after.includes('/rankhound-conversion-events.js')) after = after.replace('</body>', '<script async src="' + growthUrl + '" /></body>');
+  after = transform(after, false);
   fs.writeFileSync(file, after.replace(/^[\t ]+$/gm, ''));
   const contactLoader = fs.existsSync(path.join(root, 'public/turnstile-contact.js')) ? `
     if (!document.querySelector('script[data-rh-contact-ready]')) {
