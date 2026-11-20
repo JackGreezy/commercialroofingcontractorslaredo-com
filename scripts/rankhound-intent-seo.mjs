@@ -443,17 +443,8 @@ function variantSentence(route, market, location = null) {
   if (route === "/" && market !== "Nationwide") {
     return `Local commercial roofers and commercial roofing contractors serve ${market} businesses with repair, replacement, coatings, maintenance, inspections, and roof reports.`;
   }
-  if (location) {
-    const variants = [
-      `Commercial roofing in ${location} should begin with a documented assessment of membrane condition, seams, flashings, drainage, penetrations, and moisture before repair, coating, or replacement is selected.`,
-      `For commercial properties in ${location}, the defensible choice between repair, restoration, and replacement starts with roof-system condition, moisture findings, drainage performance, and remaining service life.`,
-      `Commercial roofers serving ${location} should document leak sources, wet insulation, drainage, edge details, penetrations, and repair history before recommending a scope.`,
-      `A practical commercial roofing plan for ${location} properties separates urgent leak control from repair, coating, maintenance, and replacement decisions supported by photos and condition findings.`,
-    ];
-    let hash = 0;
-    for (const character of route) hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
-    return variants[hash % variants.length];
-  }
+  // Keep the authored location opening; stock introductions obscure local detail.
+  if (location) return "";
   return "";
 }
 
