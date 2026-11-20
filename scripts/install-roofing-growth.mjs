@@ -4,6 +4,9 @@ import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 
 const root = process.cwd();
+const strategyFile = path.join(root, 'data/roofing-contact-strategy.json');
+const contactStrategy = fs.existsSync(strategyFile) ? JSON.parse(fs.readFileSync(strategyFile,'utf8')) : null;
+if(contactStrategy && !['assessment','project','repair','estimate','advice','replacement','coating'].includes(contactStrategy.key))throw Error('Unknown contact strategy');
 function parseGeneratedPagesModule(source) {
  const prefix=source.match(/^(export\s+const\s+pages\s*=\s*)/);if(!prefix)throw new Error('Unknown generated-page module format');
  let depth=0,inString=false,escaped=false,body='',end=-1,repaired=0;
@@ -27,6 +30,11 @@ const callbackHeroCssPath = path.join(root, 'public/website-taste.css');
 const callbackHeroCss = fs.existsSync(callbackHeroCssPath) ? fs.readFileSync(callbackHeroCssPath, 'utf8') : '';
 const callbackHeroCssUrl = callbackHeroCss.includes('Roofing callback hero: preserve native desktop phone behavior')
  ? '/website-taste.css?v=' + crypto.createHash('sha256').update(callbackHeroCss).digest('hex').slice(0,12) : null;
+const mediaRevisionFile=path.join(root,'data/roofing-media-revision.json');
+const mediaRevision=fs.existsSync(mediaRevisionFile)?JSON.parse(fs.readFileSync(mediaRevisionFile,'utf8')):{version:1,replacements:[]};
+if(mediaRevision.version!==1||!Array.isArray(mediaRevision.replacements))throw Error('Unknown roofing media revision');
+for(const item of mediaRevision.replacements){if(!item.oldPath.startsWith('public/')||!item.newPath.startsWith('public/ours/')||[item.oldPath,item.newPath].some(p=>p.split('/').includes('..')||!/^[a-zA-Z0-9/_.-]+$/.test(p)))throw Error('Unsafe media revision path');}
+function replaceMedia(html){for(const item of mediaRevision.replacements){const old=item.oldPath.slice(7),next=item.newPath.slice(7);html=html.split(old).join(next).split(old.replaceAll('/','\\/')).join(next.replaceAll('/','\\/'));}return html;}
 const tag = '<script async src="' + growthUrl + '"></script>';
 const legacyFiles = fs.readdirSync(path.join(root,'public')).filter(name => /-conversion-events\.js$/.test(name) && name !== 'rankhound-conversion-events.js').filter(name => {
  const content=fs.readFileSync(path.join(root,'public',name),'utf8').replace(/__\w+ConversionEvents/g,'__legacyConversionEvents');
@@ -41,7 +49,15 @@ function optionalFields(html) {
       ? opening.replace(/\saria-required=(["'])true\1/gi, ' aria-required="false"').replace(/\srequired(?:=(?:["'][^"']*["']|\{true\}|true))?/gi, '') : opening);
 }
 function transform(html, inject = true) {
-  let next = replaceLegacy(optionalFields(html)).replace(/(<script\b[^>]*\bsrc=)["']\/(?:rankhound|fgfll)-conversion-events\.js(?:\?[^"']*)?["']/gi, '$1' + '"' + growthUrl + '"');
+  let next = replaceLegacy(optionalFields(replaceMedia(html))).replace(/(<script\b[^>]*\bsrc=)["']\/(?:rankhound|fgfll)-conversion-events\.js(?:\?[^"']*)?["']/gi, '$1' + '"' + growthUrl + '"');
+  // Reuse a hidden fallback rather than appending another on each Safari layout/resize pass.
+  next = next.replaceAll('if(burgers.some(visible))return;', "if(burgers.some(visible)||burgers.some(function(b){return b.classList.contains('rr-burger-fallback');}))return;");
+  if(contactStrategy){
+    const meta='<meta name="rh-contact-strategy" content="'+contactStrategy.key+'" />';
+    next=next.replace(/<meta\b(?=[^>]*\bname=["']rh-contact-strategy["'])[^>]*>/gi,'');
+    if(/<head\b[^>]*>/i.test(next))next=next.replace(/<head\b[^>]*>/i, opening=>opening+meta);
+    else if(inject)next=meta+next;
+  }
   if (callbackHeroCssUrl) next = next.replace(/(href=)["']\/website-taste\.css(?:\?[^"']*)?["']/gi, '$1' + '"' + callbackHeroCssUrl + '"');
   if (callbackHeroCssUrl && !/<a\b[^>]*\bdata-rr-desktop-phone\b/i.test(next)) {
     const match = [...next.matchAll(/href=["']tel:([^"']+)["']/gi)].find(m => { const d=m[1].replace(/\D/g,''); return d.length>=10&&!/5555555/.test(d); });
@@ -111,6 +127,7 @@ for (const relative of ['app/layout.tsx', 'app/layout.jsx', 'app/layout.js']) {
   if (!after.includes('<RankHoundGrowth')) after = after.replace('</body>', '<RankHoundGrowth /></body>');
   if (!after.includes('/rankhound-conversion-events.js')) after = after.replace('</body>', '<script async src="' + growthUrl + '" /></body>');
   after = transform(after, false);
+  if(contactStrategy && !after.includes('name="rh-contact-strategy"')) after=after.replace(/<body\b[^>]*>/i, opening=>opening+'<meta name="rh-contact-strategy" content="'+contactStrategy.key+'" />');
   fs.writeFileSync(file, after.replace(/^[\t ]+$/gm, ''));
   const contactLoader = fs.existsSync(path.join(root, 'public/turnstile-contact.js')) ? `
     if (!document.querySelector('script[data-rh-contact-ready]')) {

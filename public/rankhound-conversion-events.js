@@ -1,12 +1,26 @@
 (function () {
   function start() {
-  if (window.__rankhoundGrowthV3) return;
-  var upgradeOnly = !!window.__rankhoundGrowthV2;
+  if (window.__rankhoundGrowthV4) return;
+  var upgradeOnly = !!(window.__rankhoundGrowthV3 || window.__rankhoundGrowthV2);
+  window.__rankhoundGrowthV4 = true;
   window.__rankhoundGrowthV3 = true;
-  window.__rankhoundGrowthVersion = 'mobile-intent-v3';
+  window.__rankhoundGrowthVersion = 'mobile-intent-v4';
   window.__rankhoundGrowthV2 = true;
   window.__rankhoundConversionEvents = true;
   var compactForms = true;
+  var offers = {
+    assessment: { action: 'Request an assessment', submit: 'Request a roof assessment', call: 'Speak with our team', note: 'Request a review of your commercial roof. Add property details if you have them.' },
+    project: { action: 'Discuss your project', submit: 'Send project details', call: 'Call about a project', note: 'Share your roofing project with our team. Property details and timing are optional.' },
+    repair: { action: 'Get roof repair help', submit: 'Request roof repair', call: 'Call for repairs', note: 'Tell us about the roof problem. You can add the property address and repair details below.' },
+    estimate: { action: 'Request an estimate', submit: 'Request a roofing estimate', call: 'Discuss pricing', note: 'Request an estimate for your roofing project. Add the scope and property details if available.' },
+    advice: { action: 'Ask a roofing question', submit: 'Send your roof question', call: 'Call now', note: 'Ask about your commercial roof and the next step. Property details are optional.' },
+    replacement: { action: 'Review replacement options', submit: 'Request replacement options', call: 'Discuss replacement', note: 'Discuss replacement options for your commercial roof. Add project details if available.' },
+    coating: { action: 'Explore roof coatings', submit: 'Request coating options', call: 'Ask about coatings', note: 'Ask about coating options for your roof. Add the roof condition and property details if available.' }
+  };
+  var strategyMeta = document.querySelector('meta[name="rh-contact-strategy"]');
+  var strategyKey = strategyMeta && strategyMeta.getAttribute('content');
+  if (!offers[strategyKey]) strategyKey = 'assessment';
+  var offer = offers[strategyKey];
   var started = new WeakSet();
   var accepted = new WeakMap();
   var attempts = new WeakMap();
@@ -44,7 +58,7 @@
 
   function send(name, extra) {
     if (qa) return;
-    var data = { path: location.pathname || '/', first_source: firstSource };
+    var data = { path: location.pathname || '/', first_source: firstSource, contact_strategy: strategyKey };
     Object.keys(extra || {}).forEach(function (key) { data[key] = extra[key]; });
     window.va('event', { name: name, data: data });
   }
@@ -144,13 +158,13 @@
     if (!compactForms || !leadForm(form)) return;
     var button = form.querySelector('button[type="submit"], input[type="submit"]');
     var caption = button && (button.textContent || button.value || '');
-    if (button && /send|submit|request/i.test(caption) && !/sending|processing|sent|received|thank/i.test(caption)) {
-      if (button.tagName === 'INPUT') button.value = 'Get a callback';
-      else button.textContent = 'Get a callback';
+    if (button && /send|submit|request|get a callback/i.test(caption) && !/sending|processing|\bsent\b|received|thank/i.test(caption)) {
+      if (button.tagName === 'INPUT') { if (button.value !== offer.submit) button.value = offer.submit; }
+      else if (button.textContent !== offer.submit) button.textContent = offer.submit;
     }
-    if (form.dataset.rhIntentForm === 'v3') { compactOptionalDetails(form); return; }
+    if (form.dataset.rhIntentForm === 'v4') { compactOptionalDetails(form); return; }
     form.dataset.rhShortForm = 'v2';
-    form.dataset.rhIntentForm = 'v3';
+    form.dataset.rhIntentForm = 'v4';
     ['timeline', 'address', 'message'].forEach(function (name) {
       var control = form.querySelector('[name="' + name + '"]');
       if (!control) return;
@@ -167,7 +181,7 @@
     });
     var note = form.querySelector('.rh-callback-note') || document.createElement('p');
     note.className = 'rh-callback-note';
-    note.textContent = 'Get a callback about your roof. Property details are optional.';
+    if (note.textContent !== offer.note) note.textContent = offer.note;
     if (!note.parentNode) form.insertBefore(note, form.firstChild);
     compactOptionalDetails(form);
   }
@@ -229,7 +243,7 @@
     var href = selected ? '#roof-callback-form' : '/contact#roof-callback-form';
     document.querySelectorAll('a[data-rh-callback]').forEach(function (link) {
       if (link.getAttribute('href') !== href) link.setAttribute('href', href);
-      if (link.closest('.rh-growth-actions') && link.textContent !== 'Get a callback') link.textContent = 'Get a callback';
+      if (link.textContent !== offer.action) link.textContent = offer.action;
     });
     return href;
   }
@@ -290,8 +304,8 @@
       var value = bar && bar.style.getPropertyValue(name);
       if (value) panel.style.setProperty(name, value);
     });
-    var call = document.createElement('a'); call.href = source.getAttribute('href'); call.textContent = 'Call now';
-    var callback = document.createElement('a'); callback.href = callbackAnchor(); callback.textContent = 'Get a callback'; callback.setAttribute('data-rh-callback', '');
+    var call = document.createElement('a'); call.href = source.getAttribute('href'); call.textContent = offer.call;
+    var callback = document.createElement('a'); callback.href = callbackAnchor(); callback.textContent = offer.action; callback.setAttribute('data-rh-callback', '');
     panel.appendChild(call); panel.appendChild(callback);
     heading.parentNode.insertBefore(panel, heading.nextSibling);
     scope.querySelectorAll('a[href]').forEach(function (link) {
@@ -379,10 +393,10 @@
     }
     var call = bar.querySelector('a[href^="tel:"]') || document.createElement('a');
     call.href = phone.getAttribute('href');
-    if (call.textContent !== 'Call now') call.textContent = 'Call now';
+    if (call.textContent !== offer.call) call.textContent = offer.call;
     var callback = bar.querySelector('a[data-rh-callback]') || document.createElement('a');
     callback.href = callbackAnchor();
-    if (callback.textContent !== 'Get a callback') callback.textContent = 'Get a callback';
+    if (callback.textContent !== offer.action) callback.textContent = offer.action;
     callback.setAttribute('data-rh-callback', '');
     if (!call.parentNode) bar.appendChild(call);
     if (!callback.parentNode) bar.appendChild(callback);
@@ -398,24 +412,68 @@
     document.addEventListener('focusout', function () { setTimeout(keyboard, 0); });
   }
 
+  function reconcileMobileControls() {
+    if (!window.getComputedStyle || window.innerWidth >= 768) return;
+    var burgers = Array.prototype.slice.call(document.querySelectorAll('.rr-burger'));
+    function menuVisible(button) {
+      if (!visibleElement(button)) return false;
+      var rect = button.getBoundingClientRect();
+      return rect.right > 0 && rect.left < window.innerWidth && rect.bottom > 0 && rect.top < (window.innerHeight || 800);
+    }
+    var main = burgers.find(function (button) {
+      return !button.classList.contains('rr-burger-fallback') && !button.closest('[data-rr-mobile]') && menuVisible(button);
+    }) || burgers.find(function (button) { return menuVisible(button) && !button.closest('[data-rr-mobile]'); });
+    if (main) {
+      main.setAttribute('data-rh-primary-menu', '');
+      if (main.getAttribute('aria-expanded') !== String(document.body.classList.contains('rr-nav-open'))) main.setAttribute('aria-expanded', String(document.body.classList.contains('rr-nav-open')));
+      document.body.setAttribute('data-rh-single-menu', '');
+      burgers.forEach(function (button) {
+        if (button !== main) {
+          button.removeAttribute('data-rh-primary-menu');
+          if (button.classList.contains('rr-burger-fallback')) button.remove();
+        }
+      });
+    }
+    if (!document.querySelector('.rh-growth-actions')) return;
+    var viewport = window.innerHeight || 800;
+    document.querySelectorAll('a[href^="tel:"], a[href*="/contact"]').forEach(function (link) {
+      if (link.closest('.rh-growth-actions, .rh-mobile-intent-actions, header, [role="banner"], [data-rr-mobile], [role="dialog"]')) return;
+      var floating = link;
+      for (var depth = 0; floating && floating !== document.body && depth < 4; depth++, floating = floating.parentElement) {
+        var style = window.getComputedStyle(floating);
+        var rect = floating.getBoundingClientRect();
+        if (style.position === 'fixed' && rect.top >= viewport * .5 && rect.height < viewport * .4) {
+          link.setAttribute('data-rh-legacy-floating-contact', '');
+          break;
+        }
+      }
+    });
+  }
+
   function ready() {
     var style = document.getElementById('rh-growth-v2-style') || document.createElement('style');
     style.id = 'rh-growth-v2-style';
     style.textContent = '.rh-desktop-header-phone{display:none!important}@media(min-width:768px){.rh-header-phone-position{position:relative!important}.rh-header-phone-reserved-row{padding-top:calc(var(--rh-header-original-padding,0px) + 40px)!important;height:auto!important;min-height:calc(var(--rh-header-original-height,0px) + 40px)!important}.rh-desktop-header-phone{box-sizing:border-box;display:inline-flex!important;align-items:center;position:absolute!important;top:10px;right:clamp(20px,5vw,80px);z-index:5;min-height:28px;padding:2px 4px;color:var(--rh-header-phone-text,#173b4d)!important;background:transparent;font:inherit;font-size:16px!important;font-weight:700!important;line-height:1.4!important;letter-spacing:normal!important;text-transform:none!important;text-decoration:none!important;white-space:nowrap}.rh-desktop-header-phone:focus-visible{outline:2px solid currentColor;outline-offset:3px}body.rh-header-fixed-offset{padding-top:calc(var(--rh-header-body-padding,0px) + 40px)!important}}.rh-callback-note{grid-column:1/-1;font:inherit;font-size:.94em;line-height:1.5;margin:0 0 1rem}.rh-growth-actions{display:none!important}@media(max-width:767px){body.rh-has-growth-actions{padding-bottom:calc(68px + env(safe-area-inset-bottom,0px))}.rh-growth-actions:not([hidden]){box-sizing:border-box;display:grid!important;grid-template-columns:1fr 1.35fr;gap:8px;position:fixed;bottom:0;left:0;right:0;z-index:999;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #d6dce0;box-shadow:0 -3px 14px #00000012}.rh-growth-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border:1px solid currentColor;border-radius:4px;font:inherit;font-size:14px;font-weight:700;line-height:1.25;text-decoration:none;color:#173b4d;background:#fff}.rh-growth-actions a:first-child{color:var(--rh-action-text,#fff);background:var(--rh-action-bg,#173b4d);border-color:var(--rh-action-bg,#173b4d)}.rh-growth-actions a:focus-visible{outline:3px solid #3783b4;outline-offset:2px}}';
     style.textContent += '.rh-property-disclosure{display:none}@media(max-width:767px){body.rh-has-growth-actions [class*="-visible-phone"],body.rh-has-growth-actions [data-rr-mobile-phone],body.rh-has-growth-actions [class*="-sticky-help"],body.rh-has-growth-actions [class*="-mobile-help"],body.rh-has-growth-actions [class*="-mobile-emergency"],body.rh-has-growth-actions a.rr-call{display:none!important}form[data-rh-compact-callback][data-rh-details-open="false"] .rh-optional-field{display:none!important}form[data-rh-compact-callback]{row-gap:12px!important}form[data-rh-compact-callback] .rh-callback-note{margin-bottom:4px}.rh-property-disclosure{display:block;grid-column:1/-1;width:100%;margin:0;font:inherit;font-size:14px}.rh-property-disclosure summary{cursor:pointer;min-height:44px;padding:10px 0;line-height:1.5;text-decoration:underline}.rh-property-disclosure summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}form[data-rh-compact-callback] button[type="submit"],form[data-rh-compact-callback] input[type="submit"]{min-height:48px}}';
     style.textContent += '.rh-mobile-intent-actions{display:none!important}@media(max-width:767px){:root .rh-mobile-intent-heading.rh-mobile-intent-heading.rh-mobile-intent-heading{font-size:var(--rh-mobile-h1-size,44px)!important;line-height:1.1!important;margin-bottom:12px!important}:root .rh-mobile-intent-heading .rh-mobile-intent-large-type{font-size:inherit!important;line-height:inherit!important}.rh-mobile-intent-actions{box-sizing:border-box;display:grid!important;grid-template-columns:1fr 1.35fr;gap:8px;width:min(100%,420px);margin:14px 0 20px;position:relative;z-index:2}.rh-mobile-intent-actions a{box-sizing:border-box;display:flex!important;align-items:center;justify-content:center;min-height:48px;padding:10px 12px;border:1px solid #173b4d;border-radius:4px;font:inherit;font-size:16px!important;font-weight:700!important;line-height:1.25!important;letter-spacing:normal!important;text-transform:none!important;text-decoration:none!important;color:#173b4d!important;background:#fff!important}.rh-mobile-intent-actions a:first-child{color:var(--rh-action-text,#fff)!important;background:var(--rh-action-bg,#173b4d)!important;border-color:var(--rh-action-bg,#173b4d)}.rh-mobile-intent-actions a:focus-visible{outline:3px solid #3783b4;outline-offset:2px}.rh-mobile-redundant-contact{display:none!important}}';
+    style.textContent += '@media(max-width:767px){body[data-rh-single-menu] .rr-burger-fallback:not([data-rh-primary-menu]){display:none!important;visibility:hidden!important;pointer-events:none!important}body.rh-has-growth-actions a.mobile-sticky-call,body.rh-has-growth-actions [data-rh-legacy-floating-contact]{display:none!important;pointer-events:none!important}body.rr-nav-open .rh-growth-actions,body.rr-nav-open .rh-mobile-intent-actions{display:none!important}.rh-growth-actions a{box-sizing:border-box;min-width:0;text-align:center}.rh-mobile-intent-actions a{text-align:center}}';
     if (!style.parentNode) document.head.appendChild(style);
     document.querySelectorAll('form').forEach(shorten);
     callbackAnchor();
     mobileActions();
     desktopHeaderPhone();
     mobileHeroActions();
+    reconcileMobileControls();
     window.addEventListener('resize', desktopHeaderPhone);
     window.addEventListener('resize', mobileHeroActions);
+    window.addEventListener('resize', reconcileMobileControls);
+    document.addEventListener('click', function () { setTimeout(reconcileMobileControls, 0); });
     document.addEventListener('animationend', mobileHeroActions, true);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(mobileHeroActions);
     setTimeout(mobileHeroActions, 600);
     setTimeout(mobileHeroActions, 1800);
+    setTimeout(reconcileMobileControls, 200);
+    setTimeout(reconcileMobileControls, 700);
     document.addEventListener('click', function (event) {
       var link = event.target && event.target.closest && event.target.closest('a[data-rh-callback]');
       if (!link || link.getAttribute('href') !== '#roof-callback-form') return;
@@ -437,7 +495,7 @@
       setTimeout(function () {
         refreshQueued = false;
         document.querySelectorAll('form').forEach(shorten);
-        callbackAnchor(); mobileActions(); desktopHeaderPhone(); mobileHeroActions();
+        callbackAnchor(); mobileActions(); desktopHeaderPhone(); mobileHeroActions(); reconcileMobileControls();
       }, 100);
     }).observe(document.body, { childList: true, subtree: true });
     setTimeout(function () {
