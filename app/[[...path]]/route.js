@@ -5,8 +5,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 function withRankHoundConversionEvents(html) {
-  if (!html || html.includes('/rankhound-conversion-events.js')) return html;
-  const tracking = '<script defer src="/rankhound-conversion-events.js"></script>';
+  if (!html || html.includes('/rankhound-conversion-events.js?v=65cdcd9f9d50')) return html;
+  const tracking = '<script defer src="/rankhound-conversion-events.js?v=65cdcd9f9d50"></script>';
   return /<\/body>/i.test(html)
     ? html.replace(/<\/body>/i, tracking + "\n</body>")
     : html + "\n" + tracking;

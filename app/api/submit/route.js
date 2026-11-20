@@ -22,7 +22,7 @@ const LIMIT = 3;
 const WINDOW_MS = 10 * 60 * 1000;
 const IDENTITY_LIMIT = 2;
 const MAX_BODY_BYTES = 32 * 1024;
-const REQUIRED_FIELDS = ["name", "phone", "email", "timeline", "message"];
+const REQUIRED_FIELDS = ["name", "phone", "email"];
 const MARKETING_PATTERNS = [
   /\bi would like more information\.\s+please contact me by email\b/i,
   /\bseo\b/i,
@@ -228,5 +228,5 @@ export async function POST(request) {
     return json({ ok: false, success: false, message, error: "email-send-failed" }, 500, headers);
   }
 
-  return json({ ok: true, success: true, message: "Your request has been received. Our team will follow up shortly." }, 200, headers);
+  return json({ ok: true, success: true, leadAccepted: true, message: "Your request has been received. Our team will follow up shortly." }, 200, headers);
 }

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "domain": "commercialroofingcontractorslaredo.com",
+  "productionDeployment": "dpl_WKJCu4bVzTqZCV2KHvk4ZsCJVGpP",
+  "handlerFile": "app/api/submit/route.js",
+  "handlerNormalizedSha256": "6b1d4be8da5150e2dc792005af5fe10d97ac10434326221209845e8f9bea9f1f",
+  "dependenciesSha256": "0ae8306c4028f8279af89da78221c1d26c021290c3a11808d4b4a2cc47776c7e",
+  "securityFiles": [
+    {
+      "path": "app/api/turnstile/config/route.js",
+      "sha256": "fa63aa9de12f5147f4dfa3cc3bcaf8cd316886f1ebe30f0b722df434669b65ab"
+    },
+    {
+      "path": "lib/turnstile.js",
+      "sha256": "748a8953b52142ca299dd684aa882ac7dc4166b9ef972624134d414034c7d941"
+    },
+    {
+      "path": "public/rr-lead-controls.css",
+      "sha256": "6c4fc0848e012a1dd121eeac20f6772fa18dc1b52b0dafa72d0bdbed8752d7e0"
+    },
+    {
+      "path": "public/rr-lead-controls.js",
+      "sha256": "a92ba5b503996cd95b3acdd09ee1c1f97ec5cc12fedf9836006825ffe9f64e25"
+    },
+    {
+      "path": "public/turnstile-contact.js",
+      "sha256": "833f8bfa3a9a48a58c8dd7a7500aabe0e313d5c6d8af0941b08f530d340f59bb"
+    },
+    {
+      "path": "scripts/finalize-lead-controls.mjs",
+      "sha256": "a99b7650de93adc3d18e2a1800ccdc49d737bce585bf95272c90518e862eb56b"
+    },
+    {
+      "path": "scripts/inject-turnstile.mjs",
+      "sha256": "7d1ca41a5aeb07bf67751c64783b9b82b15265cfc4234381097df0e898eae732"
+    }
+  ]
+}

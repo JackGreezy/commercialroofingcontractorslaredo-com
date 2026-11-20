@@ -100,7 +100,7 @@ function keepAttributes(control, field, jsx = false) {
   if (field.tag === "input") kept.push(`type="${field.type}"`);
   if (field.autocomplete) kept.push(`${jsx ? "autoComplete" : "autocomplete"}="${field.autocomplete}"`);
   if (field.placeholder) kept.push(`placeholder="${escapeAttribute(field.placeholder)}"`);
-  kept.push("required");
+  if (["name", "phone", "email"].includes(field.name)) kept.push("required");
   return kept.join(" ");
 }
 
