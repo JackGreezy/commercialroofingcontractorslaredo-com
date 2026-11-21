@@ -1,0 +1,83 @@
+{
+  "revision": "roofing-speed-v1",
+  "domain": "commercialroofingcontractorslaredo.com",
+  "images": {
+    "/images/brand/logo-on-dark.png": "/performance/roofing-v1/c91b266ce492dfa7b5a8780e.webp",
+    "/images/brand/logo-on-light.png": "/performance/roofing-v1/4d87fd9228c15a1b23bcb8c3.webp",
+    "/ours/manufacturers/johns-manville-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/e230528022fa80b182779fa8.webp",
+    "/ours/roof-systems/pvc-roof-systems-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/6b9b099aa5560dfbfca962e3.webp",
+    "/ours/services/commercial-roof-inspection-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/5b53438e6394f2e39071a846.webp",
+    "/ours/services/edge-metal-coping-gutters-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/d5d46e29d584b10d25d6362b.webp",
+    "/ours/services/roof-recover-overlay-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/59d8384ba92927fda0f4e9f9.webp",
+    "/ours/services/tpo-single-ply-roofing-commercial-roofing-contractors-laredo-tx.webp": "/performance/roofing-v1/b009eb79e4cab4ec195fc819.webp"
+  },
+  "assets": [
+    {
+      "from": "/images/brand/logo-on-dark.png",
+      "to": "/performance/roofing-v1/c91b266ce492dfa7b5a8780e.webp",
+      "width": 865,
+      "height": 315,
+      "beforeBytes": 229110,
+      "afterBytes": 149528
+    },
+    {
+      "from": "/images/brand/logo-on-light.png",
+      "to": "/performance/roofing-v1/4d87fd9228c15a1b23bcb8c3.webp",
+      "width": 841,
+      "height": 291,
+      "beforeBytes": 208629,
+      "afterBytes": 142948
+    },
+    {
+      "from": "/ours/manufacturers/johns-manville-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/e230528022fa80b182779fa8.webp",
+      "width": 1920,
+      "height": 1440,
+      "beforeBytes": 253170,
+      "afterBytes": 186918
+    },
+    {
+      "from": "/ours/roof-systems/pvc-roof-systems-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/6b9b099aa5560dfbfca962e3.webp",
+      "width": 1400,
+      "height": 1050,
+      "beforeBytes": 110572,
+      "afterBytes": 82182
+    },
+    {
+      "from": "/ours/services/commercial-roof-inspection-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/5b53438e6394f2e39071a846.webp",
+      "width": 2000,
+      "height": 1333,
+      "beforeBytes": 200208,
+      "afterBytes": 160102
+    },
+    {
+      "from": "/ours/services/edge-metal-coping-gutters-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/d5d46e29d584b10d25d6362b.webp",
+      "width": 1080,
+      "height": 810,
+      "beforeBytes": 78930,
+      "afterBytes": 62624
+    },
+    {
+      "from": "/ours/services/roof-recover-overlay-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/59d8384ba92927fda0f4e9f9.webp",
+      "width": 1800,
+      "height": 1200,
+      "beforeBytes": 190812,
+      "afterBytes": 144170
+    },
+    {
+      "from": "/ours/services/tpo-single-ply-roofing-commercial-roofing-contractors-laredo-tx.webp",
+      "to": "/performance/roofing-v1/b009eb79e4cab4ec195fc819.webp",
+      "width": 1600,
+      "height": 1066,
+      "beforeBytes": 135264,
+      "afterBytes": 102800
+    }
+  ],
+  "createdAt": "2026-11-21T04:18:36.893Z",
+  "fonts": [],
+  "fontFailures": []
+}

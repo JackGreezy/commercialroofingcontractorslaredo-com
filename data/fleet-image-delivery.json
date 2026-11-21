@@ -393,6 +393,61 @@
           "width": 1600
         }
       ]
+    },
+    "/performance/roofing-v1/4d87fd9228c15a1b23bcb8c3.webp": {
+      "width": 841,
+      "height": 291,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/bbeb4faa5948b9ac.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/c7b0bb7096b134ea.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/646ca1defae6a3f0.webp",
+          "width": 841
+        }
+      ],
+      "mobileSize": "298px"
+    },
+    "/performance/roofing-v1/6b9b099aa5560dfbfca962e3.webp": {
+      "width": 1400,
+      "height": 1050,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/5d2fb31421e48f12.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/dd865239783303b9.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/185e19a182d241d8.webp",
+          "width": 1240
+        }
+      ]
+    },
+    "/performance/roofing-v1/5b53438e6394f2e39071a846.webp": {
+      "width": 2000,
+      "height": 1333,
+      "variants": [
+        {
+          "src": "/performance/fleet-images/8dbf1948ebb250c4.webp",
+          "width": 400
+        },
+        {
+          "src": "/performance/fleet-images/6d57734769e7c595.webp",
+          "width": 828
+        },
+        {
+          "src": "/performance/fleet-images/dc25339438b6b0a0.webp",
+          "width": 1240
+        }
+      ]
     }
   },
   "lazyImages": [
